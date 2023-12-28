@@ -25,11 +25,14 @@ class Main:
         
         # Access config values
         self.stepdelay = config.getfloat('MotorSteuerung', 'stepdelay')
+    
 
     def CallStepperMotor(self):
         logging.info("Calling StepperMotor")
         sm = SM.StepperMotor()
-        sm.run(self.stepdelay)
+        # sm.run(self.stepdelay)
+        sm.nema17_ramp(0.01, 0.001, 1000, 1)
+   
         
 
 
@@ -39,3 +42,5 @@ if __name__ == "__main__":
 
     # Call the CallStepperMotor method
     main.CallStepperMotor()
+
+    
