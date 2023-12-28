@@ -70,6 +70,7 @@ class StepperMotor:
     def nema17_ramp(self, start_stepdelay, end_stepdelay, total_steps, total_time):
         current_stepdelay = start_stepdelay
         acceleration_delay = (end_stepdelay - start_stepdelay) / total_steps
+        
         value_list = []
 
         for i in range(total_steps):
@@ -81,7 +82,7 @@ class StepperMotor:
                 current_stepdelay -= acceleration_delay
 
             # Perform step with the current step delay
-            logging.info("Stepdelay is: {0}".format(current_stepdelay))
+            #logging.info("Stepdelay in StepperMotor is: {0}".format(current_stepdelay))
             
             # Append each value to a list for visualization
             value_list.append(str(current_stepdelay))
@@ -89,7 +90,7 @@ class StepperMotor:
             self.perform_step(current_stepdelay)
 
             # Wait for the specified time per step
-            time.sleep(total_time / total_steps)
+            #time.sleep(total_time / total_steps)
 
 
 

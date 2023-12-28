@@ -31,7 +31,7 @@ class Main:
         logging.info("Calling StepperMotor")
         sm = SM.StepperMotor()
         # sm.run(self.stepdelay)
-        sm.nema17_ramp(0.01, 0.001, 1000, 1)
+        sm.nema17_ramp(0.0001, 0.000001, 5000, 1)
    
         
 
