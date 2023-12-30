@@ -3,6 +3,7 @@ import os
 import json
 import config
 import drinkprocessor
+import secrets
 
 
 import StepperMotor.StepperMotor as SM
@@ -18,30 +19,40 @@ logging.basicConfig(filename=os.path.join(logs_folder, 'logfile.log'), level=log
 
 class Main:
     def __init__(self):
-        pass
+        self.orderqueue = drinkprocessor.OrderQueue()
     
 
-    def CallDrinkProcessor(self):
-        logging.info("Calling DrinkProcessor")
+    def SimulateDrinkOrder(self, search_string):
+        logging.info("Simulating DrinkOrder")
         
-        # search for a recipe. in this example, we search for a Mojito
-        search_string = "Mojito"
+        # search for a recipe
         recipe = drinkprocessor.Recipe(search_string=search_string)
         
         # add an order to the order queue
-        orderqueue = drinkprocessor.OrderQueue()
-        orderqueue.addOrder(recipe)
+        self.orderqueue.addOrder(recipe)
 
-        print("Order Queue Länge: {0}".format(len(orderqueue.getOrderQueue()))) 
+
+    def CallOrderQueue(self):
+        logging.info("Calling CallOrderQueue")
+        
+        print("Number of orders in queue: {0}".format(len(self.orderqueue.getOrderQueue()))) 
 
         # print the order queue
-        for order in orderqueue.getOrderQueue():
-            print("Order: {0}".format(order.getRecipe()))
+        for order in self.orderqueue.getOrderQueue():
+            print("*"*20)
+            print("Order: {0}, Name: {1}".format(order.getRecipe(), order.getRecipe().name))
+        
+            for ingredient in order.getRecipe().ingredients:
+                print("Zutat: {0}, Menge: {1}".format(ingredient.get('ingredient'), ingredient.get('amount')))
+            
+            print("*"*20)
+              
+        # process the order queue
+        self.orderqueue.processOrderQueue()
         
 
-        # process the order queue
-        #orderqueue.processOrderQueue()
-        
+    
+
 
 
     def CallStepperMotor(self):
@@ -58,7 +69,11 @@ if __name__ == "__main__":
     main = Main()
 
     # Call the CallDrinkProcessor method
-    main.CallDrinkProcessor()
+    main.SimulateDrinkOrder("Mojito")
+    main.SimulateDrinkOrder("Bacardi")
+    main.SimulateDrinkOrder("Tuxedo")
+
+    main.CallOrderQueue()
 
     # Call the CallStepperMotor method
     #main.CallStepperMotor()

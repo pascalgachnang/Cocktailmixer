@@ -15,9 +15,9 @@ class OrderQueue():
     def getOrderQueue(self):
         return self.order_queue
     
-    def addOrder(self, order):
+    def addOrder(self, recipe):
         # pass in a recipe object
-        order = Order(order) 
+        order = Order("TEST", recipe) 
         self.order_queue.append(order)
 
     def removeOrder(self, order):
@@ -31,15 +31,16 @@ class OrderQueue():
             print("Order: {0}".format(order.get('name')))
 
     def processOrderQueue(self):
+        i = 1
         for order in self.order_queue:
-            print("Order: {0}".format(order.get('name')))
-
+            print("Process order: {0} of {1}".format(i, len(self.order_queue)))
             self.processOrder(order)
+            i = i + 1
 
     def processOrder(self, order):
-        print("Order: {0}".format(order.get('name')))
+        print("Preparing Recipe: {0}".format(order.getRecipe().name))
 
-        dp = DrinkProcessor(search_string=order.get('name'))
+        # process the order here ...
 
     
 
@@ -82,16 +83,6 @@ class Customer():
         return self.name
 
 
-class DrinkProcessor():
-     
-    def __init__(self, search_string=None):
-        if search_string is None:
-            return None
-        else:
-            recipe = Recipe(search_string=search_string)
-            order_queue.append(recipe)
-
-    
 
 
 class Recipe():
@@ -100,6 +91,9 @@ class Recipe():
         
         self.search_string = search_string
         self.recipe = None
+        self.name = None
+        self.ingredients = []
+
         self.findRecipes()
 
 
@@ -111,6 +105,9 @@ class Recipe():
                 msg = "Rezept: {0}, Anzahl: {1}".format(recipe.get('name'), len(config.recipes))
                 logging.info(msg)
                 self.recipe = recipe
+                self.name = recipe.get('name')
+                self.ingredients = recipe.get('ingredients')
+
                 for ingredient in recipe.get('ingredients'):
                     msg = "Ingedient: {0}, Menge: {1}, Unit: {2}".format(ingredient.get('ingredient'), ingredient.get('amount'), ingredient.get('unit'))
                     logging.info(msg)
