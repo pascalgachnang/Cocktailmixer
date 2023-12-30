@@ -1,7 +1,8 @@
 import logging
 import os
 import json
-import configparser
+import config
+
 
 import StepperMotor.StepperMotor as SM
 
@@ -13,26 +14,16 @@ os.makedirs(logs_folder, exist_ok=True)
 logging.basicConfig(filename=os.path.join(logs_folder, 'logfile.log'), level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
-# Load the config file
-config_folder = 'config'
-config_file = os.path.join(config_folder, 'config.ini')
-config = configparser.ConfigParser()
-config.read(config_file)
-
 
 class Main:
     def __init__(self):
-        
-        # Access config values
-        self.stepdelay = config.getfloat('MotorSteuerung', 'stepdelay')
+        pass
     
 
     def CallStepperMotor(self):
         logging.info("Calling StepperMotor")
         sm = SM.StepperMotor()
-        # sm.run(self.stepdelay)
-        sm.nema17_ramp(0.0001, 0.000001, 5000, 1)
-   
+        sm.nema17_ramp(3200, 400)
         
 
 
