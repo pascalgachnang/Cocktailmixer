@@ -5,15 +5,16 @@ import config
 import drinkprocessor
 import secrets
 
-
-import StepperMotor.StepperMotor as SM
+import StepperMotor.StepperMotor as STEPM
+import ServoMotor.ServoMotor as SERVM
+import RelayBoard.RelayBoard as RELAYB
 
 # Create the logs folder if it doesn't exist
 logs_folder = 'logs'
 os.makedirs(logs_folder, exist_ok=True)
 
 # Configure the logger
-logging.basicConfig(filename=os.path.join(logs_folder, 'logfile.log'), level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+#logging.basicConfig(filename=os.path.join(logs_folder, 'logfile.log'), level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
 
@@ -51,16 +52,28 @@ class Main:
         self.orderqueue.processOrderQueue()
         
 
-    
-
-
 
     def CallStepperMotor(self):
         logging.info("Calling StepperMotor")
-        sm = SM.StepperMotor()
-        sm.nema17_ramp(3200, 400)
+        stepm = STEPM.StepperMotor()
+        stepm.nema17_ramp(8000, 400)
 
+    def CallServoMotor(self):
+        logging.info("Calling ServoMotor")
+        servm = SERVM.ServoMotor()
+        
+        servm.move25ml()
+        #servm.move50ml()
 
+    def CallRelayBoard(self):
+        logging.info("Calling RelayBoard")
+        relayb = RELAYB.RelayBoard(i2c_bus=1, address=0x20)
+        
+        relayb.mix_drink("Cola")
+        relayb.mix_drink("Lemonade")
+        relayb.mix_drink("Orange Juice")
+        relayb.mix_drink("Water")
+    
         
 
 
@@ -76,6 +89,10 @@ if __name__ == "__main__":
     main.CallOrderQueue()
 
     # Call the CallStepperMotor method
-    #main.CallStepperMotor()
+    main.CallStepperMotor()
 
-    
+    # Call the CallServoMotor method
+    main.CallServoMotor()
+
+    # Call the CallRelayBoard method
+    main.CallRelayBoard()
