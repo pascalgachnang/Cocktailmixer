@@ -67,7 +67,7 @@ class Main:
 
     def CallRelayBoard(self):
         logging.info("Calling RelayBoard")
-        relayb = RELAYB.RelayBoard(i2c_bus=1, address=0x20)
+        relayb = RELAYB.RelayBoard(i2c_bus=1, address=0x11)
         
         relayb.mix_drink("Cola")
         relayb.mix_drink("Lemonade")
