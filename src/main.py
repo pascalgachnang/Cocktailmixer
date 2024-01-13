@@ -8,6 +8,7 @@ import secrets
 import StepperMotor.StepperMotor as STEPM
 import ServoMotor.ServoMotor as SERVM
 import RelayBoard.RelayBoard as RELAYB
+import WeightSensor.WeightSensor as WEIGHTS
 
 # Create the logs folder if it doesn't exist
 logs_folder = 'logs'
@@ -50,7 +51,6 @@ class Main:
               
         # process the order queue
         self.orderqueue.processOrderQueue()
-        
 
 
     def CallStepperMotor(self):
@@ -73,6 +73,12 @@ class Main:
         relayb.mix_drink("Lemonade")
         relayb.mix_drink("Orange Juice")
         relayb.mix_drink("Water")
+
+    def CallWeightSensor(self):
+        logging.info("Calling WeightSensor")
+        weights = WEIGHTS.WeightSensor()
+        
+        weights.get_weight()
     
         
 
@@ -87,7 +93,7 @@ if __name__ == "__main__":
     main.SimulateDrinkOrder("Tuxedo")
 
     main.CallOrderQueue()
-
+    """
     # Call the CallStepperMotor method
     main.CallStepperMotor()
 
@@ -96,3 +102,6 @@ if __name__ == "__main__":
 
     # Call the CallRelayBoard method
     main.CallRelayBoard()
+    """
+    # Call the CallWeightSensor method
+    main.CallWeightSensor()
