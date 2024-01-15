@@ -4,34 +4,40 @@ import json
 import config
 import drinkprocessor
 import secrets
+import threading
 
-import StepperMotor.StepperMotor as STEPM
-import ServoMotor.ServoMotor as SERVM
-import RelayBoard.RelayBoard as RELAYB
-import WeightSensor.WeightSensor as WEIGHTS
+from StepperMotor.StepperMotor import StepperMotor
+from ServoMotor.ServoMotor import ServoMotor
+from RelayBoard.RelayBoard import RelayBoard
+from WeightSensor.weightsensor import WeightSensor
+
 
 # Create the logs folder if it doesn't exist
 logs_folder = 'logs'
 os.makedirs(logs_folder, exist_ok=True)
 
 # Configure the logger
-#logging.basicConfig(filename=os.path.join(logs_folder, 'logfile.log'), level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-
+logging.basicConfig(filename=os.path.join(logs_folder, 'logfile.log'), level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
 class Main:
     def __init__(self):
         self.orderqueue = drinkprocessor.OrderQueue()
+        self.recipe = None
+        self.stepm = None
+        self.servm = None
+        self.relayb = None
+        self.weights = None
     
 
     def SimulateDrinkOrder(self, search_string):
         logging.info("Simulating DrinkOrder")
         
         # search for a recipe
-        recipe = drinkprocessor.Recipe(search_string=search_string)
+        self.recipe = drinkprocessor.Recipe(search_string=search_string)
         
         # add an order to the order queue
-        self.orderqueue.addOrder(recipe)
+        self.orderqueue.addOrder(self.recipe)
 
 
     def CallOrderQueue(self):
@@ -55,31 +61,30 @@ class Main:
 
     def CallStepperMotor(self):
         logging.info("Calling StepperMotor")
-        stepm = STEPM.StepperMotor()
-        stepm.nema17_ramp(8000, 400)
+        self.stepm = StepperMotor()
+        self.stepm.nema17_ramp(8000, 800)
 
     def CallServoMotor(self):
         logging.info("Calling ServoMotor")
-        servm = SERVM.ServoMotor()
+        self.servm = ServoMotor()
         
-        servm.move25ml()
-        #servm.move50ml()
+        #servm.move25ml()
+        self.servm.move50ml()
 
     def CallRelayBoard(self):
         logging.info("Calling RelayBoard")
-        relayb = RELAYB.RelayBoard(i2c_bus=1, address=0x11)
+        self.relayb = RelayBoard(i2c_bus=1, address=0x11)
         
-        relayb.mix_drink("Cola")
-        relayb.mix_drink("Lemonade")
-        relayb.mix_drink("Orange Juice")
-        relayb.mix_drink("Water")
+        self.relayb.mix_drink("Cola")
+        self.relayb.mix_drink("Lemonade")
+        self.relayb.mix_drink("Orange Juice")
+        self.relayb.mix_drink("Water")
 
     def CallWeightSensor(self):
         logging.info("Calling WeightSensor")
-        weights = WEIGHTS.WeightSensor()
-        
-        weights.get_weight()
-    
+        self.weights = WeightSensor()
+        #self.weights.start()
+
         
 
 
@@ -87,21 +92,24 @@ if __name__ == "__main__":
     # Create an instance of the Main class
     main = Main()
 
+    # Call the WeightSensor and run in a thread
+    main.CallWeightSensor()
+
     # Call the CallDrinkProcessor method
     main.SimulateDrinkOrder("Mojito")
     main.SimulateDrinkOrder("Bacardi")
     main.SimulateDrinkOrder("Tuxedo")
 
-    main.CallOrderQueue()
-    """
+    #main.CallOrderQueue()
+    
     # Call the CallStepperMotor method
     main.CallStepperMotor()
 
     # Call the CallServoMotor method
-    main.CallServoMotor()
+    #main.CallServoMotor()
 
     # Call the CallRelayBoard method
-    main.CallRelayBoard()
-    """
-    # Call the CallWeightSensor method
-    main.CallWeightSensor()
+    #main.CallRelayBoard()
+    
+    
+    

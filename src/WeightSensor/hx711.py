@@ -1,16 +1,11 @@
-#
-
 import RPi.GPIO as GPIO
 import time
 import threading
-
-
 
 class HX711:
 
     def __init__(self, dout, pd_sck, gain=128):
         self.PD_SCK = pd_sck
-
         self.DOUT = dout
 
         # Mutex for reading from the HX711, in case multiple threads in client
@@ -40,7 +35,7 @@ class HX711:
         self.set_gain(gain)
 
         # Think about whether this is necessary.
-        time.sleep(1)
+        #time.sleep(1)
 
         
     def convertFromTwosComplement24bit(self, inputValue):
@@ -52,11 +47,11 @@ class HX711:
 
     
     def set_gain(self, gain):
-        if gain is 128:
+        if gain == 128:
             self.GAIN = 1
-        elif gain is 64:
+        elif gain == 64:
             self.GAIN = 3
-        elif gain is 32:
+        elif gain == 32:
             self.GAIN = 2
 
         GPIO.output(self.PD_SCK, False)
@@ -304,7 +299,7 @@ class HX711:
 
 
     
-    def set_reading_format(self, byte_format, bit_format):
+    def set_reading_format(self, byte_format="LSB", bit_format="MSB"):
         if byte_format == "LSB":
             self.byte_format = byte_format
         elif byte_format == "MSB":
@@ -366,7 +361,7 @@ class HX711:
 
 
     def get_reference_unit(self):
-        return get_reference_unit_A()
+        return self.get_reference_unit_A()
 
         
     def get_reference_unit_A(self):
@@ -421,6 +416,3 @@ class HX711:
     def reset(self):
         self.power_down()
         self.power_up()
-
-
-# EOF - hx711.py
