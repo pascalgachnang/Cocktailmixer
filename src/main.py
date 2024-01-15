@@ -1,5 +1,7 @@
 import logging
 import os
+import sys
+import time
 import json
 import config
 import drinkprocessor
@@ -52,6 +54,7 @@ class Main:
         
             for ingredient in order.getRecipe().ingredients:
                 print("Zutat: {0}, Menge: {1}".format(ingredient.get('ingredient'), ingredient.get('amount')))
+                main.CallWeightSensor()
             
             print("*"*20)
               
@@ -61,14 +64,14 @@ class Main:
 
     def CallStepperMotor(self):
         logging.info("Calling StepperMotor")
-        self.stepm = StepperMotor()
-        self.stepm.nema17_ramp(8000, 800)
+        self.stepm = StepperMotor(8000, 800)
+        self.stepm.start()
+        logging.info("Calling StepperMotor: {0}".format(self.stepm))
+        #self.stepm._nema17_ramp(8000, 800)
 
     def CallServoMotor(self):
         logging.info("Calling ServoMotor")
         self.servm = ServoMotor()
-        
-        #servm.move25ml()
         self.servm.move50ml()
 
     def CallRelayBoard(self):
@@ -83,7 +86,9 @@ class Main:
     def CallWeightSensor(self):
         logging.info("Calling WeightSensor")
         self.weights = WeightSensor()
-        #self.weights.start()
+        self.weights.start()
+        time.sleep(5)
+        self.weights.stop()
 
         
 
@@ -93,23 +98,23 @@ if __name__ == "__main__":
     main = Main()
 
     # Call the WeightSensor and run in a thread
-    main.CallWeightSensor()
+    #main.CallWeightSensor()
 
     # Call the CallDrinkProcessor method
     main.SimulateDrinkOrder("Mojito")
-    main.SimulateDrinkOrder("Bacardi")
-    main.SimulateDrinkOrder("Tuxedo")
+    #main.SimulateDrinkOrder("Bacardi")
+    #main.SimulateDrinkOrder("Tuxedo")
 
-    #main.CallOrderQueue()
+    main.CallOrderQueue()
     
     # Call the CallStepperMotor method
     main.CallStepperMotor()
 
     # Call the CallServoMotor method
-    #main.CallServoMotor()
+    main.CallServoMotor()
 
     # Call the CallRelayBoard method
-    #main.CallRelayBoard()
+    main.CallRelayBoard()
     
     
     

@@ -12,7 +12,7 @@ class WeightSensor(threading.Thread):
         
         self.hx = HX711(5, 6)
         self.initHX()
-        self.event = None
+        self.event = threading.Event()
 
     def initHX(self):
         """Initialize the scale"""
@@ -24,9 +24,13 @@ class WeightSensor(threading.Thread):
 
     def run(self):
         """Overwrite Thread.run(), called when the thread is started"""
-        while True:
+        while self.event.is_set() == False:
             self.read_weight()
             time.sleep(0.5)
+
+    def stop(self):
+        """Stop the thread"""
+        self.event.set()
 
     def setEvent(self, event):
         """Set the event object to use for stopping this thread"""
@@ -53,12 +57,12 @@ class WeightSensor(threading.Thread):
     def read_weight(self):
         """Read the weight from the scale"""
         try:
-            val = self.hx.get_weight(5)
+            val = self.hx.get_weight()
             val_calculated = val * 100
             val_rounded = int(round(val_calculated, 2))
             val_units = "{:d} grams".format(val_rounded)
             print(val_units)
-            #logging.info("weight: {0}: ".format(val_units))
+            logging.info("weight: {0}: ".format(val_units))
 
             self.hx.power_down()
             self.hx.power_up()

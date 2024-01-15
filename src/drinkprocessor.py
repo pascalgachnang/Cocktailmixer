@@ -109,7 +109,7 @@ class Recipe():
                 self.ingredients = recipe.get('ingredients')
 
                 for ingredient in recipe.get('ingredients'):
-                    msg = "Ingedient: {0}, Menge: {1}, Unit: {2}".format(ingredient.get('ingredient'), ingredient.get('amount'), ingredient.get('unit'))
+                    msg = "Ingredient: {0}, Menge: {1}, Unit: {2}".format(ingredient.get('ingredient'), ingredient.get('amount'), ingredient.get('unit'))
                     logging.info(msg)
 
         
