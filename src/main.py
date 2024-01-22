@@ -64,10 +64,12 @@ class Main:
 
     def CallStepperMotor(self):
         logging.info("Calling StepperMotor")
-        self.stepm = StepperMotor(8000, 800)
+        self.stepm = StepperMotor(800, 800)
         self.stepm.start()
+        self.stepm.join()
         logging.info("Calling StepperMotor: {0}".format(self.stepm))
         #self.stepm._nema17_ramp(8000, 800)
+        self.stepm.reference_run()
 
     def CallServoMotor(self):
         logging.info("Calling ServoMotor")
@@ -87,7 +89,7 @@ class Main:
         logging.info("Calling WeightSensor")
         self.weights = WeightSensor()
         self.weights.start()
-        time.sleep(5)
+        time.sleep(3)
         self.weights.stop()
 
         
@@ -101,20 +103,20 @@ if __name__ == "__main__":
     #main.CallWeightSensor()
 
     # Call the CallDrinkProcessor method
-    main.SimulateDrinkOrder("Mojito")
+    #main.SimulateDrinkOrder("Mojito")
     #main.SimulateDrinkOrder("Bacardi")
     #main.SimulateDrinkOrder("Tuxedo")
 
-    main.CallOrderQueue()
+    #main.CallOrderQueue()
     
     # Call the CallStepperMotor method
     main.CallStepperMotor()
 
     # Call the CallServoMotor method
-    main.CallServoMotor()
+    #main.CallServoMotor()
 
     # Call the CallRelayBoard method
-    main.CallRelayBoard()
+    #main.CallRelayBoard()
     
     
     
