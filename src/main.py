@@ -12,6 +12,7 @@ from StepperMotor.StepperMotor import StepperMotor
 from ServoMotor.ServoMotor import ServoMotor
 from RelayBoard.RelayBoard import RelayBoard
 from WeightSensor.weightsensor import WeightSensor
+from visualization import MyVisualization
 
 
 # Create the logs folder if it doesn't exist
@@ -97,7 +98,11 @@ class Main:
 
 if __name__ == "__main__":
     # Create an instance of the Main class
-    main = Main()
+
+    visu = MyVisualization()
+    visu.run()
+
+    #main = Main()
 
     # Call the WeightSensor and run in a thread
     #main.CallWeightSensor()
@@ -110,7 +115,7 @@ if __name__ == "__main__":
     #main.CallOrderQueue()
     
     # Call the CallStepperMotor method
-    main.CallStepperMotor()
+    #main.CallStepperMotor()
 
     # Call the CallServoMotor method
     #main.CallServoMotor()
