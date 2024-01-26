@@ -1,6 +1,9 @@
+#Windows
+
 WindowManager:
     PasswordWindow:
     PositioningWindow:
+        Widgets:
     MainWindow1:
     MainWindow2:
 
@@ -25,13 +28,37 @@ WindowManager:
             on_release:
                 app.root.current = "positioning" if passw.text == "Motorenlärm22$" else "password"   
 
+
 <PositioningWindow>:
     name: "positioning"
 
     Button:
         text: "start positioning"
+        on_release: 
+            root.btn_positioning_complete() 
+
+#Popups Positioning
+
+<P_Positioning>: #Popup Positioning
+    Label:
+        text: "positioning..."
+        size_hint: 0.6, 0.2
+        pos_hint: {"x":0.2, "top":1}
+
+<P_PositioningComplete>: #Popup Positioning Complete
+    Label:
+        text: "positioning complete"
+        size_hint: 0.6, 0.2
+        pos_hint: {"x":0.2, "top":1}
+
+    Button:
+        text: "start mixing"
+        size_hint: 0.8, 0.2
+        pos_hint:  {"x":0.1, "y":0.1}
         on_release:
-            app.root.current = "page one"    
+            app.root.current = "page one" 
+    
+        
 
 <MainWindow1>:
     name: "page one"
@@ -53,7 +80,7 @@ WindowManager:
             on_release: 
                 app.root.current = "page two"
 
-<MainWindow2>
+<MainWindow2>:
     name: "page two"
     
     GridLayout:
@@ -73,3 +100,5 @@ WindowManager:
             on_release: 
                 app.root.current = "page one"
                 root.manager.transition.direction = "left"
+
+
