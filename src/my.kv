@@ -1,0 +1,75 @@
+WindowManager:
+    PasswordWindow:
+    PositioningWindow:
+    MainWindow1:
+    MainWindow2:
+
+<PasswordWindow>:
+    name: "password"
+
+    GridLayout:
+        cols: 1
+
+        GridLayout:
+            cols: 2
+
+            Label:
+                text: "Password: "
+
+            TextInput:
+                id: passw
+                multiline: False
+
+        Button:
+            text: "Submit"
+            on_release:
+                app.root.current = "positioning" if passw.text == "Motorenlärm22$" else "password"   
+
+<PositioningWindow>:
+    name: "positioning"
+
+    Button:
+        text: "start positioning"
+        on_release:
+            app.root.current = "page one"    
+
+<MainWindow1>:
+    name: "page one"
+
+    GridLayout:
+        cols: 1
+
+        GridLayout:
+            cols: 2
+
+            Button:
+                text: "Mojito"
+
+            Button:
+                text: "Tequilla"
+
+        Button:
+            text: "page 2"
+            on_release: 
+                app.root.current = "page two"
+
+<MainWindow2>
+    name: "page two"
+    
+    GridLayout:
+        cols: 1
+
+        GridLayout:
+            cols: 2
+
+            Button:
+                text: "Bacardi"
+
+            Button: 
+                text: "Long Island IceTea"
+
+        Button:
+            text: "page 1"
+            on_release: 
+                app.root.current = "page one"
+                root.manager.transition.direction = "left"

@@ -12,7 +12,8 @@ from StepperMotor.StepperMotor import StepperMotor
 from ServoMotor.ServoMotor import ServoMotor
 from RelayBoard.RelayBoard import RelayBoard
 from WeightSensor.weightsensor import WeightSensor
-from visualization import MyVisualization
+from visualization import MyMainApp
+
 
 
 # Create the logs folder if it doesn't exist
@@ -99,7 +100,7 @@ class Main:
 if __name__ == "__main__":
     # Create an instance of the Main class
 
-    visu = MyVisualization()
+    visu = MyMainApp()
     visu.run()
 
     #main = Main()
