@@ -12,7 +12,7 @@ from StepperMotor.StepperMotor import StepperMotor
 from ServoMotor.ServoMotor import ServoMotor
 from RelayBoard.RelayBoard import RelayBoard
 from WeightSensor.weightsensor import WeightSensor
-from visualization import MyMainApp
+from visualization import MyCocktailmixerApp
 
 
 
@@ -100,7 +100,7 @@ class Main:
 if __name__ == "__main__":
     # Create an instance of the Main class
 
-    visu = MyMainApp()
+    visu = MyCocktailmixerApp()
     visu.run()
 
     #main = Main()

@@ -14,16 +14,15 @@ from kivy.uix.popup import Popup
 from kivy.uix.floatlayout import FloatLayout
 from kivy.clock import Clock
 
+class MyLayout(Widget):
+    pass
+
 #Layouts for the windows
 class PasswordWindow(Screen): #Layout for the password window
     pass
 
 class PositioningWindow(Screen): #Layout for the positioning window
-    def btn_positioning(self):
-        show_popup_positioning()
-
-    def btn_positioning_complete(self):
-        show_popup_positioning_complete()
+    pass
 
 class MainWindow1(Screen): #Layout for the main window, first page
     pass
@@ -31,40 +30,25 @@ class MainWindow1(Screen): #Layout for the main window, first page
 class MainWindow2(Screen): #Layout for the main window, second page
     pass
 
+class DrinkInProgress(Screen): #Layout for the drink in progress window
+
+    def cancel_pressed(self):
+        if self.ids.progress_bar.value == 100:
+            popup = Popup(title='Progress complete',
+                          content=Label(text='Progress complete.'),
+                          size_hint=(None, None), size=(300, 200))
+            popup.open()
+
 class WindowManager(ScreenManager):
     pass
 
-
-#Layouts for the popup windows
-class P_Positioning(FloatLayout): #Layout for the positioning popup window
-    pass
-
-class P_PositioningComplete(FloatLayout): #Layout for the positioning complete popup window
-    pass
-
-
-#Functions for the popup windows
-def show_popup_positioning():
-    show = P_Positioning()
-
-    popupWindow_Positioning = Popup(title="Popup Window", content=show, size_hint=(None,None), size=(400,400))
-
-    popupWindow_Positioning.open()
-
-def show_popup_positioning_complete():
-    show = P_PositioningComplete()
-
-    popupWindow_PositioningComplete = Popup(title="Popup Window", content=show, size_hint=(None,None), size=(400,400))
-
-    popupWindow_PositioningComplete.open()
-
-
-
+# Load the kv file
 kv = Builder.load_file("my.kv")
 
-class MyMainApp(App):
+class MyCocktailmixerApp(App):
     def build(self):
         return kv 
+
     
 
 

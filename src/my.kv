@@ -1,11 +1,13 @@
+#:import Factory kivy.factory.Factory
+
 #Windows
 
 WindowManager:
     PasswordWindow:
     PositioningWindow:
-        Widgets:
     MainWindow1:
     MainWindow2:
+    DrinkInProgress:
 
 <PasswordWindow>:
     name: "password"
@@ -31,74 +33,203 @@ WindowManager:
 
 <PositioningWindow>:
     name: "positioning"
+    GridLayout:
+        cols: 1
 
-    Button:
-        text: "start positioning"
-        on_release: 
-            root.btn_positioning_complete() 
+        Button:
+            text: "start positioning"
+            on_release: 
+                Factory.P_PositioningComplete().open() 
 
 #Popups Positioning
 
-<P_Positioning>: #Popup Positioning
+<P_Positioning@Popup>: #Popup Positioning
+    auto_dismiss: False
+    title: "positioning..."
     Label:
         text: "positioning..."
         size_hint: 0.6, 0.2
         pos_hint: {"x":0.2, "top":1}
 
-<P_PositioningComplete>: #Popup Positioning Complete
-    Label:
-        text: "positioning complete"
-        size_hint: 0.6, 0.2
-        pos_hint: {"x":0.2, "top":1}
-
+<P_PositioningComplete@Popup>: #Popup Positioning Complete
+    auto_dismiss: False
+    title: "Positioning complete"
     Button:
         text: "start mixing"
         size_hint: 0.8, 0.2
         pos_hint:  {"x":0.1, "y":0.1}
         on_release:
             app.root.current = "page one" 
-    
+            root.dismiss()
+      
         
-
 <MainWindow1>:
     name: "page one"
 
-    GridLayout:
-        cols: 1
+    BoxLayout:
+        orientation: 'vertical'
+
+        Label:
+            text: '[b]Choose your drink[/b]'
+            markup: True  
+            padding: (5, 5)  
+            border: (2, 2, 2, 2)  
+            size_hint_y: None  
+            height: 50  
 
         GridLayout:
-            cols: 2
+            cols: 3
+            spacing: 10
+            padding: 10
 
             Button:
-                text: "Mojito"
+                text: 'Drink 1'
+                on_press: app.root.current = "drink in progress"
 
             Button:
-                text: "Tequilla"
+                text: 'Drink 2'
+                on_press: app.root.current = "drink in progress"
 
-        Button:
-            text: "page 2"
-            on_release: 
-                app.root.current = "page two"
+            Button:
+                text: 'Drink 3'
+                on_press: app.root.current = "drink in progress"
+
+            Button:
+                text: 'Drink 4'
+                on_press: app.root.current = "drink in progress"
+
+            Button:
+                text: 'Drink 5'
+                on_press: app.root.current = "drink in progress"
+
+            Button:
+                text: 'Drink 6'
+                on_press: app.root.current = "drink in progress"
+
+            Button:
+                text: 'Drink 7'
+                on_press: app.root.current = "drink in progress"
+
+            Button:
+                text: 'Drink 8'
+                on_press: app.root.current = "drink in progress"
+
+            Button:
+                text: 'Drink 9'
+                on_press: app.root.current = "drink in progress"
+
+            Button:
+                text: 'Drink 9'
+                on_press: app.root.current = "drink in progress"
+
+            Button:
+                text: 'Drink 9'
+                on_press: app.root.current = "drink in progress"
+
+            Button:
+                text: "[b]page 2[/b]"
+                markup: True  
+                padding: (5, 5)  
+                border: (2, 2, 2, 2) 
+                on_press: 
+                    app.root.current = "page two"
+        
 
 <MainWindow2>:
     name: "page two"
     
-    GridLayout:
-        cols: 1
+    BoxLayout:
+        orientation: 'vertical'
+
+        Label:
+            text: '[b]Choose your drink[/b]'
+            markup: True  
+            padding: (5, 5)  
+            border: (2, 2, 2, 2)  
+            size_hint_y: None  
+            height: 50  
 
         GridLayout:
-            cols: 2
+            cols: 3
+            spacing: 10
+            padding: 10
 
             Button:
-                text: "Bacardi"
+                text: 'Drink 1'
+                on_press: app.root.current = "drink in progress"
 
-            Button: 
-                text: "Long Island IceTea"
+            Button:
+                text: 'Drink 2'
+                on_press: app.root.current = "drink in progress"
+
+            Button:
+                text: 'Drink 3'
+                on_press: app.root.current = "drink in progress"
+
+            Button:
+                text: 'Drink 4'
+                on_press: app.root.current = "drink in progress"
+
+            Button:
+                text: 'Drink 5'
+                on_press: app.root.current = "drink in progress"
+
+            Button:
+                text: 'Drink 6'
+                on_press: app.root.current = "drink in progress"
+
+            Button:
+                text: 'Drink 7'
+                on_press: app.root.current = "drink in progress"
+
+            Button:
+                text: 'Drink 8'
+                on_press: app.root.current = "drink in progress"
+
+            Button:
+                text: 'Drink 9'
+                on_press: app.root.current = "drink in progress"
+
+            Button:
+                text: 'Drink 9'
+                on_press: app.root.current = "drink in progress"
+
+            Button:
+                text: 'Drink 9'
+                on_press: app.root.current = "drink in progress"
+
+            Button:
+                text: "[b]page 1[/b]"
+                markup: True  
+                padding: (5, 5)  
+                border: (2, 2, 2, 2) 
+                on_press: 
+                    app.root.current = "page one"
+                    root.manager.transition.direction = "left"
+
+<DrinkInProgress>:
+    name: "drink in progress"
+
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+
+        Label:
+            id: mixing_drink
+            text: "0% Progress"
+
+        ProgressBar:
+            id: progress_bar
+            min: 0
+            max: 100
+            value: 0
+            pos_hint: {'x':.1}
+            size_hint_x: .8
 
         Button:
-            text: "page 1"
-            on_release: 
-                app.root.current = "page one"
-                root.manager.transition.direction = "left"
+            text: "Cancel"
+            on_press: 
+                app.root.current = "page one" if progress_bar.value < 100 else app.root.current
 
 
+              
