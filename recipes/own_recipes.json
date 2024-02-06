@@ -1,0 +1,155 @@
+[
+
+    {
+        "name": "Negroni",
+        "glass": "Old Fashioned",
+        "category": "Before Dinner Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 2.5,
+                "ingredient": "Gin"
+            },
+            {
+                "unit": "cl",
+                "amount": 2.5,
+                "ingredient": "Wermut rot"
+            },
+            {
+                "unit": "cl",
+                "amount": 2.5,
+                "ingredient": "Aperol"
+            }
+        ],
+        "garnish": "Orangenzeste"
+    },
+    {
+        "name": "Margarita",
+        "glass": "Margarita",
+        "category": "All Day Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 5,
+                "ingredient": "Tequila"
+            },
+            {
+                "unit": "cl",
+                "amount": 2.5,
+                "ingredient": "Orangenlikör"
+            },
+            {
+                "unit": "cl",
+                "amount": 2.5,
+                "ingredient": "Limettensaft"
+            }
+        ],
+        "garnish": "Salzrand, Limettenscheibe"
+    },
+    {
+        "name": "Aperol Spritz",
+        "glass": "Weinglas",
+        "category": "Sparkling Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 6,
+                "ingredient": "Aperol"
+            },
+            {
+                "unit": "cl",
+                "amount": 9,
+                "ingredient": "Prosecco"
+            },
+            {   "unit": "cl",
+                "amount": 5,
+                "ingredient": "Spritzer Soda"
+            }
+        ],
+        "garnish": "Orangenscheibe"
+    },
+   
+    
+    {
+        "name": "Gin Tonic",
+        "glass": "Highball",
+        "category": "Longdrink",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 5,
+                "ingredient": "Gin"
+            },
+            {   
+                "unit": "cl",
+                "amount": 15,
+                "ingredient": "Tonic Water"
+            }
+        ],
+        "garnish": null
+    },
+ 
+    {
+        "name": "Daiquiri",
+        "glass": "Martini",
+        "category": "Before Dinner Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 4.5,
+                "ingredient": "Rum weiss"
+            },
+            {
+                "unit": "cl",
+                "amount": 2.5,
+                "ingredient": "Limettensaft"
+            },
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Zuckersirup"
+            }
+        ],
+        "garnish": "Limettenscheibe"
+    },
+    
+    {
+        "name": "Long Island Iced Tea",
+        "glass": "Highball",
+        "category": "Longdrink",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Wodka"
+            },
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Gin"
+            },
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Rum weiß"
+            },
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Tequila"
+            },
+            {
+                "unit": "cl",
+                "amount": 2.5,
+                "ingredient": "Zitronensaft"
+            },
+            {
+                "unit": "cl",
+                "amount": 5,
+                "ingredient": "Cola"
+            }
+        ],
+        "garnish": "Zitronenscheibe"
+    }
+   
+] 

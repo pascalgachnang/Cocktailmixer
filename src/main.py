@@ -54,14 +54,24 @@ class Main:
             print("*"*20)
             print("Order: {0}, Name: {1}".format(order.getRecipe(), order.getRecipe().name))
         
-            for ingredient in order.getRecipe().ingredients:
-                print("Zutat: {0}, Menge: {1}".format(ingredient.get('ingredient'), ingredient.get('amount')))
-                main.CallWeightSensor()
+            # for ingredient in order.getRecipe().ingredients:
+            #     print("Zutat: {0}, Menge: {1}".format(ingredient.get('ingredient'), ingredient.get('amount')))
+            #     #main.CallWeightSensor()
+
+            for ingredientDetail in order.getRecipe().ingredients_details:
+                
+                print("Zutat: {0}, Menge: {1}, Unit: {2}, Type: {3}, Position: {4}".format(ingredientDetail.getName(), \
+                                                                                           ingredientDetail.getAmount(), \
+                                                                                           ingredientDetail.getUnit(), \
+                                                                                           ingredientDetail.getType(), \
+                                                                                           ingredientDetail.getPosition()))
+                #main.CallWeightSensor()
             
             print("*"*20)
               
         # process the order queue
         self.orderqueue.processOrderQueue()
+        
 
 
     def CallStepperMotor(self):
@@ -100,20 +110,20 @@ class Main:
 if __name__ == "__main__":
     # Create an instance of the Main class
 
-    visu = MyCocktailmixerApp()
-    visu.run()
+    #visu = MyCocktailmixerApp()
+    #visu.run()
 
-    #main = Main()
+    main = Main()
 
     # Call the WeightSensor and run in a thread
     #main.CallWeightSensor()
 
     # Call the CallDrinkProcessor method
-    #main.SimulateDrinkOrder("Mojito")
+    main.SimulateDrinkOrder("Gin Tonic")
     #main.SimulateDrinkOrder("Bacardi")
     #main.SimulateDrinkOrder("Tuxedo")
 
-    #main.CallOrderQueue()
+    main.CallOrderQueue()
     
     # Call the CallStepperMotor method
     #main.CallStepperMotor()

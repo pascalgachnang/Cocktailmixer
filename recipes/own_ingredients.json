@@ -1,0 +1,43 @@
+{ 
+    "Wodka": {
+      "abv": 40
+    },
+    "Gin": {
+      "abv": 40
+    },
+    "Rum weiss": {
+      "abv": 40
+    }, 
+    "Tequila": {
+      "abv": 40
+    },
+    "Bourbon": {
+      "abv": 40
+    },
+    "Wermut rot": {
+      "abv": 15
+    },
+    "Orangenlikör": {
+      "abv": 40
+    },
+    "Brandy": {
+      "abv": 40
+    },
+    "Aperol": {
+      "abv": 11 
+    },
+    "Limettensaft": {
+      "abv": 0
+    },
+    "Tonic Water": {
+      "abv": 0
+    },
+    "Sodawasser": {
+      "abv": 0
+    },
+    "Cola": {
+      "abv": 0
+    }
+}
+
+    

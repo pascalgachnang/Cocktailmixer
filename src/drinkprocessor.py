@@ -86,22 +86,26 @@ class Customer():
 
 
 class Recipe():
-
+    # This class is used to store the details of a recipe
     def __init__(self, search_string=None):
         
         self.search_string = search_string
         self.recipe = None
         self.name = None
         self.ingredients = []
+        self.ingredients_details = []
 
         self.findRecipes()
 
 
     def findRecipes(self):
+        # search for a recipe
         logging.info("Reading recipes")
         
         for recipe in config.recipes:
+
             if recipe.get('name') == self.search_string:
+
                 msg = "Rezept: {0}, Anzahl: {1}".format(recipe.get('name'), len(config.recipes))
                 logging.info(msg)
                 self.recipe = recipe
@@ -111,6 +115,70 @@ class Recipe():
                 for ingredient in recipe.get('ingredients'):
                     msg = "Ingredient: {0}, Menge: {1}, Unit: {2}".format(ingredient.get('ingredient'), ingredient.get('amount'), ingredient.get('unit'))
                     logging.info(msg)
+
+                    ingredientDetails = IngredientDetails()
+                    ingredientDetails.setName(ingredient.get('ingredient'))
+                    ingredientDetails.setAmount(ingredient.get('amount'))
+                    ingredientDetails.setUnit(ingredient.get('unit'))
+                    ingredientDetails.setPosition(self.getBottle(ingredient.get('ingredient')).get('position'))            
+                    ingredientDetails.setType(self.getBottle(ingredient.get('ingredient')).get('type'))
+
+                    self.ingredients_details.append(ingredientDetails)
+
+
+
+    def getBottle(self, ingredient):
+        # Details der Flasche aus der Konfiguration holen, inkl. Position und Typ
+        for bottle in config.bottle_inventory:
+            if bottle.get('name') == ingredient:
+                msg = "Bottle: {0}, Position: {1}, Type: {2}".format(bottle.get('name'), bottle.get('position'), bottle.get('type'))
+                #print('In getBottle: {0}'.format(msg))
+                #logging.info(msg)
+                return bottle
+        
+            
+
+
+class IngredientDetails():
+    # This class is used to store the details of an ingredient
+    def __init__(self, name=None, amount=None, unit=None):
+        self.name = name
+        self.amount = amount
+        self.unit = unit
+        self.position = None
+        self.type = None
+
+    def setName(self, name):
+        self.name = name
+    
+    def getName(self):
+        return self.name
+        
+    def setAmount(self, amount):
+        self.amount = amount   
+
+    def getAmount(self):
+        return self.amount
+        
+    def setUnit(self, unit):
+        self.unit = unit
+
+    def getUnit(self):
+        return self.unit
+    
+    def setPosition(self, position):
+        self.position = position
+
+    def getPosition(self):
+        return self.position
+    
+    def setType(self, type):
+        self.type = type
+
+    def getType(self):  
+        return self.type
+
+    
 
         
             

@@ -38,7 +38,6 @@ class StepperMotor(threading.Thread):
 
     def perform_step(self, stepdelay):
         # Perform the step with the given step delay
-        # Replace this with your actual code to control the stepper motor
         self.Motor1.TurnStep(Dir='forward', steps=1, stepdelay=stepdelay)
 
 
@@ -111,6 +110,11 @@ class StepperMotor(threading.Thread):
         finally:
             self.Motor1.Stop()
             GPIO.cleanup()
+
+    def position_stepper(self):
+
+        self.next_position = self.position
+        self.alkohol = alkohol_zuweisungen.get(position, "Keine Zuweisung gefunden")    
             
 
     def is_end_switch_triggered(self):
