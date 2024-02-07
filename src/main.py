@@ -7,6 +7,7 @@ import config
 import drinkprocessor
 import secrets
 import threading
+import globals
 
 from StepperMotor.StepperMotor import StepperMotor
 from ServoMotor.ServoMotor import ServoMotor
@@ -52,27 +53,11 @@ class Main:
         # print the order queue
         for order in self.orderqueue.getOrderQueue():
             print("*"*20)
-            print("Order: {0}, Name: {1}".format(order.getRecipe(), order.getRecipe().name))
-        
-            # for ingredient in order.getRecipe().ingredients:
-            #     print("Zutat: {0}, Menge: {1}".format(ingredient.get('ingredient'), ingredient.get('amount')))
-            #     #main.CallWeightSensor()
-
-            for ingredientDetail in order.getRecipe().ingredients_details:
-                
-                print("Zutat: {0}, Menge: {1}, Unit: {2}, Type: {3}, Position: {4}".format(ingredientDetail.getName(), \
-                                                                                           ingredientDetail.getAmount(), \
-                                                                                           ingredientDetail.getUnit(), \
-                                                                                           ingredientDetail.getType(), \
-                                                                                           ingredientDetail.getPosition()))
-                #main.CallWeightSensor()
-            
+            print("Order: {0}, Name: {1}".format(order.getRecipe(), order.getRecipe().name)) 
             print("*"*20)
               
         # process the order queue
         self.orderqueue.processOrderQueue()
-        
-
 
     def CallStepperMotor(self):
         logging.info("Calling StepperMotor")
@@ -80,7 +65,6 @@ class Main:
         self.stepm.start()
         self.stepm.join()
         logging.info("Calling StepperMotor: {0}".format(self.stepm))
-        #self.stepm._nema17_ramp(8000, 800)
         self.stepm.reference_run()
 
     def CallServoMotor(self):
@@ -104,6 +88,12 @@ class Main:
         time.sleep(3)
         self.weights.stop()
 
+    def CallReferenceRun(self):
+        logging.info("Calling ReferenceRun")
+        self.stepm = StepperMotor(0)
+        self.stepm.reference_run()
+        print(globals.current_position)
+
         
 
 
@@ -115,6 +105,8 @@ if __name__ == "__main__":
 
     main = Main()
 
+    main.CallReferenceRun()
+
     # Call the WeightSensor and run in a thread
     #main.CallWeightSensor()
 
@@ -124,6 +116,7 @@ if __name__ == "__main__":
     #main.SimulateDrinkOrder("Tuxedo")
 
     main.CallOrderQueue()
+    
     
     # Call the CallStepperMotor method
     #main.CallStepperMotor()

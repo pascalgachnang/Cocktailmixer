@@ -1,6 +1,6 @@
 import logging
 import config
-
+from StepperMotor.StepperMotor import StepperMotor
 
 
 
@@ -41,8 +41,29 @@ class OrderQueue():
         print("Preparing Recipe: {0}".format(order.getRecipe().name))
 
         # process the order here ...
+        print("*"*20)
+        for ingredientDetail in order.getRecipe().ingredients_details:
+                
+            print("Zutat: {0}, Menge: {1}, Unit: {2}, Type: {3}, Position: {4}".format(ingredientDetail.getName(), \
+                                                                                        ingredientDetail.getAmount(), \
+                                                                                        ingredientDetail.getUnit(), \
+                                                                                        ingredientDetail.getType(), \
+                                                                                        ingredientDetail.getPosition()))
+            
+            self.CallStepperMotor(ingredientDetail.getPosition())
 
-    
+        print("*"*20)
+        
+            #main.CallWeightSensor()
+                
+    def CallStepperMotor(self, position_ingredient):
+        logging.info("Calling StepperMotor")
+        self.stepm = StepperMotor(position_ingredient)
+        self.stepm.start()
+        self.stepm.join()
+        logging.info("Calling StepperMotor: {0}".format(self.stepm))
+
+
 
 class Order():
     
@@ -135,6 +156,8 @@ class Recipe():
                 #print('In getBottle: {0}'.format(msg))
                 #logging.info(msg)
                 return bottle
+
+
         
             
 

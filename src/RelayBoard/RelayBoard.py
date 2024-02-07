@@ -26,7 +26,7 @@ class RelayBoard:
                 self.set_relay_state(relay_number=1, state=0)
                 print("cola mixed")
 
-            elif drink_type == "Lemonade":
+            elif drink_type == "Limettensaft":
                 # switch on Relais 2 for 2 seconds
                 self.set_relay_state(relay_number=2, state=1)
                 print("mixing lemonade")
@@ -35,23 +35,23 @@ class RelayBoard:
                 self.set_relay_state(relay_number=2, state=0)
                 print("lemonade mixed")
 
-            elif drink_type == "Orange Juice":
+            elif drink_type == "Tonic Water":
                 # switch on Relais 3 for 2 seconds
                 self.set_relay_state(relay_number=3, state=1)
-                print("mixing orange juice")
+                print("mixing tonic water")
                 time.sleep(2)
                 # switch off Relais 3
                 self.set_relay_state(relay_number=3, state=0)
-                print("orange juice mixed")
+                print("tonic water mixed")
 
-            elif drink_type == "Water":
+            elif drink_type == "Sodawasser":
                 # switch on Relais 4 for 2 seconds
                 self.set_relay_state(relay_number=4, state=1)
-                print("mixing water")
+                print("mixing soda")
                 time.sleep(2)
                 # switch off Relais 4
                 self.set_relay_state(relay_number=4, state=0)
-                print("water mixed")
+                print("soda mixed")
 
             else:
                 print("Invalid drink type.")
