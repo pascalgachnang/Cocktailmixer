@@ -1,8 +1,9 @@
 import logging
 import config
+import time
 from StepperMotor.StepperMotor import StepperMotor
-
-
+from ServoMotor.ServoMotor import ServoMotor
+from RelayBoard.RelayBoard import RelayBoard
 
 class OrderQueue():
 
@@ -51,7 +52,11 @@ class OrderQueue():
                                                                                         ingredientDetail.getPosition()))
             
             self.CallStepperMotor(ingredientDetail.getPosition())
-
+            time.sleep(1)
+            if ingredientDetail.getType() == "gravity":
+                self.CallServoMotor(ingredientDetail.getAmount())
+            else:
+                self.CallRelayBoard(ingredientDetail.getAmount(), ingredientDetail.getName())
         print("*"*20)
         
             #main.CallWeightSensor()
@@ -63,7 +68,19 @@ class OrderQueue():
         self.stepm.join()
         logging.info("Calling StepperMotor: {0}".format(self.stepm))
 
+    def CallServoMotor(self, amount_ingredient):
+        logging.info("Calling ServoMotor")
+        self.servm = ServoMotor(amount_ingredient)
+        self.servm.start()
+        self.servm.join()
+        logging.info("Calling ServoMotor: {0}".format(self.servm))
 
+    def CallRelayBoard(self, amount_ingredient, ingredient_name):
+        logging.info("Calling RelayBoard")
+        self.relayb = RelayBoard(amount_ingredient, ingredient_name)
+        self.relayb.start()
+        self.relayb.join()
+        logging.info("Calling RelayBoard: {0}".format(self.relayb))
 
 class Order():
     
