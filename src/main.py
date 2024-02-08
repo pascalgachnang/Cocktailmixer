@@ -24,6 +24,8 @@ os.makedirs(logs_folder, exist_ok=True)
 # Configure the logger
 logging.basicConfig(filename=os.path.join(logs_folder, 'logfile.log'), level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
+logging.info("Starting the Cocktail Mixer")
+
 
 class Main:
     def __init__(self):

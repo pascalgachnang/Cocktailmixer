@@ -73,16 +73,19 @@ class StepperMotor(threading.Thread):
        
         # accelerationramp
         for i in range(self.acceleration_steps):
-            current_stepdelay = self.stepdelay_start + (self.stepdelay_end - self.stepdelay_start) * i / self.acceleration_steps
+            current_stepdelay = round(self.stepdelay_start + (self.stepdelay_end - self.stepdelay_start) * i / self.acceleration_steps, 7)
+            #logging.debug("Accel: current_stepdelay: %s", current_stepdelay)
             self.perform_step(current_stepdelay)
 
         # fullspeed-phase
         for i in range(self.acceleration_steps, self.total_steps - self.acceleration_steps):
+            #logging.debug("Fullspeed: stepdelay_end: %s", self.stepdelay_end)
             self.perform_step(self.stepdelay_end)
 
         # decelerationramp
-        for i in range(self.acceleration_steps):
-            current_stepdelay = self.stepdelay_start + (self.stepdelay_end - self.stepdelay_start) * (self.total_steps - i) / self.acceleration_steps
+        for i in range(self.total_steps - self.acceleration_steps, self.total_steps):
+            current_stepdelay = round(self.stepdelay_start + (self.stepdelay_end - self.stepdelay_start) * (self.total_steps - i) / self.acceleration_steps, 7)
+            #logging.debug("Decel: current_stepdelay: %s", current_stepdelay)
             self.perform_step(current_stepdelay)
 
         self.Motor1.Stop()
@@ -99,7 +102,7 @@ class StepperMotor(threading.Thread):
                 current_stepdelay_reference_run = self.stepdelay_start + (self.stepdelay_end_reference_run - self.stepdelay_start) * i / self.acceleration_steps
                 self.perform_step(current_stepdelay_reference_run)
 
-                if self.is_end_switch_triggered(): # end switch triggered
+                if self._is_end_switch_triggered(): # end switch triggered
                     print("end switch triggered")
                     self.Motor1.Stop()
                     globals.current_position = 0
@@ -107,10 +110,10 @@ class StepperMotor(threading.Thread):
                     return
 
             # fullspeed-phase
-            while not self.is_end_switch_triggered():
+            while not self._is_end_switch_triggered():
                 self.perform_step(current_stepdelay_reference_run)
 
-                if self.is_end_switch_triggered(): # end switch triggered
+                if self._is_end_switch_triggered(): # end switch triggered
                     print("end switch triggered")
                     globals.current_position = 0
                     print("positioning steppermotor completed")
@@ -123,7 +126,7 @@ class StepperMotor(threading.Thread):
 
     
 
-    def is_end_switch_triggered(self):
+    def _is_end_switch_triggered(self):
         # Check if the end switch is triggered
         return GPIO.input(self.end_switch_pin) == GPIO.LOW
     
