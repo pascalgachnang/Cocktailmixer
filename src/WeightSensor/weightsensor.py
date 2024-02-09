@@ -1,18 +1,23 @@
-
 import RPi.GPIO as GPIO
 from WeightSensor.hx711 import HX711
 import time, sys
 import threading
 import logging
+import config
+import os
 
 class WeightSensor(threading.Thread):
     """Threaded Weight Sensor Class"""
-    def __init__(self):
+    def __init__(self, amount_ingredient):
         threading.Thread.__init__(self)
-        
+        self.event = threading.Event()
         self.hx = HX711(5, 6)
         self.initHX()
-        self.event = threading.Event()
+        self.config = config.config
+        self.tolerance_weight = self.config.getfloat('WeightSensor', 'tolerance_weight')
+        self.amount_ingredient = amount_ingredient
+        self.weight_ingredient_gramms = None
+        self.val_rounded = None
 
     def initHX(self):
         """Initialize the scale"""
@@ -26,6 +31,7 @@ class WeightSensor(threading.Thread):
         """Overwrite Thread.run(), called when the thread is started"""
         while self.event.is_set() == False:
             self.read_weight()
+            self.check_amount()
             time.sleep(0.5)
 
     def stop(self):
@@ -56,11 +62,13 @@ class WeightSensor(threading.Thread):
 
     def read_weight(self):
         """Read the weight from the scale"""
+        start_time = time.time() #stop the scale after 2 seconds
+
         try:
             val = self.hx.get_weight()
             val_calculated = val * 100
-            val_rounded = int(round(val_calculated, 2))
-            val_units = "{:d} grams".format(val_rounded)
+            self.val_rounded = int(round(val_calculated, 2))
+            val_units = "{:d} grams".format(self.val_rounded)
             print(val_units)
             logging.info("weight: {0}: ".format(val_units))
 
@@ -68,8 +76,31 @@ class WeightSensor(threading.Thread):
             self.hx.power_up()
             time.sleep(0.1)
 
+            current_time = time.time()
+            if current_time - start_time >= 2:
+                self.cleanAndExit()
+
         except (KeyboardInterrupt, SystemExit):
             self.cleanAndExit()
+
+
+
+    def check_amount(self):
+        """Check if the amount of liquid is enough"""
+        self.weight_ingredient_grams = self.amount_ingredient * 10
+        if self.weight_ingredient_grams - self.tolerance_weight <= self.val_rounded <= self.weight_ingredient_grams + self.tolerance_weight:
+            print("Enough liquid")
+            return True
+            
+        elif self.val_rounded < self.weight_ingredient_grams - self.tolerance_weight:
+            print("Not enough liquid")
+            return True
+            
+        elif self.val_rounded > self.weight_ingredient_grams + self.tolerance_weight:
+            print("Too much liquid")
+            return True 
+            
+        self.event.set()
 
 
 # ws = WeightSensor()
