@@ -53,6 +53,8 @@ class OrderQueue():
                                                                                         ingredientDetail.getPosition()))
             
             
+            
+            
             self.CallStepperMotor(ingredientDetail.getPosition())
             time.sleep(1)
             if ingredientDetail.getType() == "gravity":
@@ -61,6 +63,8 @@ class OrderQueue():
                 self.CallRelayBoard(ingredientDetail.getAmount(), ingredientDetail.getName())
             time.sleep(1)
             self.CallWeightSensor(ingredientDetail.getAmount())
+
+        self.stepm.back_to_startposition()
 
         print("*"*20)
         

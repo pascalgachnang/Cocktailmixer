@@ -30,8 +30,7 @@ class StepperMotor(threading.Thread):
         self.total_steps = None
         self.acceleration_steps = acceleration_steps
 
-        if isinstance(self.current_position, int):
-            self._momental_position()
+        
         
 
         self.Motor1 = DRV8825(dir_pin=13, step_pin=19, enable_pin=12, mode_pins=(16, 17, 20))
@@ -58,43 +57,43 @@ class StepperMotor(threading.Thread):
                 # Write the list of values to the file
                 file.write("\n".join(values) + "\n")
 
-    def motor_direction(self):
-        # Set the direction of the stepper motor
-        self.motor_direction 
 
 
     def run(self):
         """Overwrite Thread.run(), called when the thread is started"""
         while self.event.is_set() == False:
+            if isinstance(self.current_position, int):
+                self._momental_position()
             self._nema17_ramp()
             time.sleep(0.5)
 
     def _nema17_ramp(self):
-       
         # accelerationramp
         for i in range(self.acceleration_steps):
             current_stepdelay = round(self.stepdelay_start + (self.stepdelay_end - self.stepdelay_start) * i / self.acceleration_steps, 7)
-            #logging.debug("Accel: current_stepdelay: %s", current_stepdelay)
             self.perform_step(current_stepdelay)
 
         # fullspeed-phase
-        for i in range(self.acceleration_steps, self.total_steps - self.acceleration_steps):
-            #logging.debug("Fullspeed: stepdelay_end: %s", self.stepdelay_end)
+        for i in range(self.acceleration_steps, abs(self.total_steps) - self.acceleration_steps):
             self.perform_step(self.stepdelay_end)
 
         # decelerationramp
-        for i in range(self.total_steps - self.acceleration_steps, self.total_steps):
-            current_stepdelay = round(self.stepdelay_start + (self.stepdelay_end - self.stepdelay_start) * (self.total_steps - i) / self.acceleration_steps, 7)
-            #logging.debug("Decel: current_stepdelay: %s", current_stepdelay)
+        for i in range(abs(self.total_steps) - self.acceleration_steps, abs(self.total_steps)):
+            current_stepdelay = round(self.stepdelay_start + (self.stepdelay_end - self.stepdelay_start) * (abs(self.total_steps) - i) / self.acceleration_steps, 7)
             self.perform_step(current_stepdelay)
 
         self.Motor1.Stop()
         self.event.set()
-        #GPIO.cleanup()
+        # GPIO.cleanup()
+
 
         
     def reference_run(self):
         # Reference run of the stepper motor
+        self.motor_direction = 'backward'
+
+        
+
         try:
 
             # accelerationramp
@@ -138,12 +137,26 @@ class StepperMotor(threading.Thread):
 
         # Bestimme die Richtung des Schrittmotors
         self.motor_direction = 'forward' if self.total_steps > 0 else 'backward'
+        print("current position: ", self.current_position, "motor direction: ", self.motor_direction)
 
         # Aktualisiere die aktuelle Position
         globals.current_position = self.current_position = self.position_ingredient
         
+        if self.total_steps >= 0:
+            return self.total_steps
+        else:
+            return -self.total_steps
 
-        
+    def back_to_startposition(self):
+        # Back to start position
+        self.total_steps = 200 - globals.current_position 
+        self.motor_direction = 'backward' 
+        self._nema17_ramp()
+        time.sleep(0.5)
+        GPIO.cleanup()
+        print("back to start position completed")
+        globals.current_position = 200
+        return
 
 
 

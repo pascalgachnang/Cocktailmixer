@@ -18,6 +18,8 @@ class WeightSensor(threading.Thread):
         self.amount_ingredient = amount_ingredient
         self.weight_ingredient_gramms = None
         self.val_rounded = None
+        self.current_time = None
+        self.start_time = None
 
     def initHX(self):
         """Initialize the scale"""
@@ -62,7 +64,7 @@ class WeightSensor(threading.Thread):
 
     def read_weight(self):
         """Read the weight from the scale"""
-        start_time = time.time() #stop the scale after 2 seconds
+        self.start_time = time.time() #stop the scale after 2 seconds
 
         try:
             val = self.hx.get_weight()
@@ -76,11 +78,12 @@ class WeightSensor(threading.Thread):
             self.hx.power_up()
             time.sleep(0.1)
 
-            current_time = time.time()
-            if current_time - start_time >= 2:
-                self.cleanAndExit()
+            self.current_time = time.time()
 
-        except (KeyboardInterrupt, SystemExit):
+            if self.current_time - self.start_time >= 2:
+                self.cleanAndExit()
+        
+        except: 
             self.cleanAndExit()
 
 
@@ -90,15 +93,15 @@ class WeightSensor(threading.Thread):
         self.weight_ingredient_grams = self.amount_ingredient * 10
         if self.weight_ingredient_grams - self.tolerance_weight <= self.val_rounded <= self.weight_ingredient_grams + self.tolerance_weight:
             print("Enough liquid")
-            return True
+            
             
         elif self.val_rounded < self.weight_ingredient_grams - self.tolerance_weight:
             print("Not enough liquid")
-            return True
+            
             
         elif self.val_rounded > self.weight_ingredient_grams + self.tolerance_weight:
             print("Too much liquid")
-            return True 
+            
             
         self.event.set()
 

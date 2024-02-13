@@ -2,6 +2,7 @@ import smbus2
 import time
 import threading
 
+
 class RelayBoard(threading.Thread):
     def __init__(self, amount_ingredient, ingredient_name, i2c_bus=1, address=0x11):
         threading.Thread.__init__(self)
@@ -19,6 +20,7 @@ class RelayBoard(threading.Thread):
         try:
             # set relay state 
             self.bus.write_byte_data(self.address, relay_number, state)
+            print(f"Setting Relay {relay_number} to state {state} at address {self.address}")
         except Exception as e:
             print(f"Fehler beim Setzen des Relaiszustands: {e}")
 
