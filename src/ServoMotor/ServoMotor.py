@@ -24,7 +24,10 @@ class ServoMotor(threading.Thread):
             time.sleep(0.5)
 
     def amount_controlling(self):
-        if self.amount_ingredient == 2.5:
+
+        if self.amount_ingredient == 1.5:
+            self.move15ml()
+        elif self.amount_ingredient == 2.5:
             self.move25ml()
         elif self.amount_ingredient == 5:
             self.move50ml()
@@ -34,6 +37,25 @@ class ServoMotor(threading.Thread):
             self.move100ml()
 
         self.event.set()
+
+    def move15ml(self):
+            
+        try:
+            self.p.ChangeDutyCycle(2.5)  # Rotate to 0 degrees
+            time.sleep(0.5)
+            self.p.ChangeDutyCycle(7.5)  # Rotate to 90 degrees
+            time.sleep(2)
+            self.p.ChangeDutyCycle(2.5)  # Rotate back to 0 degrees
+            time.sleep(0.5)
+
+            print("ServoMotor: 15ml")
+            self.p.stop()
+            GPIO.cleanup()
+
+        except KeyboardInterrupt:
+            self.p.stop()
+            GPIO.cleanup()
+            print("ServoMotor: failure")
 
     def move25ml(self):
 
@@ -46,10 +68,13 @@ class ServoMotor(threading.Thread):
             time.sleep(0.5)
 
             print("ServoMotor: 25ml")
+            self.p.stop()
+            GPIO.cleanup()
 
         except KeyboardInterrupt:
             self.p.stop()
             GPIO.cleanup()
+            print("ServoMotor: failure")
 
 
     def move50ml(self):
@@ -67,10 +92,13 @@ class ServoMotor(threading.Thread):
             time.sleep(0.5)
 
             print("ServoMotor: 50ml")
+            self.p.stop()
+            GPIO.cleanup()
 
         except KeyboardInterrupt:
             self.p.stop()
             GPIO.cleanup()
+            print("ServoMotor: failure")
 
     def move75ml(self):
 
@@ -91,10 +119,13 @@ class ServoMotor(threading.Thread):
             time.sleep(0.5)
 
             print("ServoMotor: 75ml")
+            self.p.stop()
+            GPIO.cleanup()
 
         except KeyboardInterrupt:
             self.p.stop()
             GPIO.cleanup()
+            print("ServoMotor: failure")
 
     def move100ml(self):
 
@@ -119,7 +150,10 @@ class ServoMotor(threading.Thread):
             time.sleep(0.5)
 
             print("ServoMotor: 100ml")
+            self.p.stop()
+            GPIO.cleanup()
 
         except KeyboardInterrupt:
             self.p.stop()
             GPIO.cleanup()
+            print("ServoMotor: failure")

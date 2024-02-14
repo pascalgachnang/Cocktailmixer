@@ -69,6 +69,10 @@ class StepperMotor(threading.Thread):
 
     def _nema17_ramp(self):
         # accelerationramp
+
+        if abs(self.total_steps) - 2*self.acceleration_steps < 0:
+            self.acceleration_steps = self.total_steps // 2
+
         for i in range(self.acceleration_steps):
             current_stepdelay = round(self.stepdelay_start + (self.stepdelay_end - self.stepdelay_start) * i / self.acceleration_steps, 7)
             self.perform_step(current_stepdelay)
@@ -149,7 +153,12 @@ class StepperMotor(threading.Thread):
 
     def back_to_startposition(self):
         # Back to start position
+        self.acceleration_steps = 800
         self.total_steps = 200 - globals.current_position 
+        
+        if abs(self.total_steps) - 2*self.acceleration_steps < 0:
+            self.acceleration_steps = self.total_steps // 2
+
         self.motor_direction = 'backward' 
         self._nema17_ramp()
         time.sleep(0.5)

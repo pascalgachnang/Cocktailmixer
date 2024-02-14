@@ -113,7 +113,7 @@ if __name__ == "__main__":
     #main.CallWeightSensor()
 
     # Call the CallDrinkProcessor method
-    main.SimulateDrinkOrder("Gin Tonic")
+    main.SimulateDrinkOrder("Long Island Iced Tea")
     #main.SimulateDrinkOrder("Bacardi")
     #main.SimulateDrinkOrder("Tuxedo")
 
