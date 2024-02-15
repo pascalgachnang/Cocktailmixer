@@ -46,49 +46,7 @@
         ],
         "garnish": "Salzrand, Limettenscheibe"
     },
-    {
-        "name": "Aperol Spritz",
-        "glass": "Weinglas",
-        "category": "Sparkling Cocktail",
-        "ingredients": [
-            {
-                "unit": "cl",
-                "amount": 6,
-                "ingredient": "Aperol"
-            },
-            {
-                "unit": "cl",
-                "amount": 9,
-                "ingredient": "Prosecco"
-            },
-            {   "unit": "cl",
-                "amount": 5,
-                "ingredient": "Spritzer Soda"
-            }
-        ],
-        "garnish": "Orangenscheibe"
-    },
    
-    
-    {
-        "name": "Gin Tonic",
-        "glass": "Highball",
-        "category": "Longdrink",
-        "ingredients": [
-            {
-                "unit": "cl",
-                "amount": 5,
-                "ingredient": "Gin"
-            },
-            {   
-                "unit": "cl",
-                "amount": 15,
-                "ingredient": "Tonic Water"
-            }
-        ],
-        "garnish": null
-    },
- 
     {
         "name": "Daiquiri",
         "glass": "Martini",
@@ -112,7 +70,229 @@
         ],
         "garnish": "Limettenscheibe"
     },
-    
+
+    {
+        "name": "Wodka Martini",
+        "glass": "Martini",
+        "category": "Before Dinner Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 6,
+                "ingredient": "Wodka"
+            },
+            {
+                "unit": "cl",
+                "amount": 1,
+                "ingredient": "Wermut weiss"
+            }
+        ],
+        "garnish": "Zitronenzeste"
+    },
+
+    {
+        "name": "Wodka Soda",
+        "glass": "Highball",
+        "category": "Longdrink",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 5,
+                "ingredient": "Wodka"
+            },
+            {
+                "unit": "cl",
+                "amount": 10,
+                "ingredient": "Soda"
+            }
+        ],
+        "garnish": "Limettenscheibe"
+    },
+    {
+        "name": "Wodka Cola",
+        "glass": "Highball",
+        "category": "Longdrink",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 5,
+                "ingredient": "Wodka"
+            },
+            {
+                "unit": "cl",
+                "amount": 10,
+                "ingredient": "Cola"
+            }
+        ],
+        "garnish": "Zitronenscheibe"
+    },
+    {
+        "name": "Gin Fizz",
+        "glass": "Highball",
+        "category": "Longdrink",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 4.5,
+                "ingredient": "Gin"
+            },
+            {
+                "unit": "cl",
+                "amount": 3,
+                "ingredient": "Zitronensaft"
+            },
+            {
+                "unit": "cl",
+                "amount": 1,
+                "ingredient": "Zuckersirup"
+            },
+            {
+                "unit": "cl",
+                "amount": 8,
+                "ingredient": "Soda"
+            }
+        ],
+        "garnish": "Zitronenscheibe"
+    },
+    {
+        "name": "Tom Collins",
+        "glass": "Highball",
+        "category": "Longdrink",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 4.5,
+                "ingredient": "Gin"
+            },
+            {
+                "unit": "cl",
+                "amount": 3,
+                "ingredient": "Zitronensaft"
+            },
+            {
+                "unit": "cl",
+                "amount": 1,
+                "ingredient": "Zuckersirup"
+            },
+            {
+                "unit": "cl",
+                "amount": 6,
+                "ingredient": "Soda"
+            }
+        ],
+        "garnish": "Zitronenscheibe und Cocktailkirsche"
+
+    },
+    {
+        "name": "Gin Martini",
+        "glass": "Martini",
+        "category": "Before Dinner Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 6,
+                "ingredient": "Gin"
+            },
+            {
+                "unit": "cl",
+                "amount": 1,
+                "ingredient": "Wermut weiss"
+            }
+        ],
+        "garnish": "Zitronenzeste"
+    },
+    {
+        "name": "Mojito",
+        "glass": "Highball",
+        "category": "Longdrink",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 4,
+                "ingredient": "Rum weiss"
+            },
+            {
+                "unit": "cl",
+                "amount": 3,
+                "ingredient": "Limettensaft"
+            },
+            {
+                "unit": "cl",
+                "amount": 6,
+                "ingredient": "Soda"
+            },
+            {
+                "unit": "cl",
+                "amount": 1,
+                "ingredient": "Zuckersirup"
+            }
+        ],
+        "garnish": "Minzeblätter"
+    },
+    {
+        "name": "Rum Cola",
+        "glass": "Highball",
+        "category": "Longdrink",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 5,
+                "ingredient": "Rum weiss"
+            },
+            {
+                "unit": "cl",
+                "amount": 10,
+                "ingredient": "Cola"
+            }
+        ],
+        "garnish": "Limettenscheibe"
+    },
+    {
+        "name": "Cuba Libre",
+        "glass": "Highball",
+        "category": "Longdrink",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 5,
+                "ingredient": "Rum weiss"
+            },
+            {
+                "unit": "cl",
+                "amount": 10,
+                "ingredient": "Cola"
+            },
+            {
+                "unit": "cl",
+                "amount": 1,
+                "ingredient": "Limettensaft"
+            }
+        ],
+        "garnish": "Limettenscheibe"
+    },
+    {
+        "name": "Tequila Sunrise",
+        "glass": "Highball",
+        "category": "Longdrink",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 4.5,
+                "ingredient": "Tequila"
+            },
+            {
+                "unit": "cl",
+                "amount": 9,
+                "ingredient": "Orangensaft"
+            },
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Grenadinesaft"
+            }
+        ],
+        "garnish": "Orangenscheibe und Cocktailkirsche"
+    },
     {
         "name": "Long Island Iced Tea",
         "glass": "Highball",
