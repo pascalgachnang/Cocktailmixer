@@ -61,34 +61,6 @@ class Main:
         # process the order queue
         self.orderqueue.processOrderQueue()
 
-    def CallStepperMotor(self):
-        logging.info("Calling StepperMotor")
-        self.stepm = StepperMotor(800, 800)
-        self.stepm.start()
-        self.stepm.join()
-        logging.info("Calling StepperMotor: {0}".format(self.stepm))
-        self.stepm.reference_run()
-
-    def CallServoMotor(self):
-        logging.info("Calling ServoMotor")
-        self.servm = ServoMotor()
-        self.servm.move50ml()
-
-    def CallRelayBoard(self):
-        logging.info("Calling RelayBoard")
-        self.relayb = RelayBoard(i2c_bus=1, address=0x11)
-        
-        self.relayb.mix_drink("Cola")
-        self.relayb.mix_drink("Lemonade")
-        self.relayb.mix_drink("Orange Juice")
-        self.relayb.mix_drink("Water")
-
-    def CallWeightSensor(self):
-        logging.info("Calling WeightSensor")
-        self.weights = WeightSensor()
-        self.weights.start()
-        time.sleep(3)
-        self.weights.stop()
 
     def CallReferenceRun(self):
         logging.info("Calling ReferenceRun")
