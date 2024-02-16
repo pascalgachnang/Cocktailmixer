@@ -13,13 +13,21 @@ class RelayBoard(threading.Thread):
         self.ingredient_name = ingredient_name
         self.pump_duration_calculated = None
         self.flow_rate_ml_per_min = 700  # Durchflussrate der Pumpe in ml/min
+        self.relay_state = 0x00
 
     def set_relay_state(self, relay_number, state):
         # relay_number: 1-4
         # state: 1 (ON) or 0 (OFF)
+        if state: # switch on
+            self.relay_state |= 1 << (relay_number - 1)
+
+        else: # switch off
+            self.relay_state &= ~(1 << (relay_number - 1))
+
+
         try:
             # set relay state 
-            self.bus.write_byte_data(self.address, relay_number, state)
+            self.bus.write_byte_data(self.address, 0x10, self.relay_state)
             print(f"Setting Relay {relay_number} to state {state} at address {self.address}")
         except Exception as e:
             print(f"Fehler beim Setzen des Relaiszustands: {e}")
@@ -29,6 +37,7 @@ class RelayBoard(threading.Thread):
         while self.event.is_set() == False:
             self.mix_drink()
             time.sleep(0.5)
+
 
     def mix_drink(self):
         if self.ingredient_name == "Cola":

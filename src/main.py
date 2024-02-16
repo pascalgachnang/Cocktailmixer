@@ -7,7 +7,7 @@ import config
 import drinkprocessor
 import secrets
 import threading
-import globals
+
 
 from StepperMotor.StepperMotor import StepperMotor
 from ServoMotor.ServoMotor import ServoMotor
@@ -37,15 +37,7 @@ class Main:
         self.weights = None
     
 
-    def SimulateDrinkOrder(self, search_string):
-        logging.info("Simulating DrinkOrder")
-        
-        # search for a recipe
-        self.recipe = drinkprocessor.Recipe(search_string=search_string)
-        
-        # add an order to the order queue
-        self.orderqueue.addOrder(self.recipe)
-
+    
 
     def CallOrderQueue(self):
         logging.info("Calling CallOrderQueue")
@@ -74,22 +66,39 @@ class Main:
 if __name__ == "__main__":
     # Create an instance of the Main class
 
-    #visu = MyCocktailmixerApp()
-    #visu.run()
+    if True:
+        visu = MyCocktailmixerApp()
+        visu.run()
 
-    main = Main()
+        #main = Main()
+        
+        #main.CallReferenceRun()
+    else:
 
-    main.CallReferenceRun()
+        rlboard = RelayBoard(None, None)
+        rlboard.set_relay_state(1, 0)
+        rlboard.set_relay_state(2, 0)
+        rlboard.set_relay_state(3, 0)
+        rlboard.set_relay_state(4, 0)
+
+    
+
+        """
+        main = Main()
+        main.CallReferenceRun()
+        drinkprocessor = drinkprocessor.OrderQueue()
+        recipe = drinkprocessor.Recipe(search_string="")
+        drinkprocessor.addOrder(recipe)
+        """
 
     # Call the WeightSensor and run in a thread
     #main.CallWeightSensor()
 
-    # Call the CallDrinkProcessor method
-    main.SimulateDrinkOrder("Long Island Iced Tea")
-    #main.SimulateDrinkOrder("Bacardi")
-    #main.SimulateDrinkOrder("Tuxedo")
 
-    main.CallOrderQueue()
+    # Call the CallDrinkProcessor method
+    #main.IncomingDrinkOrder("Bacardi")
+    #main.IncomingDrinkOrder("Tuxedo")
+
     
     
     # Call the CallStepperMotor method

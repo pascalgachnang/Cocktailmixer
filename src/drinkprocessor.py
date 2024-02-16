@@ -1,43 +1,31 @@
 import logging
 import config
 import time
+import threading
+import queue
 from StepperMotor.StepperMotor import StepperMotor
 from ServoMotor.ServoMotor import ServoMotor
 from RelayBoard.RelayBoard import RelayBoard
 from WeightSensor.weightsensor import WeightSensor
 
-class OrderQueue():
+class OrderQueue(threading.Thread):
 
     def __init__(self):
-        self.order_queue = []
-
-    def setOrderQueue(self, order_queue):
-        self.order_queue = order_queue
-
-    def getOrderQueue(self):
-        return self.order_queue
+        super().__init__()
+        self.order_queue = queue.Queue()
+        self.stepm = StepperMotor()
+    
     
     def addOrder(self, recipe):
         # pass in a recipe object
         order = Order("TEST", recipe) 
-        self.order_queue.append(order)
+        self.order_queue.put(order)
+        #TODO: Command for sync-move and tuple 
 
-    def removeOrder(self, order):
-        self.order_queue.remove(order)
-
-    def clearOrderQueue(self):
-        self.order_queue = []
-
-    def printOrderQueue(self):
-        for order in self.order_queue:
-            print("Order: {0}".format(order.get('name')))
-
-    def processOrderQueue(self):
-        i = 1
-        for order in self.order_queue:
-            print("Process order: {0} of {1}".format(i, len(self.order_queue)))
+    def run(self):
+        while True:
+            order = self.order_queue.get()
             self.processOrder(order)
-            i = i + 1
 
     def processOrder(self, order):
         print("Preparing Recipe: {0}".format(order.getRecipe().name))
@@ -72,9 +60,8 @@ class OrderQueue():
                 
     def CallStepperMotor(self, position_ingredient):
         logging.info("Calling StepperMotor")
-        self.stepm = StepperMotor(position_ingredient)
-        self.stepm.start()
-        self.stepm.join()
+        
+        self.stepm.move(position_ingredient)
         logging.info("Calling StepperMotor: {0}".format(self.stepm))
 
     def CallServoMotor(self, amount_ingredient):

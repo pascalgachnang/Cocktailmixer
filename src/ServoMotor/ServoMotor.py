@@ -50,11 +50,10 @@ class ServoMotor(threading.Thread):
 
             print("ServoMotor: 15ml")
             self.p.stop()
-            GPIO.cleanup()
+            
 
         except KeyboardInterrupt:
             self.p.stop()
-            GPIO.cleanup()
             print("ServoMotor: failure")
 
     def move25ml(self):
@@ -69,11 +68,9 @@ class ServoMotor(threading.Thread):
 
             print("ServoMotor: 25ml")
             self.p.stop()
-            GPIO.cleanup()
 
         except KeyboardInterrupt:
             self.p.stop()
-            GPIO.cleanup()
             print("ServoMotor: failure")
 
 
@@ -93,11 +90,9 @@ class ServoMotor(threading.Thread):
 
             print("ServoMotor: 50ml")
             self.p.stop()
-            GPIO.cleanup()
 
         except KeyboardInterrupt:
             self.p.stop()
-            GPIO.cleanup()
             print("ServoMotor: failure")
 
     def move75ml(self):
@@ -120,11 +115,9 @@ class ServoMotor(threading.Thread):
 
             print("ServoMotor: 75ml")
             self.p.stop()
-            GPIO.cleanup()
 
         except KeyboardInterrupt:
             self.p.stop()
-            GPIO.cleanup()
             print("ServoMotor: failure")
 
     def move100ml(self):
@@ -151,9 +144,7 @@ class ServoMotor(threading.Thread):
 
             print("ServoMotor: 100ml")
             self.p.stop()
-            GPIO.cleanup()
 
         except KeyboardInterrupt:
             self.p.stop()
-            GPIO.cleanup()
             print("ServoMotor: failure")

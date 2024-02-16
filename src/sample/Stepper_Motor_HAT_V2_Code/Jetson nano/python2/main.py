@@ -41,7 +41,7 @@ try:
     Motor2.Stop()
     
 except:
-    # GPIO.cleanup()
+
     print "\nMotor stop"
     Motor1.Stop()
     Motor2.Stop()

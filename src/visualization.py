@@ -1,6 +1,7 @@
 import kivy
 import logging
 import time
+import drinkprocessor
 from kivy.app import App
 from kivy.uix.widget import Widget  
 from kivy.uix.button import Button  
@@ -47,7 +48,25 @@ kv = Builder.load_file("my.kv")
 
 class MyCocktailmixerApp(App):
     def build(self):
+        self.drinkprocessor = drinkprocessor.OrderQueue()
+        self.drinkprocessor.start()
+        self.lastclicktime = None
         return kv 
+
+    
+    def IncomingDrinkOrder(self, search_string):
+        if self.lastclicktime is not None:
+            if time.time() - self.lastclicktime < 2:
+                logging.info("Ignoring rapid clicks")
+                return
+        self.lastclicktime = time.time()
+        logging.info("Incoming DrinkOrder")
+        
+        # search for a recipe
+        self.recipe = drinkprocessor.Recipe(search_string=search_string)
+
+        # add an order to the order queue
+        self.drinkprocessor.addOrder(self.recipe)
 
     
 

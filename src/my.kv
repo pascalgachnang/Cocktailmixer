@@ -28,7 +28,7 @@ WindowManager:
         Button:
             text: "Submit"
             on_release:
-                app.root.current = "positioning" if passw.text == "Motorenlärm22$" else "password"   
+                app.root.current = "positioning" if passw.text == "1" else "password"   
 
 
 <PositioningWindow>:
@@ -39,6 +39,7 @@ WindowManager:
         Button:
             text: "start positioning"
             on_release: 
+                
                 Factory.P_PositioningComplete().open() 
 
 #Popups Positioning
@@ -83,8 +84,8 @@ WindowManager:
             padding: 10
 
             Button:
-                text: 'Gin Tonic'
-                on_press: app.root.current = "drink in progress"
+                text: 'Long Island Iced Tea'
+                on_press: app.IncomingDrinkOrder('Long Island Iced Tea')
 
             Button:
                 text: 'Drink 2'

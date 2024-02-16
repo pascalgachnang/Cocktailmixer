@@ -19,7 +19,7 @@ class DRV8825():
         self.enable_pin = enable_pin
         self.mode_pins = mode_pins
         
-        GPIO.setmode(GPIO.BCM)
+        #GPIO.setmode(GPIO.BCM)
         GPIO.setwarnings(False)
         GPIO.setup(self.dir_pin, GPIO.OUT)
         GPIO.setup(self.step_pin, GPIO.OUT)

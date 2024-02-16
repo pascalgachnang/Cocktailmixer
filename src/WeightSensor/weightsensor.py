@@ -56,35 +56,25 @@ class WeightSensor(threading.Thread):
         logging.info("weighing scale resetted")
 
     def cleanAndExit(self):
-        """Clean up GPIO pins"""
-        print("Cleaning...")
-        GPIO.cleanup()       
+        """Clean up GPIO pins"""  
         print("Bye!")
-        sys.exit()
 
     def read_weight(self):
         """Read the weight from the scale"""
-        self.start_time = time.time() #stop the scale after 2 seconds
 
-        try:
-            val = self.hx.get_weight()
-            val_calculated = val * 100
-            self.val_rounded = int(round(val_calculated, 2))
-            val_units = "{:d} grams".format(self.val_rounded)
-            print(val_units)
-            logging.info("weight: {0}: ".format(val_units))
+        val = self.hx.get_weight()
+        val_calculated = val * 100
+        self.val_rounded = int(round(val_calculated, 2))
+        val_units = "{:d} grams".format(self.val_rounded)
+        print(val_units)
+        logging.info("weight: {0}: ".format(val_units))
 
-            self.hx.power_down()
-            self.hx.power_up()
-            time.sleep(0.1)
+        self.hx.power_down()
+        self.hx.power_up()
+        time.sleep(0.1)
 
-            self.current_time = time.time()
-
-            if self.current_time - self.start_time >= 2:
-                self.cleanAndExit()
         
-        except: 
-            self.cleanAndExit()
+
 
 
 
