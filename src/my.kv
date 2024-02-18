@@ -39,7 +39,7 @@ WindowManager:
         Button:
             text: "start positioning"
             on_release: 
-                
+                app.calling_reference_run()
                 Factory.P_PositioningComplete().open() 
 
 #Popups Positioning
@@ -85,7 +85,9 @@ WindowManager:
 
             Button:
                 text: 'Long Island Iced Tea'
-                on_press: app.IncomingDrinkOrder('Long Island Iced Tea')
+                on_press: 
+                    app.IncomingDrinkOrder('Long Island Iced Tea')
+                    
 
             Button:
                 text: 'Drink 2'

@@ -14,6 +14,7 @@ class OrderQueue(threading.Thread):
         super().__init__()
         self.order_queue = queue.Queue()
         self.stepm = StepperMotor()
+        self.drink_in_progress = False
     
     
     def addOrder(self, recipe):
@@ -25,7 +26,13 @@ class OrderQueue(threading.Thread):
     def run(self):
         while True:
             order = self.order_queue.get()
+            self.drink_in_progress = True
             self.processOrder(order)
+            self.drink_in_progress = False
+    
+    def drinkInProgress(self):
+        return self.drink_in_progress
+        
 
     def processOrder(self, order):
         print("Preparing Recipe: {0}".format(order.getRecipe().name))
@@ -57,10 +64,10 @@ class OrderQueue(threading.Thread):
         print("*"*20)
         
             #main.CallWeightSensor()
+        
                 
     def CallStepperMotor(self, position_ingredient):
         logging.info("Calling StepperMotor")
-        
         self.stepm.move(position_ingredient)
         logging.info("Calling StepperMotor: {0}".format(self.stepm))
 

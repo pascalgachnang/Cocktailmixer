@@ -100,7 +100,7 @@ class StepperMotor():
                 if self._is_end_switch_triggered(): # end switch triggered
                     print("end switch triggered")
                     self.Motor1.Stop()
-                    globals.current_position = 0
+                    self.current_position = 0
                     print("positioning steppermotor completed")
                     return
 
@@ -110,7 +110,7 @@ class StepperMotor():
 
                 if self._is_end_switch_triggered(): # end switch triggered
                     print("end switch triggered")
-                    globals.current_position = 0
+                    self.current_position = 0
                     print("positioning steppermotor completed")
                     self.Motor1.Stop()
                     return

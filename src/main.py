@@ -65,31 +65,23 @@ class Main:
 
 if __name__ == "__main__":
     # Create an instance of the Main class
+    
+    visu = MyCocktailmixerApp()
+    visu.run()
 
-    if True:
-        visu = MyCocktailmixerApp()
-        visu.run()
-
-        #main = Main()
-        
-        #main.CallReferenceRun()
-    else:
-
-        rlboard = RelayBoard(None, None)
-        rlboard.set_relay_state(1, 0)
-        rlboard.set_relay_state(2, 0)
-        rlboard.set_relay_state(3, 0)
-        rlboard.set_relay_state(4, 0)
+    #main = Main()
+    
+    #main.CallReferenceRun()
 
     
 
-        """
-        main = Main()
-        main.CallReferenceRun()
-        drinkprocessor = drinkprocessor.OrderQueue()
-        recipe = drinkprocessor.Recipe(search_string="")
-        drinkprocessor.addOrder(recipe)
-        """
+    """
+    main = Main()
+    main.CallReferenceRun()
+    drinkprocessor = drinkprocessor.OrderQueue()
+    recipe = drinkprocessor.Recipe(search_string="")
+    drinkprocessor.addOrder(recipe)
+    """
 
     # Call the WeightSensor and run in a thread
     #main.CallWeightSensor()
