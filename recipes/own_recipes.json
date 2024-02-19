@@ -294,6 +294,430 @@
         "garnish": "Orangenscheibe und Cocktailkirsche"
     },
     {
+        "name": "Tequila Soda",
+        "glass": "Highball",
+        "category": "Longdrink",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 5,
+                "ingredient": "Tequila"
+            },
+            {
+                "unit": "cl",
+                "amount": 10,
+                "ingredient": "Soda"
+            }
+        ],
+        "garnish": "Limettenscheibe"
+    },
+    {
+        "name": "Tequila Martini",
+        "glass": "Martini",
+        "category": "Before Dinner Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 6,
+                "ingredient": "Tequila"
+            },
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Wermut weiss"
+            }
+        ],
+        "garnish": "Zitronenzeste"
+        
+    },
+    {
+        "name": "Whiskey Sour",
+        "glass": "Old Fashioned",
+        "category": "Before Dinner Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 4.5,
+                "ingredient": "Bourbon Whiskey"
+            },
+            {
+                "unit": "cl",
+                "amount": 3,
+                "ingredient": "Limettensaft"
+            },
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Zuckersirup"
+            }
+        ],
+        "garnish": "Orangenscheibe und Cocktailkirsche"
+    },
+    {
+        "name": "Old Fashioned",
+        "glass": "Old Fashioned",
+        "category": "Before Dinner Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 4.5,
+                "ingredient": "Bourbon Whiskey"
+            },
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Zuckersirup"
+            },
+            {
+                "special": "2 dashes Angostura Bitters"
+            },
+            {
+                "special": "1 dash Soda"
+            }
+        ],
+        "garnish": "Orangenscheibe und Cocktailkirsche"
+    },
+    {
+        "name": "Mint Julep",
+        "glass": "Highball",
+        "category": "Longdrink",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 6,
+                "ingredient": "Bourbon Whiskey"
+            },
+            {
+                "special": "4 frische Minzeblätter"
+            },
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Zuckersirup"
+            },
+            {
+                "special": "Crushed Ice"
+            }
+        ],
+        "garnish": "Minzezweig"
+    },
+    {
+        "name": "Bourbon Cola",
+        "glass": "Highball",
+        "category": "Longdrink",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 5,
+                "ingredient": "Bourbon Whiskey"
+            },
+            {
+                "unit": "cl",
+                "amount": 10,
+                "ingredient": "Cola"
+            }
+        ],
+        "garnish": "Orangenscheibe"
+    },
+    {
+        "name": "Manhattan",
+        "glass": "Martini",
+        "category": "After Dinner Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 5,
+                "ingredient": "Bourbon Whiskey"
+            },
+            {
+                "unit": "cl",
+                "amount": 2,
+                "ingredient": "Wermut rot"
+            }
+            
+        ],
+        "garnish": "Orangenzeste"
+    },
+    {
+        "name": "Rob Roy",
+        "glass": "Martini",
+        "category": "After Dinner Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 5,
+                "ingredient": "Bourbon Whiskey"
+            },
+            {
+                "unit": "cl",
+                "amount": 2,
+                "ingredient": "Wermut rot"
+            }
+        ],
+        "garnish": "Kirsche"
+    
+    },
+    {
+        "name": "Sidecar",
+        "glass": "Martini",
+        "category": "All Day Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 5,
+                "ingredient": "Brandy"
+            },
+            {
+                "unit": "cl",
+                "amount": 2,
+                "ingredient": "Orangenlikör"
+            },
+            {
+                "unit": "cl",
+                "amount": 2,
+                "ingredient": "Limettensaft"
+            }
+        ],
+        "garnish": "Orangenzeste"
+
+
+    },
+    {
+        "name": "Mai Tai",
+        "glass": "Highball",
+        "category": "Longdrink",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 4,
+                "ingredient": "Rum braun"
+            },
+            {
+                "unit": "cl",
+                "amount": 2,
+                "ingredient": "Rum weiss"
+            },
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Mandelsirup"
+            },
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Zuckersirup"
+            },
+            {
+                "unit": "cl",
+                "amount": 2.5,
+                "ingredient": "Limettensaft"
+            }
+        ],
+        "garnish": "Ananas und Cocktailkirsche"
+
+    },
+    {
+        "name": "Kamikaze",
+        "glass": "Coupette",
+        "category": "After Dinner Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 3,
+                "ingredient": "Wodka"
+            },
+            {
+                "unit": "cl",
+                "amount": 3,
+                "ingredient": "Orangenlikör"
+            },
+            {
+                "unit": "cl",
+                "amount": 3,
+                "ingredient": "Limettensaft"
+            }
+        ],
+        "garnish": "Keine"      
+
+    },
+    {
+        "name": "Metropolitan",
+        "glass": "Coupette",
+        "category": "After Dinner Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 5,
+                "ingredient": "Wodka"
+            },
+            {
+                "unit": "cl",
+                "amount": 2,
+                "ingredient": "Orangenlikör"
+            },
+            {
+                "unit": "cl",
+                "amount": 2,
+                "ingredient": "Limettensaft"
+            }
+        ],
+        "garnish": "Orangenzeste"
+
+    },
+    {
+        "name": "Brandy Sour",
+        "glass": "Old Fashioned",
+        "category": "Before Dinner Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 4.5,
+                "ingredient": "Brandy"
+            },
+            {
+                "unit": "cl",
+                "amount": 3,
+                "ingredient": "Limettensaft"
+            },
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Zuckersirup"
+            }
+        ],
+        "garnish": "Orangenscheibe und Cocktailkirsche"
+
+    },
+    {
+        "name": "Brandy Daisy",
+        "glass": "Old Fashioned",
+        "category": "All Day Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 4.5,
+                "ingredient": "Brandy"
+            },
+            {
+                "unit": "cl",
+                "amount": 3,
+                "ingredient": "Limettensaft"
+            },
+            {
+                "unit": "cl",
+                "amount": 2,
+                "ingredient": "Sodawasser"
+            }
+        ],
+        "garnish": "Orangenscheibe und Cocktailkirsche"
+
+    },
+    {
+        "name": "Martini",
+        "glass": "Martini",
+        "category": "Before Dinner Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 6,
+                "ingredient": "Gin"
+            },
+            {
+                "unit": "cl",
+                "amount": 1,
+                "ingredient": "Wermut weiss"
+            }
+        ],
+        "garnish": "Zitronenzeste"
+
+    },
+    {
+        "name": "Wermut Soda",
+        "glass": "Highball",
+        "category": "Longdrink",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 5,
+                "ingredient": "Wermut weiss"
+            },
+            {
+                "unit": "cl",
+                "amount": 10,
+                "ingredient": "Soda"
+            }
+        ],
+        "garnish": "Orangenscheibe"
+
+    },
+    {
+        "name": "Perfect Martini",
+        "glass": "Martini",
+        "category": "Before Dinner Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 6,
+                "ingredient": "Gin"
+            },
+            {
+                "unit": "cl",
+                "amount": 1,
+                "ingredient": "Wermut rot"
+            },
+            {
+                "unit": "cl",
+                "amount": 1,
+                "ingredient": "Wermut weiss"
+            }
+        ],
+        "garnish": "Zitronenzeste"
+
+    },
+    {
+        "name": "Bronx",
+        "glass": "Martini",
+        "category": "Before Dinner Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 3,
+                "ingredient": "Gin"
+            },
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Wermut rot"
+            },
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Orangensaft"
+            }
+        ],
+        "garnish": "Orangenzeste"
+
+    },
+    {
+        "name": "Screwdriver",
+        "glass": "Highball",
+        "category": "All Day Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 5,
+                "ingredient": "Wodka"
+            },
+            {
+                "unit": "cl",
+                "amount": 10,
+                "ingredient": "Orangensaft"
+            }
+        ],
+        "garnish": "Orangenscheibe"
+
+    },
+    {
         "name": "Long Island Iced Tea",
         "glass": "Highball",
         "category": "Longdrink",
