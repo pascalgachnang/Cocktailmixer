@@ -124,13 +124,13 @@ class MyCocktailmixerApp(App):
         # switch to the drink in progress screen and back to the main window
         if data == 1:
             screen = "drink in progress"
-            self.switchScreens(screen)
-            #self.instance.background_color = (0, 1, 0, 1)
+            #self.switchScreens(screen)
+            self.instance.background_color = (0, 1, 0, 1)
             #self.instance.text = "START"
         elif data == 0:
-            self.switchScreens(self.current_screen)
+            #self.switchScreens(self.current_screen)
             #self.instance.text = "DONE"
-            #self.instance.background_color = (0.5, 0.5, 1, 1)
+            self.instance.background_color = (0.5, 0.5, 1, 1)
 
     def switchScreens(self, screen):
         self.root.current = screen
