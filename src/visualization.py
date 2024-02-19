@@ -16,6 +16,24 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.clock import Clock
 from kivy.event import EventDispatcher
 
+
+
+class CustomEventDispatcher(EventDispatcher):
+    def __init__(self, **kwargs):
+        self.register_event_type('on_custom_action')
+        super(CustomEventDispatcher, self).__init__(**kwargs)
+
+    def do_custom_action(self, *args):
+        # when do_something is called, the 'on_test' event will be
+        # dispatched with the value
+        logging.info(f"in do_custom_action: {args[0]}")
+        self.dispatch('on_custom_action', args[0])
+
+    def on_custom_action(self,  *args):
+        logging.info(f"in on_custom_action: {args}")
+
+
+
 class MyLayout(Widget):
     pass
 
@@ -34,42 +52,46 @@ class MainWindow2(Screen): #Layout for the main window, second page
 
 class DrinkInProgress(Screen): #Layout for the drink in progress window
     pass
-
-
-    
-
-
-
     
 class WindowManager(ScreenManager):
-    def __init__(self, **kwargs):
-        super(WindowManager, self).__init__(**kwargs)
-        self.drinkprocessor = drinkprocessor.OrderQueue()
-        
-
-    def check_process_progress(self):
-        logging.info("Checking process progress")
-        if self.drinkprocessor.drinkInProgress():
-            self.current = "drink in progress"
-            return
-        else:
-            self.current = "main window 1"
-            return
+    pass
 
 # Load the kv file
 kv = Builder.load_file("my.kv")
 
 class MyCocktailmixerApp(App):
     def build(self):
-        self.drinkprocessor = drinkprocessor.OrderQueue()
+        self.custom_dispatcher = CustomEventDispatcher()    
+        self.drinkprocessor = drinkprocessor.OrderQueue(self)   # Hier übergeben wir die App Instanz an den OrderQueue
         self.drinkprocessor.start()
         self.lastclicktime = None
         self.steppermotor = StepperMotor()
+        self.instance = None
+        self.current_screen = None
+        
+        # Listen for the custom event
+        self.custom_dispatcher.bind(on_custom_action=self.on_custom_action)
+
         return kv 
 
+
+    def on_button_press(self, instance):
+        # Access the instance of the pressed button
+        logging.info(f"Button pressed: {instance.text}")
+        print(f"Button pressed: {instance.text}")
+        instance.background_color = (0, 1, 0, 1)
+        instance.text = "TEST"
+
     
-    def IncomingDrinkOrder(self, search_string):
-        if self.lastclicktime is not None:
+    def IncomingDrinkOrder(self, instance):
+
+        self.instance = instance    # We store the instance of the button that was pressed
+        logging.info(f"Button pressed: {instance.text}, {instance.__dict__}")
+
+        self.current_screen = self.root.current   # We store the current screen to switch back to it after the drink is done
+        logging.info(f"Current screen: {self.current_screen}")  
+
+        if self.lastclicktime is not None:  # Ignore rapid clicks
             if time.time() - self.lastclicktime < 2:
                 logging.info("Ignoring rapid clicks")
                 return
@@ -77,15 +99,42 @@ class MyCocktailmixerApp(App):
         logging.info("Incoming DrinkOrder")
         
         # search for a recipe
-        self.recipe = drinkprocessor.Recipe(search_string=search_string)
+        self.recipe = drinkprocessor.Recipe(search_string=instance.text)
 
         # add an order to the order queue
         self.drinkprocessor.addOrder(self.recipe)
 
+
+
     def calling_reference_run(self):
+        # Call the reference run of the stepper motor
         logging.info("Calling reference run")
 
         self.steppermotor.reference_run()
+
+
+
+    def on_custom_action(self, *args):
+        # This is the method that is called when the custom event is dispatched
+
+        logging.info(f"I am dispatched {args[1]} ID: {self.instance}")
+
+        data = args[1]
+
+        # switch to the drink in progress screen and back to the main window
+        if data == 1:
+            screen = "drink in progress"
+            self.switchScreens(screen)
+            #self.instance.background_color = (0, 1, 0, 1)
+            #self.instance.text = "START"
+        elif data == 0:
+            self.switchScreens(self.current_screen)
+            #self.instance.text = "DONE"
+            #self.instance.background_color = (0.5, 0.5, 1, 1)
+
+    def switchScreens(self, screen):
+        self.root.current = screen
+        
 
     
     

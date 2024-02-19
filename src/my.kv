@@ -84,23 +84,25 @@ WindowManager:
             padding: 10
 
             Button:
+                id: btn1
                 text: 'Long Island Iced Tea'
-                on_press: 
-                    app.IncomingDrinkOrder('Long Island Iced Tea')
-                    app.root.current = "drink in progress" if app.root.check_process_progress() else "page one" 
+                on_press: app.IncomingDrinkOrder(self)
                     
+                
+            Button:
+                id: btn2
+                text: 'Whiskey Cola'
+                on_press: app.IncomingDrinkOrder(self)
 
             Button:
-                text: 'Drink 2'
-                on_press: app.root.current = "drink in progress"
-
-            Button:
+                id: btn3
                 text: 'Drink 3'
-                on_press: app.root.current = "drink in progress"
+                on_press: app.on_button_press(self)
 
             Button:
+                id: btn4
                 text: 'Drink 4'
-                on_press: app.root.current = "drink in progress"
+                on_press: app.on_button_press(self)
 
             Button:
                 text: 'Drink 5'
