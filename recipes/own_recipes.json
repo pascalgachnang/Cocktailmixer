@@ -1,29 +1,6 @@
 [
 
     {
-        "name": "Negroni",
-        "glass": "Old Fashioned",
-        "category": "Before Dinner Cocktail",
-        "ingredients": [
-            {
-                "unit": "cl",
-                "amount": 2.5,
-                "ingredient": "Gin"
-            },
-            {
-                "unit": "cl",
-                "amount": 2.5,
-                "ingredient": "Wermut rot"
-            },
-            {
-                "unit": "cl",
-                "amount": 2.5,
-                "ingredient": "Aperol"
-            }
-        ],
-        "garnish": "Orangenzeste"
-    },
-    {
         "name": "Margarita",
         "glass": "Margarita",
         "category": "All Day Cocktail",
@@ -154,35 +131,7 @@
         ],
         "garnish": "Zitronenscheibe"
     },
-    {
-        "name": "Tom Collins",
-        "glass": "Highball",
-        "category": "Longdrink",
-        "ingredients": [
-            {
-                "unit": "cl",
-                "amount": 4.5,
-                "ingredient": "Gin"
-            },
-            {
-                "unit": "cl",
-                "amount": 3,
-                "ingredient": "Zitronensaft"
-            },
-            {
-                "unit": "cl",
-                "amount": 1,
-                "ingredient": "Zuckersirup"
-            },
-            {
-                "unit": "cl",
-                "amount": 6,
-                "ingredient": "Soda"
-            }
-        ],
-        "garnish": "Zitronenscheibe und Cocktailkirsche"
-
-    },
+    
     {
         "name": "Gin Martini",
         "glass": "Martini",
@@ -766,33 +715,345 @@
 
     },
     {
-        "name": "Rum Punch",
+        "name": "Rum Soda",
         "glass": "Highball",
         "category": "Longdrink",
         "ingredients": [
             {
                 "unit": "cl",
-                "amount": 15,
-                "ingredient": "Rum braun"
+                "amount": 5,
+                "ingredient": "Brandy"
             },
             {
                 "unit": "cl",
+                "amount": 10,
+                "ingredient": "Soda"
+            }
+        ],
+        "garnish": "Limettenscheibe"
+
+    },
+    {
+        "name": "Whiskey Cola",
+        "glass": "Highball",
+        "category": "Longdrink",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 5,
+                "ingredient": "Bourbon Whiskey"
+            },
+            {
+                "unit": "cl",
+                "amount": 10,
+                "ingredient": "Cola"
+            }
+        ],
+        "garnish": "Orangenscheibe"
+    },
+    {
+        "name": "Wodka Sunrise",
+        "glass": "Highball",
+        "category": "Longdrink",
+        "ingredients": [
+            {
+                "unit": "cl",
                 "amount": 4.5,
-                "ingredient": "Zitronensaft"
+                "ingredient": "Wodka"
+            },
+            {
+                "unit": "cl",
+                "amount": 9,
+                "ingredient": "Orangensaft"
+            },
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Grenadinesaft"
+            }
+        ],
+        "garnish": "Orangenscheibe und Cocktailkirsche"
+    },
+    {
+        "name": "Wodka Sour",
+        "glass": "Old Fashioned",
+        "category": "Before Dinner Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 4.5,
+                "ingredient": "Wodka"
             },
             {
                 "unit": "cl",
                 "amount": 3,
+                "ingredient": "Limettensaft"
+            },
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Zuckersirup"
+            }
+        ],
+        "garnish": "Orangenscheibe und Cocktailkirsche"
+    },
+    {
+        "name": "Wodka Ricky",
+        "glass": "Old Fashioned",
+        "category": "Before Dinner Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 6,
+                "ingredient": "Wodka"
+            },
+            {
+                "unit": "cl",
+                "amount": 3,
+                "ingredient": "Limettensaft"
+            },
+            {
+                "unit": "cl",
+                "amount": 1,
+                "ingredient": "Zuckersirup"
+            },
+            {
+                "unit": "cl",
+                "amount": 12,
+                "ingredient": "Soda"
+            }
+        ],
+        "garnish": "Keine"
+        
+    },
+    {
+        "name": "Cucumber Gin Cooler",
+        "glass": "Highball",
+        "category": "Longdrink",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 4.5,
+                "ingredient": "Gin"
+            },
+            {
+                "unit": "cl",
+                "amount": 1.5,
                 "ingredient": "Zuckersirup"
             },
             {
                 "unit": "cl",
                 "amount": 3,
-                "ingredient": "Sodawasser"
+                "ingredient": "Limettensaft"
+            },
+            {
+                "special": "8 frische Minzeblätter"
+            },
+            {
+                "special": "2 Scheiben Gurke"
             }
         ],
-        "garnish": "Orangenscheibe, Zitronenscheibe und Cocktailkirsche"
+        "garnish": "Minze und Gurkenscheibe"
 
+    },
+    {
+        "name": "Raspberry Gin Lemonade",
+        "glass": "Highball",
+        "category": "Longdrink",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 6,
+                "ingredient": "Gin"
+            },
+            {
+                "unit": "cl",
+                "amount": 2,
+                "ingredient": "Zuckersirup"
+            },
+            {
+                "unit": "cl",
+                "amount": 2,
+                "ingredient": "Zitronensaft"
+            },
+            {
+                "unit": "cl",
+                "amount": 6,
+                "ingredient": "Soda"
+            },
+            {
+                "special": "8 Himbeeren"
+            }
+        ],
+        "garnish": "Himbeeren"
+    },
+    {
+        "name": "Gin Basil Smash",
+        "glass": "Old Fashioned",
+        "category": "After Dinner Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 6,
+                "ingredient": "Gin"
+            },
+            {
+                "unit": "cl",
+                "amount": 2.5,
+                "ingredient": "Zitronensaft"
+            },
+            {
+                "unit": "cl",
+                "amount": 2.5,
+                "ingredient": "Zuckersirup"
+            },
+            {
+                "special": "8 frische Basilikumblätter"
+            }
+        ],
+        "garnish": "Basilikumblatt"
+    },
+    {
+        "name": "White Vermouth Spritz",
+        "glass": "Wine Glass",
+        "category": "Sparkling Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 6,
+                "ingredient": "Wermut weiss"
+            },
+            {
+                "unit": "cl",
+                "amount": 6,
+                "ingredient": "Soda"
+            }
+        ],
+        "garnish": "Orangenzeste"
+    },
+    {
+        "name": "Triple Sec Citrus Cooler",
+        "glass": "Highball",
+        "category": "Longdrink",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 4.5,
+                "ingredient": "Orangenlikör"
+            },
+            {
+                "unit": "cl",
+                "amount": 3,
+                "ingredient": "Limettensaft"
+            },
+            {
+                "unit": "cl",
+                "amount": 6,
+                "ingredient": "Soda"
+            }
+        ],
+        "garnish": "Orangenscheibe"
+    }, 
+    {
+        "name": "Sweet Martini",
+        "glass": "Martini",
+        "category": "Before Dinner Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 6,
+                "ingredient": "Gin"
+            },
+            {
+                "unit": "cl",
+                "amount": 2,
+                "ingredient": "Wermut rot"
+            },
+            {
+                "unit": "cl",
+                "amount": 1,
+                "ingredient": "Zuckersirup"
+            }
+        ],
+        "garnish": "Zitronenzeste"
+    },
+    {
+        "name": "Bourbon Cola Twist",
+        "glass": "Highball",
+        "category": "Longdrink",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 4.5,
+                "ingredient": "Bourbon Whiskey"
+            },
+            {
+                "unit": "cl",
+                "amount": 3,
+                "ingredient": "Cola"
+            },
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Limettensaft"
+            }
+        ],
+        "garnish": "Zitronenscheibe"
+
+    },
+    {
+        "name": "Cosmopolitan",
+        "glass": "Coupette",
+        "category": "After Dinner Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 4,
+                "ingredient": "Wodka"
+            },
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Orangenlikör"
+            },
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Limettensaft"
+            },
+            {
+                "unit": "cl",
+                "amount": 3,
+                "ingredient": "Cranberrysaft"
+            }
+        ],
+        "garnish": "Orangenzeste"
+       
+
+    },
+    {
+        "name": "Vesper",
+        "glass": "Martini",
+        "category": "Before Dinner Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 6,
+                "ingredient": "Gin"
+            },
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Wodka"
+            },
+            {
+                "unit": "cl",
+                "amount": 0.75,
+                "ingredient": "Wermut weiss"
+            }
+        ],
+        "garnish": "Zitronenzeste"
+        
     },
     {
         "name": "Long Island Iced Tea",
