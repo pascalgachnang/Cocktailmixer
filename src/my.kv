@@ -87,6 +87,7 @@ WindowManager:
                 text: 'Long Island Iced Tea'
                 on_press: 
                     app.IncomingDrinkOrder('Long Island Iced Tea')
+                    app.root.current = "drink in progress" if app.root.check_process_progress() else "page one" 
                     
 
             Button:
@@ -233,6 +234,6 @@ WindowManager:
             text: "Cancel"
             on_press: 
                 app.root.current = "page one" if progress_bar.value < 100 else app.root.current
-
+                
 
               

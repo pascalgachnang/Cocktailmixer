@@ -14,6 +14,7 @@ from kivy.lang import Builder
 from kivy.uix.popup import Popup
 from kivy.uix.floatlayout import FloatLayout
 from kivy.clock import Clock
+from kivy.event import EventDispatcher
 
 class MyLayout(Widget):
     pass
@@ -34,12 +35,26 @@ class MainWindow2(Screen): #Layout for the main window, second page
 class DrinkInProgress(Screen): #Layout for the drink in progress window
     pass
 
+
     
 
+
+
+    
+class WindowManager(ScreenManager):
+    def __init__(self, **kwargs):
+        super(WindowManager, self).__init__(**kwargs)
+        self.drinkprocessor = drinkprocessor.OrderQueue()
         
 
-class WindowManager(ScreenManager):
-    pass
+    def check_process_progress(self):
+        logging.info("Checking process progress")
+        if self.drinkprocessor.drinkInProgress():
+            self.current = "drink in progress"
+            return
+        else:
+            self.current = "main window 1"
+            return
 
 # Load the kv file
 kv = Builder.load_file("my.kv")
@@ -72,11 +87,7 @@ class MyCocktailmixerApp(App):
 
         self.steppermotor.reference_run()
 
-    def drink_in_progress(self):
-        logging.info("Drink in progress")
-        if self.drinkprocessor.drinkInProgress():
-            self.root.current = "DrinkInProgress"
-            logging.info("Drink in progress")
+    
     
 
 

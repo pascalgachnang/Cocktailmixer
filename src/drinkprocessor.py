@@ -3,10 +3,27 @@ import config
 import time
 import threading
 import queue
+from kivy.event import EventDispatcher
 from StepperMotor.StepperMotor import StepperMotor
 from ServoMotor.ServoMotor import ServoMotor
 from RelayBoard.RelayBoard import RelayBoard
 from WeightSensor.weightsensor import WeightSensor
+
+
+class MyEventDispatcher(EventDispatcher):
+    def __init__(self, **kwargs):
+        self.register_event_type('on_test')
+        super(MyEventDispatcher, self).__init__(**kwargs)
+
+    def do_something(self, value):
+        # when do_something is called, the 'on_test' event will be
+        # dispatched with the value
+        self.dispatch('on_test', value)
+
+    def on_test(self, *args):
+        logging.info("I am dispatched")
+        print("I am dispatched", args)
+
 
 class OrderQueue(threading.Thread):
 
@@ -15,7 +32,8 @@ class OrderQueue(threading.Thread):
         self.order_queue = queue.Queue()
         self.stepm = StepperMotor()
         self.drink_in_progress = False
-    
+        self.ev = MyEventDispatcher()
+        self.ev.bind(on_test=self.my_callback)
     
     def addOrder(self, recipe):
         # pass in a recipe object
@@ -27,12 +45,20 @@ class OrderQueue(threading.Thread):
         while True:
             order = self.order_queue.get()
             self.drink_in_progress = True
+            self.ev.do_something(self.drink_in_progress)
             self.processOrder(order)
             self.drink_in_progress = False
+            self.ev.do_something(self.drink_in_progress)
     
     def drinkInProgress(self):
         return self.drink_in_progress
         
+    def my_callback(value, *args):
+        print("Hello, I got an event!", args)
+
+
+
+
 
     def processOrder(self, order):
         print("Preparing Recipe: {0}".format(order.getRecipe().name))

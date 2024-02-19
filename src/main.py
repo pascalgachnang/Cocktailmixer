@@ -66,8 +66,13 @@ class Main:
 if __name__ == "__main__":
     # Create an instance of the Main class
     
-    visu = MyCocktailmixerApp()
-    visu.run()
+    try:
+        visu = MyCocktailmixerApp()
+        visu.run()
+    except KeyboardInterrupt:
+        print("Keyboard interrupt")
+        sys.exit()
+    
 
     #main = Main()
     
