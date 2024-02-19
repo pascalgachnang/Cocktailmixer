@@ -718,6 +718,83 @@
 
     },
     {
+        "name": "Orange Blossom",
+        "glass": "Martini",
+        "category": "Before Dinner Cocktail",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 6,
+                "ingredient": "Gin"
+            },
+            {
+                "unit": "cl",
+                "amount": 3,
+                "ingredient": "Orangensaft"
+            }
+        ],
+        "garnish": "Orangenzeste"
+
+    },
+    {
+        "name": "Tom Collins",
+        "glass": "Highball",
+        "category": "Longdrink",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 4.5,
+                "ingredient": "Gin"
+            },
+            {
+                "unit": "cl",
+                "amount": 3,
+                "ingredient": "Limettensaft"
+            },
+            {
+                "unit": "cl",
+                "amount": 1,
+                "ingredient": "Zuckersirup"
+            },
+            {
+                "unit": "cl",
+                "amount": 6,
+                "ingredient": "Soda"
+            }
+        ],
+        "garnish": "Zitronenscheibe und Cocktailkirsche"
+
+    },
+    {
+        "name": "Rum Punch",
+        "glass": "Highball",
+        "category": "Longdrink",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 15,
+                "ingredient": "Rum braun"
+            },
+            {
+                "unit": "cl",
+                "amount": 4.5,
+                "ingredient": "Zitronensaft"
+            },
+            {
+                "unit": "cl",
+                "amount": 3,
+                "ingredient": "Zuckersirup"
+            },
+            {
+                "unit": "cl",
+                "amount": 3,
+                "ingredient": "Sodawasser"
+            }
+        ],
+        "garnish": "Orangenscheibe, Zitronenscheibe und Cocktailkirsche"
+
+    },
+    {
         "name": "Long Island Iced Tea",
         "glass": "Highball",
         "category": "Longdrink",
