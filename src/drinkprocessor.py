@@ -190,6 +190,10 @@ class Recipe():
                 #logging.info(msg)
                 return bottle
 
+        
+        msg = "Ingredient not found: {0}".format(ingredient)
+        logging.info(msg)
+        return None  # oder eine andere Reaktion, abhängig von deinen Anforderungen
 
         
             

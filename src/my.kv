@@ -3,44 +3,34 @@
 #Windows
 
 WindowManager:
-    PasswordWindow:
     PositioningWindow:
     MainWindow1:
     MainWindow2:
     DrinkInProgress:
 
-<PasswordWindow>:
-    name: "password"
-
-    GridLayout:
-        cols: 1
-
-        GridLayout:
-            cols: 2
-
-            Label:
-                text: "Password: "
-
-            TextInput:
-                id: passw
-                multiline: False
-
-        Button:
-            text: "Submit"
-            on_release:
-                app.root.current = "positioning" if passw.text == "1" else "password"   
-
 
 <PositioningWindow>:
     name: "positioning"
+    
     GridLayout:
         cols: 1
+        padding: 20
+
+        
+
+        Label:
+            id: positioning_label
+            text: "Start Positioning"
+            size_hint_y: 0.8
 
         Button:
-            text: "start positioning"
+            text: "Start"
+            size_hint: 0.6, 0.4
+            pos_hint: {'center_x': 0.5}
+            background_color: 0, 0.7, 0.7, 1  # Hintergrundfarbe des Buttons
             on_release: 
                 app.calling_reference_run()
-                Factory.P_PositioningComplete().open() 
+                Factory.P_PositioningComplete().open()
 
 #Popups Positioning
 
@@ -79,29 +69,41 @@ WindowManager:
             height: 50  
 
         GridLayout:
-            cols: 3
+            cols: 4
             spacing: 10
             padding: 10
 
             Button:
                 id: btn1
                 text: 'Wodka Martini'
+                font_size: 36
+                background_normal: 'src/ressources/Wodka_Martini.jpg'
+
                 on_press: app.IncomingDrinkOrder(self)
                     
                 
             Button:
                 id: btn2
                 text: 'Wodka Soda'
+                font_size: 36
+                background_normal: 'src/ressources/Wodka_Soda.jpg'
+
                 on_press: app.IncomingDrinkOrder(self)
 
             Button:
                 id: btn3
                 text: 'Wodka Cola'
+                font_size: 36
+                background_normal: 'src/ressources/Wodka_Cola.jpg'
+
                 on_press: app.IncomingDrinkOrder(self)
 
             Button:
                 id: btn4
                 text: 'Kamikaze'
+                font_size: 36
+                background_normal: 'src/ressources/Kamikaze.jpg'
+
                 on_press: app.IncomingDrinkOrder(self)
 
             Button:
@@ -145,13 +147,34 @@ WindowManager:
                 on_press: app.IncomingDrinkOrder(self)
 
             Button:
+                text: "[b]page 1[/b]"
+                markup: True 
+                background_normal: 'src/ressources/Arrow_left.png'
+                
+                on_press: 
+                    app.root.current = "page one"
+
+            Button:
+                id: btn13
+                text: 'Long Island Iced Tea'
+                on_press: app.IncomingDrinkOrder(self)
+
+
+            Button:
+                id: btn14
+                text: 'Long Island Iced Tea'
+                on_press: app.IncomingDrinkOrder(self)
+
+            Button:
                 text: "[b]page 2[/b]"
                 markup: True  
-                padding: (5, 5)  
-                border: (2, 2, 2, 2) 
+                background_normal: 'src/ressources/Arrow_right.png'
+
                 on_press: 
                     app.root.current = "page two"
-        
+                
+
+                
 
 <MainWindow2>:
     name: "page two"
@@ -245,6 +268,8 @@ WindowManager:
             size_hint_x: .8
 
         Button:
+
+
             text: "Cancel"
             on_press: 
                 app.root.current = "page one" if progress_bar.value < 100 else app.root.current

@@ -31,6 +31,8 @@ class ServoMotor(threading.Thread):
             self.move25ml()
         elif self.amount_ingredient == 5:
             self.move50ml()
+        elif self.amount_ingredient ==6:
+            self.move60ml()
         elif self.amount_ingredient == 7.5:
             self.move75ml()
         elif self.amount_ingredient == 10.0:
@@ -94,6 +96,31 @@ class ServoMotor(threading.Thread):
         except KeyboardInterrupt:
             self.p.stop()
             print("ServoMotor: failure")
+
+    def move60ml(self):
+            
+            try:
+                self.p.ChangeDutyCycle(2.5)  # Rotate to 0 degrees
+                time.sleep(0.5)
+                self.p.ChangeDutyCycle(7.5)  # Rotate to 90 degrees
+                time.sleep(3)
+                self.p.ChangeDutyCycle(2.5)  # Rotate back to 0 degrees
+                time.sleep(3)
+                self.p.ChangeDutyCycle(7.5)  # Rotate to 90 degrees
+                time.sleep(3)
+                self.p.ChangeDutyCycle(2.5)  # Rotate to 0 degrees
+                time.sleep(0.5)
+                self.p.ChangeDutyCycle(7.5)  # Rotate to 90 degrees
+                time.sleep(1.5)
+                self.p.ChangeDutyCycle(2.5)  # Rotate to 0 degrees
+                time.sleep(0.5)
+                
+                print("ServoMotor: 60ml")
+                self.p.stop()
+    
+            except KeyboardInterrupt:
+                self.p.stop()
+                print("ServoMotor: failure")
 
     def move75ml(self):
 

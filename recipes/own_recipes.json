@@ -80,7 +80,7 @@
             {
                 "unit": "cl",
                 "amount": 10,
-                "ingredient": "Soda"
+                "ingredient": "Sodawasser"
             }
         ],
         "garnish": "Limettenscheibe"
@@ -126,7 +126,7 @@
             {
                 "unit": "cl",
                 "amount": 8,
-                "ingredient": "Soda"
+                "ingredient": "Sodawasser"
             }
         ],
         "garnish": "Zitronenscheibe"
@@ -168,7 +168,7 @@
             {
                 "unit": "cl",
                 "amount": 6,
-                "ingredient": "Soda"
+                "ingredient": "Sodawasser"
             },
             {
                 "unit": "cl",
@@ -255,7 +255,7 @@
             {
                 "unit": "cl",
                 "amount": 10,
-                "ingredient": "Soda"
+                "ingredient": "Sodawasser"
             }
         ],
         "garnish": "Limettenscheibe"
@@ -593,7 +593,7 @@
             {
                 "unit": "cl",
                 "amount": 10,
-                "ingredient": "Soda"
+                "ingredient": "Sodawasser"
             }
         ],
         "garnish": "Orangenscheibe"
@@ -708,7 +708,7 @@
             {
                 "unit": "cl",
                 "amount": 6,
-                "ingredient": "Soda"
+                "ingredient": "Sodawasser"
             }
         ],
         "garnish": "Zitronenscheibe und Cocktailkirsche"
@@ -727,7 +727,7 @@
             {
                 "unit": "cl",
                 "amount": 10,
-                "ingredient": "Soda"
+                "ingredient": "Sodawasser"
             }
         ],
         "garnish": "Limettenscheibe"
@@ -820,7 +820,7 @@
             {
                 "unit": "cl",
                 "amount": 12,
-                "ingredient": "Soda"
+                "ingredient": "Sodawasser"
             }
         ],
         "garnish": "Keine"
@@ -879,7 +879,7 @@
             {
                 "unit": "cl",
                 "amount": 6,
-                "ingredient": "Soda"
+                "ingredient": "Sodawasser"
             },
             {
                 "special": "8 Himbeeren"
@@ -926,7 +926,7 @@
             {
                 "unit": "cl",
                 "amount": 6,
-                "ingredient": "Soda"
+                "ingredient": "Sodawasser"
             }
         ],
         "garnish": "Orangenzeste"
@@ -949,7 +949,7 @@
             {
                 "unit": "cl",
                 "amount": 6,
-                "ingredient": "Soda"
+                "ingredient": "Sodawasser"
             }
         ],
         "garnish": "Orangenscheibe"

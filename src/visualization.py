@@ -38,8 +38,6 @@ class MyLayout(Widget):
     pass
 
 #Layouts for the windows
-class PasswordWindow(Screen): #Layout for the password window
-    pass
 
 class PositioningWindow(Screen): #Layout for the positioning window
     pass
