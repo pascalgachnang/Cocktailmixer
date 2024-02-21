@@ -171,15 +171,15 @@ WindowManager:
                 on_press: app.IncomingDrinkOrder(self)
 
             Button:
-                text: "[b]page 1[/b]"
-                markup: True 
-                background_normal: 'src/ressources/Arrow_left.png'
-                
-                on_press: 
-                    app.root.current = "page one"
+                id: btn13
+                text: 'Martini'
+                font_size: 50
+                background_normal: 'src/ressources/Martini.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
 
             Button:
-                id: btn13
+                id: btn14
                 text: 'Gin Fizz'
                 font_size: 50
                 background_normal: 'src/ressources/Gin_Fizz.jpeg'
@@ -188,7 +188,7 @@ WindowManager:
 
 
             Button:
-                id: btn14
+                id: btn15
                 text: 'Gin Martini'
                 font_size: 50
                 background_normal: 'src/ressources/Gin_Martini.jpg'
@@ -198,7 +198,7 @@ WindowManager:
             Button:
                 text: "[b]page 2[/b]"
                 markup: True  
-                background_normal: 'src/ressources/Arrow_right.png'
+                background_normal: 'src/ressources/Pfeil_Weiter.jpg'
 
                 on_press: 
                     app.root.current = "page two"
