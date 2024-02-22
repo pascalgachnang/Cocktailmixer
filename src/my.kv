@@ -6,11 +6,13 @@ WindowManager:
     PositioningWindow:
     MainWindow1:
     MainWindow2:
+    MainWindow3:
     DrinkInProgress:
 
 
 <PositioningWindow>:
     name: "positioning"
+
     
     GridLayout:
         cols: 1
@@ -30,7 +32,7 @@ WindowManager:
             background_color: 0, 0.7, 0.7, 1  # Hintergrundfarbe des Buttons
             on_release: 
                 app.calling_reference_run()
-                Factory.P_PositioningComplete().open()
+                app.root.current = "page one" 
 
 #Popups Positioning
 
@@ -50,8 +52,9 @@ WindowManager:
         size_hint: 0.8, 0.2
         pos_hint:  {"x":0.1, "y":0.1}
         on_release:
-            app.root.current = "page one" 
             root.dismiss()
+            app.root.current = "page one" 
+            
       
         
 <MainWindow1>:
@@ -196,7 +199,6 @@ WindowManager:
                 on_press: app.IncomingDrinkOrder(self)
 
             Button:
-                text: "[b]page 2[/b]"
                 markup: True  
                 background_normal: 'src/ressources/Pfeil_Weiter.jpg'
 
@@ -221,62 +223,288 @@ WindowManager:
             height: 50  
 
         GridLayout:
-            cols: 3
+            cols: 4
             spacing: 10
             padding: 10
 
             Button:
-                text: 'Drink 1'
-                on_press: app.root.current = "drink in progress"
+                id: btn16
+                text: 'Perfect Martini'
+                font_size: 50
+                background_normal: 'src/ressources/Perfect_Martini.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
+                    
+            Button:
+                id: btn17
+                text: 'Bronx'
+                font_size: 50
+                background_normal: 'src/ressources/Bronx.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
 
             Button:
-                text: 'Drink 2'
-                on_press: app.root.current = "drink in progress"
+                id: btn18
+                text: 'Orange Blossom'
+                font_size: 50
+                background_normal: 'src/ressources/Orange_Blossom.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
 
             Button:
-                text: 'Drink 3'
-                on_press: app.root.current = "drink in progress"
+                id: btn19
+                text: 'Tom Collins'
+                font_size: 50
+                background_normal: 'src/ressources/Tom_Collins.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
 
             Button:
-                text: 'Drink 4'
-                on_press: app.root.current = "drink in progress"
+                id: btn20
+                text: 'Cucumber Gin Cooler'
+                font_size: 42
+                background_normal: 'src/ressources/Cucumber_Gin_Cooler.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
 
             Button:
-                text: 'Drink 5'
-                on_press: app.root.current = "drink in progress"
+                id: btn21
+                text: 'Raspberry Gin Lemonade'
+                font_size: 42
+                background_normal: 'src/ressources/Raspberry_Gin_Lemonade.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
 
             Button:
-                text: 'Drink 6'
-                on_press: app.root.current = "drink in progress"
+                id: btn22
+                text: 'Gin Basil Smash'
+                font_size: 50
+                background_normal: 'src/ressources/Gin_Basil_Smash.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
 
             Button:
-                text: 'Drink 7'
-                on_press: app.root.current = "drink in progress"
+                id: btn23
+                text: 'Sweet Martini'
+                font_size: 50
+                background_normal: 'src/ressources/Sweet_Martini.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
 
             Button:
-                text: 'Drink 8'
-                on_press: app.root.current = "drink in progress"
+                id: btn24
+                text: 'Daiquiri'
+                font_size: 50
+                background_normal: 'src/ressources/Daiquiri.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
 
             Button:
-                text: 'Drink 9'
-                on_press: app.root.current = "drink in progress"
+                id: btn25
+                text: 'Mojito'
+                font_size: 50
+                background_normal: 'src/ressources/Mojito.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
 
             Button:
-                text: 'Drink 9'
-                on_press: app.root.current = "drink in progress"
+                id: btn26
+                text: 'Rum Cola'
+                font_size: 50
+                background_normal: 'src/ressources/Rum_Cola.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
 
             Button:
-                text: 'Drink 9'
-                on_press: app.root.current = "drink in progress"
+                id: btn27
+                text: 'Cuba Libre'
+                font_size: 50
+                background_normal: 'src/ressources/Cuba_Libre.jpeg'
+
+                on_press: app.IncomingDrinkOrder(self)
 
             Button:
-                text: "[b]page 1[/b]"
+                id: btn28
                 markup: True  
-                padding: (5, 5)  
-                border: (2, 2, 2, 2) 
+                background_normal: 'src/ressources/Pfeil_Zurück.jpg'
+
                 on_press: 
                     app.root.current = "page one"
-                    root.manager.transition.direction = "left"
+
+            Button:
+                id: btn29
+                text: 'Mai Tai'
+                font_size: 50
+                background_normal: 'src/ressources/Mai_Tai.png'
+
+                on_press: app.IncomingDrinkOrder(self)
+
+
+            Button:
+                id: btn30
+                text: 'Rum Soda'
+                font_size: 50
+                background_normal: 'src/ressources/Rum_Soda.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
+
+            Button:
+                id: btn31
+                markup: True  
+                background_normal: 'src/ressources/Pfeil_Weiter.jpg'
+
+                on_press: 
+                    app.root.current = "page three"   
+           
+<MainWindow3>:
+    name: "page three"
+    
+    BoxLayout:
+        orientation: 'vertical'
+
+        Label:
+            text: '[b]Choose your drink[/b]'
+            markup: True  
+            padding: (5, 5)  
+            border: (2, 2, 2, 2)  
+            size_hint_y: None  
+            height: 50  
+
+        GridLayout:
+            cols: 4
+            spacing: 10
+            padding: 10
+
+            Button:
+                id: btn32
+                text: 'Perfect Martini'
+                font_size: 50
+                background_normal: 'src/ressources/Perfect_Martini.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
+                    
+            Button:
+                id: btn33
+                text: 'Bronx'
+                font_size: 50
+                background_normal: 'src/ressources/Bronx.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
+
+            Button:
+                id: btn34
+                text: 'Orange Blossom'
+                font_size: 50
+                background_normal: 'src/ressources/Orange_Blossom.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
+
+            Button:
+                id: btn35
+                text: 'Tom Collins'
+                font_size: 50
+                background_normal: 'src/ressources/Tom_Collins.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
+
+            Button:
+                id: btn36
+                text: 'Cucumber Gin Cooler'
+                font_size: 42
+                background_normal: 'src/ressources/Cucumber_Gin_Cooler.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
+
+            Button:
+                id: btn37
+                text: 'Raspberry Gin Lemonade'
+                font_size: 42
+                background_normal: 'src/ressources/Raspberry_Gin_Lemonade.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
+
+            Button:
+                id: btn38
+                text: 'Gin Basil Smash'
+                font_size: 50
+                background_normal: 'src/ressources/Gin_Basil_Smash.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
+
+            Button:
+                id: btn39
+                text: 'Sweet Martini'
+                font_size: 50
+                background_normal: 'src/ressources/Sweet_Martini.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
+
+            Button:
+                id: btn40
+                text: 'Daiquiri'
+                font_size: 50
+                background_normal: 'src/ressources/Daiquiri.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
+
+            Button:
+                id: btn41
+                text: 'Mojito'
+                font_size: 50
+                background_normal: 'src/ressources/Mojito.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
+
+            Button:
+                id: btn42
+                text: 'Rum Cola'
+                font_size: 50
+                background_normal: 'src/ressources/Rum_Cola.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
+
+            Button:
+                id: btn43
+                text: 'Cuba Libre'
+                font_size: 50
+                background_normal: 'src/ressources/Cuba_Libre.jpeg'
+
+                on_press: app.IncomingDrinkOrder(self)
+
+            Button:
+                id: btn44
+                markup: True  
+                background_normal: 'src/ressources/Pfeil_Zurück.jpg'
+
+                on_press: 
+                    app.root.current = "page two"
+
+            Button:
+                id: btn45
+                text: 'Mai Tai'
+                font_size: 50
+                background_normal: 'src/ressources/Mai_Tai.png'
+
+                on_press: app.IncomingDrinkOrder(self)
+
+
+            Button:
+                id: btn46
+                text: 'Rum Soda'
+                font_size: 50
+                background_normal: 'src/ressources/Rum_Soda.jpg'
+
+                on_press: app.IncomingDrinkOrder(self)
+
+            Button:
+                id: btn47
+                text: 'Rum Soda'
+                font_size: 50
+                background_normal: 'src/ressources/Rum_Soda.jpg'
+
+                on_press: app.IncomingDrinkOrder(self) 
+
+
 
 <DrinkInProgress>:
     name: "drink in progress"

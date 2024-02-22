@@ -2,6 +2,7 @@ import kivy
 import logging
 import time
 import drinkprocessor
+import os
 from kivy.app import App
 from kivy.uix.widget import Widget  
 from kivy.uix.button import Button  
@@ -15,6 +16,8 @@ from kivy.uix.popup import Popup
 from kivy.uix.floatlayout import FloatLayout
 from kivy.clock import Clock
 from kivy.event import EventDispatcher
+from kivy.uix.image import Image
+from kivy.core.image import Image as CoreImage
 
 
 
@@ -48,6 +51,9 @@ class MainWindow1(Screen): #Layout for the main window, first page
 class MainWindow2(Screen): #Layout for the main window, second page
     pass
 
+class MainWindow3(Screen):
+    pass
+
 class DrinkInProgress(Screen): #Layout for the drink in progress window
     pass
     
@@ -59,6 +65,7 @@ kv = Builder.load_file("my.kv")
 
 class MyCocktailmixerApp(App):
     def build(self):
+        self.image_cache = {}  # We store the images in a cache to avoid loading them multiple times
         self.custom_dispatcher = CustomEventDispatcher()    
         self.drinkprocessor = drinkprocessor.OrderQueue(self)   # Hier übergeben wir die App Instanz an den OrderQueue
         self.drinkprocessor.start()
@@ -69,10 +76,32 @@ class MyCocktailmixerApp(App):
         
         # Listen for the custom event
         self.custom_dispatcher.bind(on_custom_action=self.on_custom_action)
+        #self.preload_images()
 
         return kv 
+    
+    """
+    def preload_images(self, path=None):      
+        if path:
+            if path not in self.image_cache:
+                image = CoreImage(path)
+                self.image_cache[path] = image
+                
+        else:
+            # Andernfalls lade alle Bilder im Ordner
+            image_folder = 'src/ressources'
+            image_paths = [os.path.join(image_folder, f) for f in os.listdir(image_folder) if os.path.isfile(os.path.join(image_folder, f))]
 
+            for path in image_paths:
+                if path not in self.image_cache:
+                    image = CoreImage(path)
+                    self.image_cache[path] = image
+                
 
+        logging.info(f"Preloaded images: {self.image_cache}")
+    
+    """
+    
     def on_button_press(self, instance):
         # Access the instance of the pressed button
         logging.info(f"Button pressed: {instance.text}")
