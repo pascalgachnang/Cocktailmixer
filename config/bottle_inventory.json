@@ -71,6 +71,15 @@
         "type": "pumped",
         "pump number": 4
 
+    },
+    {
+        "name": "Zuckersirup",
+        "type": "manual",
+        "position": 404
+    },
+    {
+        "name": "Cranberrysaft",
+        "type": "manual",
+        "position": 404
     }
-    
 ]

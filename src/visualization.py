@@ -80,27 +80,7 @@ class MyCocktailmixerApp(App):
 
         return kv 
     
-    """
-    def preload_images(self, path=None):      
-        if path:
-            if path not in self.image_cache:
-                image = CoreImage(path)
-                self.image_cache[path] = image
-                
-        else:
-            # Andernfalls lade alle Bilder im Ordner
-            image_folder = 'src/ressources'
-            image_paths = [os.path.join(image_folder, f) for f in os.listdir(image_folder) if os.path.isfile(os.path.join(image_folder, f))]
-
-            for path in image_paths:
-                if path not in self.image_cache:
-                    image = CoreImage(path)
-                    self.image_cache[path] = image
-                
-
-        logging.info(f"Preloaded images: {self.image_cache}")
     
-    """
     
     def on_button_press(self, instance):
         # Access the instance of the pressed button

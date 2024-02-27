@@ -56,12 +56,26 @@ class OrderQueue(threading.Thread):
             
             
             
-            self.CallStepperMotor(ingredientDetail.getPosition())
-            time.sleep(1)
+            logging.info("Zutat: {0}, Menge: {1}, Unit: {2}, Type: {3}, Position: {4}".format(ingredientDetail.getName(), \
+                                                                                        ingredientDetail.getAmount(), \
+                                                                                        ingredientDetail.getUnit(), \
+                                                                                        ingredientDetail.getType(), \
+                                                                                        ingredientDetail.getPosition()))
+                      
+            
+        
+
             if ingredientDetail.getType() == "gravity":
+                self.CallStepperMotor(ingredientDetail.getPosition())
+                time.sleep(1)
                 self.CallServoMotor(ingredientDetail.getAmount())
-            else:
+            elif ingredientDetail.getType() == "pumped":
+                self.CallStepperMotor(ingredientDetail.getPosition())
+                time.sleep(1)
                 self.CallRelayBoard(ingredientDetail.getAmount(), ingredientDetail.getName())
+            elif ingredientDetail.getType() == "manual":
+                logging.info("Manual ingredient: {0}".format(ingredientDetail.getName()))
+                
             time.sleep(1)
             self.CallWeightSensor(ingredientDetail.getAmount())
 
@@ -70,7 +84,8 @@ class OrderQueue(threading.Thread):
         print("*"*20)
         
             #main.CallWeightSensor()
-        
+    
+    
                 
     def CallStepperMotor(self, position_ingredient):
         logging.info("Calling StepperMotor")
@@ -191,10 +206,7 @@ class Recipe():
                 return bottle
 
 
-        
-        msg = "Ingredient not found: {0}".format(ingredient)
-        logging.info(msg)
-        return None  # oder eine andere Reaktion, abhängig von deinen Anforderungen
+    
 
         
             
