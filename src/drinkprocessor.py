@@ -19,6 +19,7 @@ class OrderQueue(threading.Thread):
         self.app_instance = app_instance
         self.order_queue = queue.Queue()
         self.stepm = StepperMotor()
+        self.servm = ServoMotor()
         self.drink_in_progress = False
         
         
@@ -69,15 +70,16 @@ class OrderQueue(threading.Thread):
                 self.CallStepperMotor(ingredientDetail.getPosition())
                 time.sleep(1)
                 self.CallServoMotor(ingredientDetail.getAmount())
+                self.CallWeightSensor(ingredientDetail.getAmount())
             elif ingredientDetail.getType() == "pumped":
                 self.CallStepperMotor(ingredientDetail.getPosition())
                 time.sleep(1)
                 self.CallRelayBoard(ingredientDetail.getAmount(), ingredientDetail.getName())
+                self.CallWeightSensor(ingredientDetail.getAmount())
             elif ingredientDetail.getType() == "manual":
                 logging.info("Manual ingredient: {0}".format(ingredientDetail.getName()))
                 
             time.sleep(1)
-            self.CallWeightSensor(ingredientDetail.getAmount())
 
         self.stepm.back_to_startposition()
 
@@ -94,9 +96,7 @@ class OrderQueue(threading.Thread):
 
     def CallServoMotor(self, amount_ingredient):
         logging.info("Calling ServoMotor")
-        self.servm = ServoMotor(amount_ingredient)
-        self.servm.start()
-        self.servm.join()
+        self.servm.amount_controlling(amount_ingredient)
         logging.info("Calling ServoMotor: {0}".format(self.servm))
 
     def CallRelayBoard(self, amount_ingredient, ingredient_name):
@@ -189,7 +189,7 @@ class Recipe():
                     ingredientDetails.setName(ingredient.get('ingredient'))
                     ingredientDetails.setAmount(ingredient.get('amount'))
                     ingredientDetails.setUnit(ingredient.get('unit'))
-                    ingredientDetails.setPosition(self.getBottle(ingredient.get('ingredient')).get('position'))            
+                    ingredientDetails.setPosition(self.getBottle(ingredient.get('ingredient', {})).get('position', None))            
                     ingredientDetails.setType(self.getBottle(ingredient.get('ingredient')).get('type'))
 
                     self.ingredients_details.append(ingredientDetails)
