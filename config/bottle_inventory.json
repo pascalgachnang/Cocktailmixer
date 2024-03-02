@@ -1,73 +1,73 @@
 [
     {
         "name": "Wodka",
-        "position": 1000,
+        "position": 1900,
         "type": "gravity"
     },
     {
         "name": "Gin",
-        "position": 2000,
+        "position": 3900,
         "type": "gravity"
     },
     {
         "name": "Rum weiss",
-        "position": 3000,
+        "position": 5900,
         "type": "gravity"
     },
     {
         "name": "Tequila",
-        "position": 4000,
+        "position": 7900,
         "type": "gravity"
     },
     {
         "name": "Bourbon Whiskey",
-        "position": 5000,
+        "position": 9900,
         "type": "gravity"
     },
     {
         "name": "Wermut rot",
-        "position": 6000,
+        "position": 11900,
         "type": "gravity"
     },
     {
         "name": "Orangenlikör",
-        "position": 7000,
+        "position": 13900,
         "type": "gravity"
     },
     {
         "name": "Brandy",
-        "position": 8000,
+        "position": 15900,
         "type": "gravity"
     },
     {
         "name": "Wermut weiss",
-        "position": 9000,
+        "position": 17900,
         "type": "gravity"   
     },
     {
         "name": "Limettensaft",
-        "position": 12000,
+        "position": 11000,
         "type": "pumped",
         "pump number": 1
 
     },
     {
         "name": "Orangensaft",
-        "position": 12000,
+        "position": 11000,
         "type": "pumped",
         "pump number": 2
 
     },
     {
         "name": "Sodawasser",
-        "position": 12000,
+        "position": 11000,
         "type": "pumped",
         "pump number": 3
 
     },
     {
         "name": "Cola",
-        "position": 12000,
+        "position": 11000,
         "type": "pumped",
         "pump number": 4
 
