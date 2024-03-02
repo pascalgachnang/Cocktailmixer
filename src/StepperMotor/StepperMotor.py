@@ -20,7 +20,7 @@ class StepperMotor():
         self.stepdelay_end_reference_run = self.config.getfloat('MotorSteuerung', 'stepdelay_end_reference_run')
         self.end_switch_pin = end_switch_pin
         self.current_position = 0
-        self.motor_direction = 'forward'
+        self.motor_direction = 'backward'
         
         self.total_steps = None
         self.acceleration_steps = acceleration_steps
@@ -88,7 +88,7 @@ class StepperMotor():
         
     def reference_run(self):
         # Reference run of the stepper motor
-        self.motor_direction = 'backward'
+        self.motor_direction = 'forward'
 
         try:
 
@@ -132,7 +132,7 @@ class StepperMotor():
         self.total_steps = position_ingredient - self.current_position
 
         # Bestimme die Richtung des Schrittmotors
-        self.motor_direction = 'forward' if self.total_steps > 0 else 'backward'
+        self.motor_direction = 'backward' if self.total_steps > 0 else 'forward'
         print("current position: ", self.current_position, "motor direction: ", self.motor_direction)
 
         # Aktualisiere die aktuelle Position
@@ -151,7 +151,7 @@ class StepperMotor():
         if abs(self.total_steps) - 2*self.acceleration_steps < 0:
             self.acceleration_steps = self.total_steps // 2
 
-        self.motor_direction = 'backward' 
+        self.motor_direction = 'forward' 
         self._nema17_ramp()
         time.sleep(0.5)
         print("back to start position completed")
