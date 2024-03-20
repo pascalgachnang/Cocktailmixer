@@ -7,6 +7,7 @@ from StepperMotor.StepperMotor import StepperMotor
 from ServoMotor.ServoMotor import ServoMotor
 from RelayBoard.RelayBoard import RelayBoard
 from WeightSensor.weightsensor import WeightSensor
+from LedRing.LedRing import LedRing
 
 
 
@@ -20,6 +21,7 @@ class OrderQueue(threading.Thread):
         self.order_queue = queue.Queue()
         self.stepm = StepperMotor()
         self.servm = ServoMotor()
+        self.ledring = LedRing()
         self.drink_in_progress = False
         
         
@@ -34,10 +36,12 @@ class OrderQueue(threading.Thread):
         while True:
             order = self.order_queue.get()
             self.drink_in_progress = True
-            self.app_instance.custom_dispatcher.do_custom_action(self.drink_in_progress) # Sends status to dispatcher
+            #self.app_instance.custom_dispatcher.do_custom_action(self.drink_in_progress) # Sends status to dispatcher
+            #self.CallLedRing((255, 0, 0)) # Red
             self.processOrder(order)
             self.drink_in_progress = False
-            self.app_instance.custom_dispatcher.do_custom_action(self.drink_in_progress) # Sends status to dispatcher
+            #self.CallLedRing((0, 255, 0)) # Green
+            #self.app_instance.custom_dispatcher.do_custom_action(self.drink_in_progress) # Sends status to dispatcher
     
         
 
@@ -112,6 +116,15 @@ class OrderQueue(threading.Thread):
         self.weights.start()
         self.weights.join()
         logging.info("Calling WeightSensor: {0}".format(self.weights))
+
+    def CallLedRing(self, color):
+        logging.info("Calling LedRing")
+        self.ledring.set_color(color)
+        logging.info("Calling LedRing: {0}".format(self.ledring))
+
+    
+    
+
 
 class Order():
     
@@ -189,7 +202,8 @@ class Recipe():
                     ingredientDetails.setName(ingredient.get('ingredient'))
                     ingredientDetails.setAmount(ingredient.get('amount'))
                     ingredientDetails.setUnit(ingredient.get('unit'))
-                    ingredientDetails.setPosition(self.getBottle(ingredient.get('ingredient', {})).get('position', None))            
+                    #ingredientDetails.setPosition(self.getBottle(ingredient.get('ingredient', {})).get('position', None))
+                    ingredientDetails.setPosition(self.getBottle(ingredient.get('ingredient')).get('position'))            
                     ingredientDetails.setType(self.getBottle(ingredient.get('ingredient')).get('type'))
 
                     self.ingredients_details.append(ingredientDetails)

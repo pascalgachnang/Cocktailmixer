@@ -7,8 +7,8 @@ class ServoMotor():
     PWM_FREQ = 50
     CHIP = 0
 
-    POSITION_SPENDER = 2.8
-    POSITION_HOME = 8
+    POSITION_SPENDER = 2.65
+    POSITION_HOME = 4.5
 
     def __init__(self):
         self.p = HardwarePWM(pwm_channel = self.PWM_CHANNEL, hz = self.PWM_FREQ, chip = self.CHIP)
@@ -22,13 +22,11 @@ class ServoMotor():
 
     def amount_controlling(self, amount_ingredient):
         fncMap = {
-            1:   self.move50ml,
-            1.5: self.move50ml,
-            2.5: self.move50ml,
+            1.5: self.move15ml,
+            2.5: self.move25ml,
+            4:   self.move40ml,
             5:   self.move50ml,
-            6:   self.move50ml,
-            7.5: self.move50ml,
-            10.0: self.move50ml 
+            6:   self.move60ml,
         }
 
         try:
@@ -44,17 +42,12 @@ class ServoMotor():
     def move15ml(self):
             
         try:
-            # Rotate to 45 degrees
-            self.p.change_duty_cycle(2.5)  # Rotate to 0 degrees
-            time.sleep(0.5)
-            self.p.change_duty_cycle(7.5)  # Rotate to 90 degrees
+            self.p.change_duty_cycle(self.POSITION_SPENDER)  # Rotate to 0 degrees
             time.sleep(2)
-            self.p.change_duty_cycle(2.5)  # Rotate back to 0 degrees
-            time.sleep(0.5)
+            self.p.change_duty_cycle(self.POSITION_HOME)  # Rotate back to 45 degrees
 
-            print("ServoMotor: 15ml")
-            self.p.stop()
-            
+            print("ServoMotor: 50ml")
+            #self.p.stop()
 
         except KeyboardInterrupt:
             self.p.stop()
@@ -63,15 +56,31 @@ class ServoMotor():
     def move25ml(self):
 
         try:
-            self.p.change_duty_cycle(5)  # Rotate to 0 degrees
-            time.sleep(0.5)
-            self.p.change_duty_cycle(2.5)  # Rotate to 90 degrees
-            time.sleep(3)
-            self.p.change_duty_cycle(5)  # Rotate back to 0 degrees
-            time.sleep(0.5)
+            self.p.change_duty_cycle(self.POSITION_SPENDER)  # Rotate to 0 degrees
+            time.sleep(3.5)
+            self.p.change_duty_cycle(self.POSITION_HOME)  # Rotate back to 45 degrees
 
-            print("ServoMotor: 25ml")
+            print("ServoMotor: 50ml")
+            #self.p.stop()
+
+        except KeyboardInterrupt:
             self.p.stop()
+            print("ServoMotor: failure")
+
+
+    def move40ml(self):
+            
+        try:
+            self.p.change_duty_cycle(self.POSITION_SPENDER)  # Rotate to 0 degrees
+            time.sleep(3.5)
+            self.p.change_duty_cycle(self.POSITION_HOME)  # Rotate back to 45 degrees
+            time.sleep(3)
+            self.p.change_duty_cycle(self.POSITION_SPENDER)  # Rotate to 0 degrees
+            time.sleep(2.5)
+            self.p.change_duty_cycle(self.POSITION_HOME)  # Rotate to 45 degrees
+
+            print("ServoMotor: 50ml")
+            #self.p.stop()
 
         except KeyboardInterrupt:
             self.p.stop()
@@ -82,11 +91,11 @@ class ServoMotor():
             
         try:
             self.p.change_duty_cycle(self.POSITION_SPENDER)  # Rotate to 0 degrees
-            time.sleep(3)
+            time.sleep(3.5)
             self.p.change_duty_cycle(self.POSITION_HOME)  # Rotate back to 45 degrees
             time.sleep(3)
             self.p.change_duty_cycle(self.POSITION_SPENDER)  # Rotate to 0 degrees
-            time.sleep(3)
+            time.sleep(3.5)
             self.p.change_duty_cycle(self.POSITION_HOME)  # Rotate to 45 degrees
 
             print("ServoMotor: 50ml")
@@ -99,78 +108,24 @@ class ServoMotor():
     def move60ml(self):
             
         try:
-            self.p.change_duty_cycle(2.5)  # Rotate to 0 degrees
-            time.sleep(0.5)
-            self.p.change_duty_cycle(7.5)  # Rotate to 90 degrees
+            self.p.change_duty_cycle(self.POSITION_SPENDER)  # Rotate to 0 degrees
+            time.sleep(3.5)
+            self.p.change_duty_cycle(self.POSITION_HOME)  # Rotate back to 45 degrees
             time.sleep(3)
-            self.p.change_duty_cycle(2.5)  # Rotate back to 0 degrees
+            self.p.change_duty_cycle(self.POSITION_SPENDER)  # Rotate to 0 degrees
+            time.sleep(3.5)
+            self.p.change_duty_cycle(self.POSITION_HOME)  # Rotate to 45 degrees
             time.sleep(3)
-            self.p.change_duty_cycle(7.5)  # Rotate to 90 degrees
-            time.sleep(3)
-            self.p.change_duty_cycle(2.5)  # Rotate to 0 degrees
-            time.sleep(0.5)
-            self.p.change_duty_cycle(7.5)  # Rotate to 90 degrees
+            self.p.change_duty_cycle(self.POSITION_SPENDER)  # Rotate to 0 degrees
             time.sleep(1.5)
-            self.p.change_duty_cycle(2.5)  # Rotate to 0 degrees
-            time.sleep(0.5)
-            
-            print("ServoMotor: 60ml")
-            self.p.stop()
+            self.p.change_duty_cycle(self.POSITION_HOME)  # Rotate to 45 degrees
+
+            print("ServoMotor: 50ml")
+            #self.p.stop()
 
         except KeyboardInterrupt:
             self.p.stop()
             print("ServoMotor: failure")
 
-    def move75ml(self):
 
-        try:
-            self.p.change_duty_cycle(2.5)  # Rotate to 0 degrees
-            time.sleep(0.5)
-            self.p.change_duty_cycle(7.5)  # Rotate to 90 degrees
-            time.sleep(3)
-            self.p.change_duty_cycle(2.5)  # Rotate back to 0 degrees
-            time.sleep(3)
-            self.p.change_duty_cycle(7.5)  # Rotate to 90 degrees
-            time.sleep(3)
-            self.p.change_duty_cycle(2.5)  # Rotate to 0 degrees
-            time.sleep(3)
-            self.p.change_duty_cycle(7.5)  # Rotate to 90 degrees
-            time.sleep(3)
-            self.p.change_duty_cycle(2.5)  # Rotate to 0 degrees
-            time.sleep(0.5)
-
-            print("ServoMotor: 75ml")
-            self.p.stop()
-
-        except KeyboardInterrupt:
-            self.p.stop()
-            print("ServoMotor: failure")
-
-    def move100ml(self):
-
-        try:
-            self.p.change_duty_cycle(2.5)  # Rotate to 0 degrees
-            time.sleep(0.5)
-            self.p.change_duty_cycle(7.5)  # Rotate to 90 degrees
-            time.sleep(3)
-            self.p.change_duty_cycle(2.5)  # Rotate back to 0 degrees
-            time.sleep(3)
-            self.p.change_duty_cycle(7.5)  # Rotate to 90 degrees
-            time.sleep(3)
-            self.p.change_duty_cycle(2.5)  # Rotate to 0 degrees
-            time.sleep(3)
-            self.p.change_duty_cycle(7.5)  # Rotate to 90 degrees
-            time.sleep(3)
-            self.p.change_duty_cycle(2.5)  # Rotate to 0 degrees
-            time.sleep(3)
-            self.p.change_duty_cycle(7.5)  # Rotate to 90 degrees
-            time.sleep(3)
-            self.p.change_duty_cycle(2.5)  # Rotate to 0 degrees
-            time.sleep(0.5)
-
-            print("ServoMotor: 100ml")
-            self.p.stop()
-
-        except KeyboardInterrupt:
-            self.p.stop()
-            print("ServoMotor: failure")
+    

@@ -31,7 +31,7 @@
         "ingredients": [
             {
                 "unit": "cl",
-                "amount": 4.5,
+                "amount": 5,
                 "ingredient": "Rum weiss"
             },
             {
@@ -60,7 +60,7 @@
             },
             {
                 "unit": "cl",
-                "amount": 1,
+                "amount": 1.5,
                 "ingredient": "Wermut weiss"
             }
         ],
@@ -110,12 +110,12 @@
         "ingredients": [
             {
                 "unit": "cl",
-                "amount": 4.5,
+                "amount": 5,
                 "ingredient": "Gin"
             },
             {
                 "unit": "cl",
-                "amount": 3,
+                "amount": 2.5,
                 "ingredient": "Zitronensaft"
             },
             {
@@ -144,7 +144,7 @@
             },
             {
                 "unit": "cl",
-                "amount": 1,
+                "amount": 1.5,
                 "ingredient": "Wermut weiss"
             }
         ],
@@ -162,7 +162,7 @@
             },
             {
                 "unit": "cl",
-                "amount": 3,
+                "amount": 2.5,
                 "ingredient": "Limettensaft"
             },
             {
@@ -226,7 +226,7 @@
         "ingredients": [
             {
                 "unit": "cl",
-                "amount": 4.5,
+                "amount": 5,
                 "ingredient": "Tequila"
             },
             {
@@ -286,12 +286,12 @@
         "ingredients": [
             {
                 "unit": "cl",
-                "amount": 4.5,
+                "amount": 5,
                 "ingredient": "Bourbon Whiskey"
             },
             {
                 "unit": "cl",
-                "amount": 3,
+                "amount": 2.5,
                 "ingredient": "Limettensaft"
             },
             {
@@ -309,7 +309,7 @@
         "ingredients": [
             {
                 "unit": "cl",
-                "amount": 4.5,
+                "amount": 5,
                 "ingredient": "Bourbon Whiskey"
             },
             {
@@ -472,17 +472,17 @@
         "ingredients": [
             {
                 "unit": "cl",
-                "amount": 3,
+                "amount": 2.5,
                 "ingredient": "Wodka"
             },
             {
                 "unit": "cl",
-                "amount": 3,
+                "amount": 2.5,
                 "ingredient": "Orangenlikör"
             },
             {
                 "unit": "cl",
-                "amount": 3,
+                "amount": 2.5,
                 "ingredient": "Limettensaft"
             }
         ],
@@ -520,12 +520,12 @@
         "ingredients": [
             {
                 "unit": "cl",
-                "amount": 4.5,
+                "amount": 5,
                 "ingredient": "Brandy"
             },
             {
                 "unit": "cl",
-                "amount": 3,
+                "amount": 2.5,
                 "ingredient": "Limettensaft"
             },
             {
@@ -544,12 +544,12 @@
         "ingredients": [
             {
                 "unit": "cl",
-                "amount": 4.5,
+                "amount": 5,
                 "ingredient": "Brandy"
             },
             {
                 "unit": "cl",
-                "amount": 3,
+                "amount": 2.5,
                 "ingredient": "Limettensaft"
             },
             {
@@ -573,7 +573,7 @@
             },
             {
                 "unit": "cl",
-                "amount": 1,
+                "amount": 1.5,
                 "ingredient": "Wermut weiss"
             }
         ],
@@ -611,12 +611,12 @@
             },
             {
                 "unit": "cl",
-                "amount": 1,
+                "amount": 1.5,
                 "ingredient": "Wermut rot"
             },
             {
                 "unit": "cl",
-                "amount": 1,
+                "amount": 1.5,
                 "ingredient": "Wermut weiss"
             }
         ],
@@ -630,7 +630,7 @@
         "ingredients": [
             {
                 "unit": "cl",
-                "amount": 3,
+                "amount": 2.5,
                 "ingredient": "Gin"
             },
             {
@@ -678,7 +678,7 @@
             },
             {
                 "unit": "cl",
-                "amount": 3,
+                "amount": 2.5,
                 "ingredient": "Orangensaft"
             }
         ],
@@ -692,12 +692,12 @@
         "ingredients": [
             {
                 "unit": "cl",
-                "amount": 4.5,
+                "amount": 5,
                 "ingredient": "Gin"
             },
             {
                 "unit": "cl",
-                "amount": 3,
+                "amount": 2.5,
                 "ingredient": "Limettensaft"
             },
             {
@@ -758,7 +758,7 @@
         "ingredients": [
             {
                 "unit": "cl",
-                "amount": 4.5,
+                "amount": 5,
                 "ingredient": "Wodka"
             },
             {
@@ -781,12 +781,12 @@
         "ingredients": [
             {
                 "unit": "cl",
-                "amount": 4.5,
+                "amount": 5,
                 "ingredient": "Wodka"
             },
             {
                 "unit": "cl",
-                "amount": 3,
+                "amount": 2.5,
                 "ingredient": "Limettensaft"
             },
             {
@@ -809,7 +809,7 @@
             },
             {
                 "unit": "cl",
-                "amount": 3,
+                "amount": 2.5,
                 "ingredient": "Limettensaft"
             },
             {
@@ -833,7 +833,7 @@
         "ingredients": [
             {
                 "unit": "cl",
-                "amount": 4.5,
+                "amount": 5,
                 "ingredient": "Gin"
             },
             {
@@ -843,7 +843,7 @@
             },
             {
                 "unit": "cl",
-                "amount": 3,
+                "amount": 2.5,
                 "ingredient": "Limettensaft"
             },
             {
@@ -938,12 +938,12 @@
         "ingredients": [
             {
                 "unit": "cl",
-                "amount": 4.5,
+                "amount": 5,
                 "ingredient": "Orangenlikör"
             },
             {
                 "unit": "cl",
-                "amount": 3,
+                "amount": 2.5,
                 "ingredient": "Limettensaft"
             },
             {
@@ -984,12 +984,12 @@
         "ingredients": [
             {
                 "unit": "cl",
-                "amount": 4.5,
+                "amount": 5,
                 "ingredient": "Bourbon Whiskey"
             },
             {
                 "unit": "cl",
-                "amount": 3,
+                "amount": 2.5,
                 "ingredient": "Cola"
             },
             {
@@ -1023,7 +1023,7 @@
             },
             {
                 "unit": "cl",
-                "amount": 3,
+                "amount": 2.5,
                 "ingredient": "Cranberrysaft"
             }
         ],
@@ -1048,7 +1048,7 @@
             },
             {
                 "unit": "cl",
-                "amount": 0.75,
+                "amount": 1.5,
                 "ingredient": "Wermut weiss"
             }
         ],

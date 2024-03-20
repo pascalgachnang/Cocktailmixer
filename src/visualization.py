@@ -124,10 +124,12 @@ class MyCocktailmixerApp(App):
     def on_custom_action(self, *args):
         # This is the method that is called when the custom event is dispatched
 
+        
+
         logging.info(f"I am dispatched {args[1]} ID: {self.instance}")
 
         data = args[1]
-
+        """
         # switch to the drink in progress screen and back to the main window
         if data == 1:
             screen = "drink in progress"
@@ -137,8 +139,8 @@ class MyCocktailmixerApp(App):
         elif data == 0:
             #self.switchScreens(self.current_screen)
             #self.instance.text = "DONE"
-            self.instance.background_color = (0.5, 0.5, 1, 1)
-
+            self.instance.background_color = (0, 1, 0, 0)  # green colour transparent
+        """
     def switchScreens(self, screen):
         self.root.current = screen
         
