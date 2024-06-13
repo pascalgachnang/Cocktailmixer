@@ -22,4 +22,9 @@ class LedRing():
         self.pixels.fill(color)
         self.pixels.show()
 
+
+led = LedRing()
+led.set_color
+
+
     
