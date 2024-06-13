@@ -7,7 +7,7 @@ from StepperMotor.StepperMotor import StepperMotor
 from ServoMotor.ServoMotor import ServoMotor
 from RelayBoard.RelayBoard import RelayBoard
 from WeightSensor.weightsensor import WeightSensor
-from LedRing.LedRing import LedRing
+#from LedRing.LedRing import LedRing
 
 
 
@@ -21,7 +21,7 @@ class OrderQueue(threading.Thread):
         self.order_queue = queue.Queue()
         self.stepm = StepperMotor()
         self.servm = ServoMotor()
-        self.ledring = LedRing()
+        #self.ledring = LedRing()
         self.drink_in_progress = False
         
         
