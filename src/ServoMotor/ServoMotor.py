@@ -3,9 +3,19 @@ import time
 
 class ServoMotor():
 
-    PWM_CHANNEL = 0
+
+    # RaspberryPI 3,4
+    #PWM_CHANNEL = 0
+    #PWM_FREQ = 50
+    #CHIP = 0
+
+
+    # RaspberryPI 5
+    # For Rpi 1,2,3,4, use chip=0; For Rpi 5, use chip=2 
+    PWM_CHANNEL = 2
     PWM_FREQ = 50
-    CHIP = 0
+    CHIP = 2
+
 
     POSITION_SPENDER = 2.65
     POSITION_HOME = 4.5
