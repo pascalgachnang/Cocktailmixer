@@ -54,6 +54,11 @@ class MainWindow2(Screen): #Layout for the main window, second page
 class MainWindow3(Screen):
     pass
 
+class MainWindow4(Screen): #Layout for the main window, fourth page (test page) -> comment out if not needed!
+    pass
+
+
+
 class DrinkInProgress(Screen): #Layout for the drink in progress window
     pass
     

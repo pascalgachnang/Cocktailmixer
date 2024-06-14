@@ -1092,6 +1092,123 @@
             }
         ],
         "garnish": "Zitronenscheibe"
+    },
+    {
+        "name": "Test 9",
+        "glass": "Test",
+        "category": "Test",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Wodka"
+            }
+        ],
+        "garnish": ""
+    },
+    {
+        "name": "Test 8",
+        "glass": "Test",
+        "category": "Test",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Gin"
+            }
+        ],
+        "garnish": ""
+    },
+    {
+        "name": "Test 7",
+        "glass": "Test",
+        "category": "Test",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Rum weiss"
+            }
+        ],
+        "garnish": ""
+    },
+    {
+        "name": "Test 6",
+        "glass": "Test",
+        "category": "Test",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Tequila"
+            }
+        ],
+        "garnish": ""
+    },
+    {
+        "name": "Test 5",
+        "glass": "Test",
+        "category": "Test",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Bourbon Whiskey"
+            }
+        ],
+        "garnish": ""
+    },
+    {
+        "name": "Test 4",
+        "glass": "Test",
+        "category": "Test",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Wermut rot"
+            }
+        ],
+        "garnish": ""
+    },
+    {
+        "name": "Test 3",
+        "glass": "Test",
+        "category": "Test",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Orangenlikör"
+            }
+        ],
+        "garnish": ""
+    },
+    {
+        "name": "Test 2",
+        "glass": "Test",
+        "category": "Test",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Brandy"
+            }
+        ],
+        "garnish": ""
+    },
+    {
+        "name": "Test 1",
+        "glass": "Test",
+        "category": "Test",
+        "ingredients": [
+            {
+                "unit": "cl",
+                "amount": 1.5,
+                "ingredient": "Wermut weiss"
+            }
+        ],
+        "garnish": ""
     }
    
 ] 
