@@ -67,15 +67,6 @@ WindowManager:
     BoxLayout:
         orientation: 'vertical'
 
-        Label:
-            text: '[b]Unsere Favoriten[/b]'
-            markup: True  
-            padding: (5, 5)  
-            border: (2, 2, 2, 2)
-            font_size: 40  
-            size_hint_y: None  
-            height: 50  
-
         GridLayout:
             cols: 4
             spacing: 10
@@ -193,6 +184,7 @@ WindowManager:
                 background_normal: 'src/ressources/Pfeil_Weiter.jpg'
 
                 on_press: 
+                    root.manager.transition.direction = 'left'
                     app.root.current = "page two"
                 
 
@@ -204,15 +196,6 @@ WindowManager:
     BoxLayout:
         orientation: 'vertical'
 
-        Label:
-            text: '[b]Wähle einen Drink aus[/b]'
-            markup: True  
-            padding: (5, 5)  
-            border: (2, 2, 2, 2)  
-            font_size: 42
-            size_hint_y: None  
-            height: 50  
-
         GridLayout:
             cols: 4
             spacing: 10
@@ -221,127 +204,100 @@ WindowManager:
             Button:
                 text: 'Perfect Martini'
                 font_size: 50
-                #background_normal: 'src/ressources/Perfect_Martini.jpg'
+                background_normal: 'src/ressources/Perfect_Martini.jpg'
 
                 on_press: app.IncomingDrinkOrder(self)
                     
             Button:
                 text: 'Bronx'
                 font_size: 50
-                #background_normal: 'src/ressources/Bronx.jpg'
+                background_normal: 'src/ressources/Bronx.jpg'
 
                 on_press: app.IncomingDrinkOrder(self)
 
             Button:
                 text: 'Orange Blossom'
                 font_size: 50
-                #background_normal: 'src/ressources/Orange_Blossom.jpg'
+                background_normal: 'src/ressources/Orange_Blossom.jpg'
 
                 on_press: app.IncomingDrinkOrder(self)
 
             Button:
                 text: 'Tom Collins'
                 font_size: 50
-                #background_normal: 'src/ressources/Tom_Collins.jpg'
+                background_normal: 'src/ressources/Tom_Collins.jpg'
 
                 on_press: app.IncomingDrinkOrder(self)
 
             Button:
                 text: 'Cucumber Gin Cooler'
-                font_size: 42
-                #background_normal: 'src/ressources/Cucumber_Gin_Cooler.jpg'
+                font_size: 50
+                background_normal: 'src/ressources/Cucumber_Gin_Cooler.jpg'
 
                 on_press: app.IncomingDrinkOrder(self)
 
             Button:
                 text: 'Raspberry Gin Lemonade'
                 font_size: 42
-                #background_normal: 'src/ressources/Raspberry_Gin_Lemonade.jpg'
+                background_normal: 'src/ressources/Raspberry_Gin_Lemonade.jpg'
 
                 on_press: app.IncomingDrinkOrder(self)
 
             Button:
                 text: 'Gin Basil Smash'
                 font_size: 50
-                #background_normal: 'src/ressources/Gin_Basil_Smash.jpg'
+                background_normal: 'src/ressources/Gin_Basil_Smash.jpg'
 
                 on_press: app.IncomingDrinkOrder(self)
 
             Button:
                 text: 'Sweet Martini'
                 font_size: 50
-                #background_normal: 'src/ressources/Sweet_Martini.jpg'
+                background_normal: 'src/ressources/Sweet_Martini.jpg'
 
                 on_press: app.IncomingDrinkOrder(self)
 
             Button:
                 text: 'Daiquiri'
                 font_size: 50
-                #background_normal: 'src/ressources/Daiquiri.jpg'
+                background_normal: 'src/ressources/Daiquiri.jpg'
 
                 on_press: app.IncomingDrinkOrder(self)
 
             Button:
                 text: 'Mojito'
                 font_size: 50
-                #background_normal: 'src/ressources/Mojito.jpg'
+                background_normal: 'src/ressources/Mojito.jpg'
 
                 on_press: app.IncomingDrinkOrder(self)
 
             Button:
                 text: 'Rum Cola'
                 font_size: 50
-                #background_normal: 'src/ressources/Rum_Cola.jpg'
+                background_normal: 'src/ressources/Rum_Cola.jpg'
 
                 on_press: app.IncomingDrinkOrder(self)
 
             Button:
                 text: 'Cuba Libre'
                 font_size: 50
-                #background_normal: 'src/ressources/Cuba_Libre.jpeg'
+                background_normal: 'src/ressources/Cuba_Libre.jpeg'
 
                 on_press: app.IncomingDrinkOrder(self)
 
-            Button:
-                text: 'Margarita'
-                font_size: 50
-                #background_normal: 'src/ressources/Cuba_Libre.jpeg'
-
-                on_press: app.IncomingDrinkOrder(self)
-
-            Button:
-                text: 'Old Fashioned'
-                font_size: 50
-                #background_normal: 'src/ressources/Cuba_Libre.jpeg'
-
-                on_press: app.IncomingDrinkOrder(self)
-
-            Button:
-                text: 'Mint Julep'
-                font_size: 50
-                #background_normal: 'src/ressources/Cuba_Libre.jpeg'
-
-                on_press: app.IncomingDrinkOrder(self)
-
-            Button:
-                text: 'Bourbon Cola'
-                font_size: 50
-                #background_normal: 'src/ressources/Cuba_Libre.jpeg'
-
-                on_press: app.IncomingDrinkOrder(self)
 
             Button:
                 markup: True  
                 background_normal: 'src/ressources/Pfeil_Zurück.jpg'
 
                 on_press: 
-                    root.manager.transition.direction = 'left'
+                    root.manager.transition.direction = 'right'
                     app.root.current = "page one"
 
             Button:
                 text: 'Mai Tai'
                 font_size: 50
-                #background_normal: 'src/ressources/Mai_Tai.png'
+                background_normal: 'src/ressources/Mai_Tai.png'
 
                 on_press: app.IncomingDrinkOrder(self)
 
@@ -349,7 +305,7 @@ WindowManager:
             Button:
                 text: 'Rum Soda'
                 font_size: 50
-                #background_normal: 'src/ressources/Rum_Soda.jpg'
+                background_normal: 'src/ressources/Rum_Soda.jpg'
 
                 on_press: app.IncomingDrinkOrder(self)
 
@@ -358,6 +314,7 @@ WindowManager:
                 background_normal: 'src/ressources/Pfeil_Weiter.jpg'
 
                 on_press: 
+                    root.manager.transition.direction = 'left'
                     app.root.current = "page three"   
            
 <MainWindow3>:
@@ -366,13 +323,6 @@ WindowManager:
     BoxLayout:
         orientation: 'vertical'
 
-        Label:
-            text: '[b]Choose your drink[/b]'
-            markup: True  
-            padding: (5, 5)  
-            border: (2, 2, 2, 2)  
-            size_hint_y: None  
-            height: 50  
 
         GridLayout:
             cols: 4
@@ -382,98 +332,113 @@ WindowManager:
             Button:
                 text: 'Manhattan'
                 font_size: 50
-                #background_normal: 'src/ressources/Perfect_Martini.jpg'
+                background_normal: 'src/ressources/Manhattan.png'
 
                 on_press: app.IncomingDrinkOrder(self)
                     
             Button:
                 text: 'Rob Roy'
                 font_size: 50
-                #background_normal: 'src/ressources/Bronx.jpg'
+                background_normal: 'src/ressources/RobRoy.png'
 
                 on_press: app.IncomingDrinkOrder(self)
 
             Button:
                 text: 'Sidecar'
                 font_size: 50
-                #background_normal: 'src/ressources/Orange_Blossom.jpg'
+                background_normal: 'src/ressources/Sidecar.png'
 
                 on_press: app.IncomingDrinkOrder(self)
 
             Button:
                 text: 'Brandy Sour'
                 font_size: 50
-                #background_normal: 'src/ressources/Tom_Collins.jpg'
+                background_normal: 'src/ressources/BrandySour.png'
 
                 on_press: app.IncomingDrinkOrder(self)
 
             Button:
                 text: 'Brandy Daisy'
-                font_size: 42
-                #background_normal: 'src/ressources/Cucumber_Gin_Cooler.jpg'
+                font_size: 50
+                background_normal: 'src/ressources/BrandyDaisy.png'
 
                 on_press: app.IncomingDrinkOrder(self)
 
             Button:
                 text: 'Wermut Soda'
-                font_size: 42
-                #background_normal: 'src/ressources/Raspberry_Gin_Lemonade.jpg'
+                font_size: 50
+                background_normal: 'src/ressources/WermutSoda.png'
 
                 on_press: app.IncomingDrinkOrder(self)
 
             Button:
                 text: 'Whiskey Cola'
                 font_size: 50
-                #background_normal: 'src/ressources/Gin_Basil_Smash.jpg'
+                background_normal: 'src/ressources/WhiskeyCola.png'
 
                 on_press: app.IncomingDrinkOrder(self)
 
             Button:
                 text: 'White Vermouth Spritz'
-                font_size: 50
-                #background_normal: 'src/ressources/Sweet_Martini.jpg'
+                font_size: 42
+                background_normal: 'src/ressources/WhiteVermouthSpritz.png'
 
                 on_press: app.IncomingDrinkOrder(self)
 
             Button:
                 text: 'Triple Sec Citrus Cooler'
-                font_size: 50
-                #background_normal: 'src/ressources/Daiquiri.jpg'
+                font_size: 42
+                background_normal: 'src/ressources/TripleSecCitrusCooler.png'
 
                 on_press: app.IncomingDrinkOrder(self)
 
             Button:
                 text: 'Bourbon Cola Twist'
                 font_size: 50
-                #background_normal: 'src/ressources/Mojito.jpg'
+                background_normal: 'src/ressources/BourbonColaTwist.png'
 
                 on_press: app.IncomingDrinkOrder(self)
 
-            Widget:
-                #background_normal: 'src/ressources/Rum_Cola.jpg'
+            Button:
+                text: 'Margarita'
+                font_size: 50
+                background_normal: 'src/ressources/Margarita.png'
 
-            
+                on_press: app.IncomingDrinkOrder(self)
 
-            Widget:
-                #background_normal: 'src/ressources/Rum_Cola.jpg'
+            Button:
+                text: 'Old Fashioned'
+                font_size: 50
+                background_normal: 'src/ressources/OldFashioned.png'
+
+                on_press: app.IncomingDrinkOrder(self)
+                
 
             Button:
                 markup: True  
                 background_normal: 'src/ressources/Pfeil_Zurück.jpg'
 
                 on_press: 
-                    root.manager.transition.direction = 'left'
+                    root.manager.transition.direction = 'right'
                     app.root.current = "page two"
 
-            Widget:
-                #background_normal: 'src/ressources/Rum_Cola.jpg'
+
+            Button:
+                text: 'Mint Julep'
+                font_size: 50
+                background_normal: 'src/ressources/MintJulep.png'
+
+                on_press: app.IncomingDrinkOrder(self)
 
 
-            Widget:
-                #background_normal: 'src/ressources/Rum_Cola.jpg'
+            Button:
+                text: 'Bourbon Cola'
+                font_size: 50
+                background_normal: 'src/ressources/BourbonCola.png'
 
-            Widget:
-                #background_normal: 'src/ressources/Rum_Cola.jpg'
+                on_press: app.IncomingDrinkOrder(self)
+
+    
 
 
 
