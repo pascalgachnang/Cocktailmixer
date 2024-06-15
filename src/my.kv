@@ -19,8 +19,6 @@ WindowManager:
         cols: 1
         padding: 20
 
-        
-
         Label:
             id: positioning_label
             text: "Start Positioning"
@@ -187,9 +185,7 @@ WindowManager:
                 on_press: 
                     root.manager.transition.direction = 'left'
                     app.root.current = "page two"
-                
-
-                
+                               
 
 <MainWindow2>:
     name: "page two"
@@ -453,13 +449,14 @@ WindowManager:
 <MainWindow4>:
     name: "page four"
     
-    BoxLayout:
-        orientation: 'vertical'
+    
+    GridLayout:
+        cols: 1
+        spacing: 10
+        padding: 10
 
-        GridLayout:
-            cols: 9
-            spacing: 10
-            padding: 10
+        BoxLayout:
+            orientation: 'horizontal'
 
             Button:
                 text: 'Test 1'
@@ -515,7 +512,30 @@ WindowManager:
                 
                 on_press: app.IncomingDrinkOrder(self)
 
+
+        
+
             
+        BoxLayout:
+            orientation: 'horizontal'
+
+            Image:
+                source: "src/ressources/TheMixingJennyIcon.jpg"
+                #size_hint: 1, 1
+                #size_hint: .5, .75
+                pos_hint: {"center_x": .12, 'center_y':.5}
+
+            Label:
+                id: output_label
+                text: "Mixing Jenny, 2024"
+                font_size: 25
+                size_hint: 1, 1
+                
+            
+            # Button:
+            #     text: "disabled"
+            #     on_press: app.update_text()
+
             Button:
                 markup: True  
                 background_normal: 'src/ressources/Pfeil_Zurück.jpg'
@@ -524,6 +544,29 @@ WindowManager:
                     root.manager.transition.direction = 'right'
                     app.root.current = "page three"
 
+            # Button:
+            #     id: btnExit
+            #     text: "Exit"
+            #     on_press: app.stop()
+
+
+
+
+        # AnchorLayout:
+            #     anchor_x : 'center'
+            #     anchor_y : 'top'
+            #     size_hint: .5, .75
+            #     pos_hint: {"center_x": 0.75}
+
+                
+
+            #     Button:
+            #         markup: True  
+            #         background_normal: 'src/ressources/Pfeil_Zurück.jpg'
+
+            #         on_press: 
+            #             root.manager.transition.direction = 'right'
+            #             app.root.current = "page three"
 
 
 <DrinkInProgress>:

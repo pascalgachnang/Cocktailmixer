@@ -18,6 +18,8 @@ from kivy.clock import Clock
 from kivy.event import EventDispatcher
 from kivy.uix.image import Image
 from kivy.core.image import Image as CoreImage
+from kivy.properties import StringProperty
+from pprint import pprint
 
 
 
@@ -57,6 +59,8 @@ class MainWindow3(Screen):
 class MainWindow4(Screen): #Layout for the main window, fourth page (test page) -> comment out if not needed!
     pass
 
+    # get a reference to the windoww 4
+    #self.ref_to_screen_4 = App.manager.get_screen("page four")
 
 
 class DrinkInProgress(Screen): #Layout for the drink in progress window
@@ -69,20 +73,24 @@ class WindowManager(ScreenManager):
 kv = Builder.load_file("my.kv")
 
 class MyCocktailmixerApp(App):
-    def build(self):
-        self.image_cache = {}  # We store the images in a cache to avoid loading them multiple times
-        self.custom_dispatcher = CustomEventDispatcher()    
-        self.drinkprocessor = drinkprocessor.OrderQueue(self)   # Hier übergeben wir die App Instanz an den OrderQueue
+
+    def __init__(self, **kwargs):
+        super(MyCocktailmixerApp, self).__init__(**kwargs)
+        self.image_cache = {}
+        self.custom_dispatcher = CustomEventDispatcher()
+        self.drinkprocessor = drinkprocessor.OrderQueue(self)
         self.drinkprocessor.start()
         self.lastclicktime = None
         self.steppermotor = StepperMotor()
         self.instance = None
         self.current_screen = None
-        
-        # Listen for the custom event
-        self.custom_dispatcher.bind(on_custom_action=self.on_custom_action)
-        #self.preload_images()
+        self.dynamic_text = StringProperty("Hello, Mixing Jenny!")
 
+        #logging.debug(f"SELF: {pprint(self.__dir__())}")
+        #logging.debug(f"SELF VARS: {pprint(vars(self))}")
+        #pprint(self.__dir__())
+
+    def build(self):
         return kv 
     
     
@@ -129,8 +137,6 @@ class MyCocktailmixerApp(App):
     def on_custom_action(self, *args):
         # This is the method that is called when the custom event is dispatched
 
-        
-
         logging.info(f"I am dispatched {args[1]} ID: {self.instance}")
 
         data = args[1]
@@ -146,8 +152,19 @@ class MyCocktailmixerApp(App):
             #self.instance.text = "DONE"
             self.instance.background_color = (0, 1, 0, 0)  # green colour transparent
         """
+
     def switchScreens(self, screen):
         self.root.current = screen
+
+    def update_text(self, *args):
+        # Update the value of the dynamic text -> Referenz zum Text Label geht nicht!
+        logging.info(f"Self: {self} ID: {self.instance}")
+        logging.info(f"Button pressed: {self.dynamic_text}")
+        self.dynamic_text = "Bye, Mixing Jenny!"
+        logging.info(f"Button pressed: {self.dynamic_text}")
+
+        #self.ids.output_label.text = self.dynamic_text
+
         
 
     
