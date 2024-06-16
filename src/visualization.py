@@ -156,6 +156,15 @@ class MyCocktailmixerApp(App):
     def switchScreens(self, screen):
         self.root.current = screen
 
+    def runPump(self, instance):
+        # This triggers the corresponding pump to RUN for venting the hose
+        logging.info(f"Pump pressed  {instance.text} ID: {instance} Instance: {instance.__dict__}")
+
+    def stopPump(self, instance):
+        # This triggers the corresponding pump to STOP for venting the hose
+        logging.info(f"Pump released {instance.text} ID: {instance} Instance: {instance.__dict__}")
+
+
     def update_text(self, *args):
         # Update the value of the dynamic text -> Referenz zum Text Label geht nicht!
         logging.info(f"Self: {self} ID: {self.instance}")

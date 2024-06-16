@@ -84,6 +84,7 @@ class RelayBoard(threading.Thread):
             self.set_relay_state(relay_number=4, state=0)
             print("soda mixed")
 
+        # Unterbricht den Loop
         self.event.set()
 
             

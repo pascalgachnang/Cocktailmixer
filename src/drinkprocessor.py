@@ -33,6 +33,7 @@ class OrderQueue(threading.Thread):
         #TODO: Command for sync-move and tuple 
 
     def run(self):
+        # Dreht in der Schlaufe und wartet auf Bestellungen.
         while True:
             order = self.order_queue.get()
             self.drink_in_progress = True
