@@ -1,5 +1,29 @@
 #:import Factory kivy.factory.Factory
 
+
+# Styles:
+
+<PumpBoxLayout@BoxLayout>:
+    orientation: 'vertical'
+    padding: 20 
+    canvas:
+        Color:
+            rgba: 255, 255, 255, 0.1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+<PumpButton@Button>:
+    font_size: '25sp'
+
+<PumpLabel@Label>:
+    font_size: '25sp'
+
+<PumpImage@Image>:
+    size: self.texture_size
+
+
+
 #Windows
 
 WindowManager:
@@ -518,6 +542,7 @@ WindowManager:
             
         BoxLayout:
             orientation: 'horizontal'
+            padding: 20
 
             #Image:
             #    source: "src/ressources/TheMixingJennyIcon.jpg"
@@ -530,11 +555,8 @@ WindowManager:
             #    text: "Mixing Jenny, 2024"
             #    font_size: 25
             #    size_hint: 1, 1
-                
-            
-            # Button:
-            #     text: "disabled"
-            #     on_press: app.update_text()
+
+
 
             Button:
                 markup: True  
@@ -544,44 +566,60 @@ WindowManager:
                     root.manager.transition.direction = 'right'
                     app.root.current = "page three"
 
+            PumpBoxLayout:
+                PumpImage:
+                    source: 'src/ressources/IconPumpe.png'
+                PumpLabel:
+                    text: 'Press & hold'
 
+                PumpButton:
+                    id: 'pumpe_4'
+                    text: 'Pumpe 4'
 
-            Button:
-                id: 'pumpe_4'
-                text: 'Pumpe 4'
-                font_size: 50
-                #background_normal: 'src/ressources/IconPumpe.png'
+                    on_press: app.runPump(self)
+                    on_release: app.stopPump(self)
 
-                on_press: app.runPump(self)
-                on_release: app.stopPump(self)
+            PumpBoxLayout:
+                PumpImage:
+                    source: 'src/ressources/IconPumpe.png'
+                PumpLabel:
+                    text: 'Press & hold'
 
-            Button:
-                id: 'pumpe_3'
-                text: 'Pumpe 3'
-                font_size: 50
-                #background_normal: 'src/ressources/IconPumpe.png'
+                PumpButton:
+                    id: 'pumpe_3'
+                    text: 'Pumpe 3'
 
-                on_press: app.runPump(self)
-                on_release: app.stopPump(self)
+                    on_press: app.runPump(self)
+                    on_release: app.stopPump(self)
+
+            PumpBoxLayout:
+                PumpImage:
+                    source: 'src/ressources/IconPumpe.png'
+
+                PumpLabel:
+                    text: 'Press & hold'
+
+                PumpButton:
+                    id: 'pumpe_2'
+                    text: 'Pumpe 2'
+
+                    on_press: app.runPump(self)
+                    on_release: app.stopPump(self)
+
+            PumpBoxLayout:
+                PumpImage:
+                    source: 'src/ressources/IconPumpe.png'
+
+                PumpLabel:
+                    text: 'Press & hold'
                 
-            Button:
-                id: 'pumpe_2'
-                text: 'Pumpe 2'
-                font_size: 50
-                #background_normal: 'src/ressources/IconPumpe.png'
+                PumpButton:
+                    id: 'pumpe_1'
+                    text: 'Pumpe 1'
 
-                on_press: app.runPump(self)
-                on_release: app.stopPump(self)
-            
-            Button:
-                id: 'pumpe_1'
-                text: 'Pumpe 1'
-                font_size: 50
-                #background_normal: 'src/ressources/IconPumpe.png'
-
-                on_press: app.runPump(self)
-                on_release: app.stopPump(self)
-            
+                    on_press: app.runPump(self)
+                    on_release: app.stopPump(self)
+                
 
 
 
