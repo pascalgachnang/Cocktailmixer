@@ -3,6 +3,7 @@ import logging
 import time
 import drinkprocessor
 import os
+import sys
 from kivy.app import App
 from kivy.uix.widget import Widget  
 from kivy.uix.button import Button  
@@ -87,6 +88,7 @@ class MyCocktailmixerApp(App):
         self.instance = None
         self.current_screen = None
         self.dynamic_text = StringProperty("Hello, Mixing Jenny!")
+        self.popup = None
 
         #logging.debug(f"SELF: {pprint(self.__dir__())}")
         #logging.debug(f"SELF VARS: {pprint(vars(self))}")
@@ -194,7 +196,41 @@ class MyCocktailmixerApp(App):
 
         
 
+    def terminateMixingJenny(self, instance, title=None, message=None):
+        # Terminate the program
+        logging.info(f"Button pressed: {instance} title: {title} message: {message}")
+        self.messageBox(instance, title, message)
+
+        logging.info(f"Jenny is exiting. Bye!")
+        os._exit(0)
     
     
 
 
+    def messageBox(self, instance, title=None, message=None):
+        layout = GridLayout(cols=1)
+        lbl = Label(text=message)
+        cancelButton = Button(text="Cancel")
+        okButton = Button(text="OK")
+        layout.add_widget(lbl)
+        layout.add_widget(cancelButton)
+        layout.add_widget(okButton)
+
+        self.popup = Popup(
+            title=title, content=layout,
+            auto_dismiss=False, size_hint=(None, None),
+            size=(400, 400)
+        )
+
+        self.popup.open()
+        cancelButton.bind(on_press=self.on_close)
+        okButton.bind(on_press=self.on_ok)
+        
+   
+    def on_close(self, event):
+        self.popup.dismiss()
+        return False
+
+    def on_ok(self, event):
+        self.popup.dismiss()
+        return True

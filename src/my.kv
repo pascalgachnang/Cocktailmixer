@@ -1,3 +1,4 @@
+#:kivy 1.0
 #:import Factory kivy.factory.Factory
 
 
@@ -557,14 +558,27 @@ WindowManager:
             #    size_hint: 1, 1
 
 
+            PumpBoxLayout:
+                Button:
+                    markup: True  
+                    background_normal: 'src/ressources/Pfeil_Zurück.jpg'
+                    on_press: 
+                        root.manager.transition.direction = 'right'
+                        app.root.current = "page three"
 
-            Button:
-                markup: True  
-                background_normal: 'src/ressources/Pfeil_Zurück.jpg'
+                Button:
+                    text: "Exit"
+                    font_size: 50
+                    on_release: 
+                        app.terminateMixingJenny(self, title="Exit", message="Mixing Jenny verlassen?")
 
-                on_press: 
-                    root.manager.transition.direction = 'right'
-                    app.root.current = "page three"
+
+                # Button:
+                #     text: "PopUp"
+                #     font_size: 50
+                #     on_release: 
+                #         app.messageBox(self, title="Test", message="Test")
+
 
             PumpBoxLayout:
                 PumpImage:
