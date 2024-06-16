@@ -544,19 +544,11 @@ WindowManager:
                     root.manager.transition.direction = 'right'
                     app.root.current = "page three"
 
-            Button:
-                id: 'pumpe_1'
-                text: 'Pumpe 1'
-                font_size: 50
-                #background_normal: 'src/ressources/IconPumpe.png'
 
-                on_press: app.runPump(self)
-                on_release: app.stopPump(self)
-                    
-                
+
             Button:
-                id: 'pumpe_2'
-                text: 'Pumpe 2'
+                id: 'pumpe_4'
+                text: 'Pumpe 4'
                 font_size: 50
                 #background_normal: 'src/ressources/IconPumpe.png'
 
@@ -571,15 +563,26 @@ WindowManager:
 
                 on_press: app.runPump(self)
                 on_release: app.stopPump(self)
-
+                
             Button:
-                id: 'pumpe_4'
-                text: 'Pumpe 4'
+                id: 'pumpe_2'
+                text: 'Pumpe 2'
                 font_size: 50
                 #background_normal: 'src/ressources/IconPumpe.png'
 
                 on_press: app.runPump(self)
                 on_release: app.stopPump(self)
+            
+            Button:
+                id: 'pumpe_1'
+                text: 'Pumpe 1'
+                font_size: 50
+                #background_normal: 'src/ressources/IconPumpe.png'
+
+                on_press: app.runPump(self)
+                on_release: app.stopPump(self)
+            
+
 
 
             # Button:

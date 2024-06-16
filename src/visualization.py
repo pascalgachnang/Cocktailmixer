@@ -10,6 +10,7 @@ from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.textinput import TextInput
 from StepperMotor.StepperMotor import StepperMotor
+from RelayBoard.RelayBoard import RelayBoard
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
 from kivy.uix.popup import Popup
@@ -82,6 +83,7 @@ class MyCocktailmixerApp(App):
         self.drinkprocessor.start()
         self.lastclicktime = None
         self.steppermotor = StepperMotor()
+        self.relayb = None
         self.instance = None
         self.current_screen = None
         self.dynamic_text = StringProperty("Hello, Mixing Jenny!")
@@ -158,11 +160,27 @@ class MyCocktailmixerApp(App):
 
     def runPump(self, instance):
         # This triggers the corresponding pump to RUN for venting the hose
-        logging.info(f"Pump pressed  {instance.text} ID: {instance} Instance: {instance.__dict__}")
+        logging.info(f"Pump pressed  {instance.text} Instance: {instance.__dict__}")
+
+        self.instance = instance    # We store the instance of the button that was pressed
+
+        amount_ingredient = 1 # defaults to 1
+        ingredient_name = instance.text # Take the name of the buttons
+
+        logging.info(f"Pump {instance.text} Ingredient: {ingredient_name} Amount: {amount_ingredient}")
+
+        # Ingredient takes also Pumpe 1 - 4, according to the pump switches!
+        self.relayb = RelayBoard(amount_ingredient, ingredient_name)
+        self.relayb.start()
+        #self.relayb.join()
 
     def stopPump(self, instance):
         # This triggers the corresponding pump to STOP for venting the hose
-        logging.info(f"Pump released {instance.text} ID: {instance} Instance: {instance.__dict__}")
+        logging.info(f"Pump released {instance.text} Instance: {instance.__dict__}")
+
+        self.relayb.setEvent()
+
+
 
 
     def update_text(self, *args):

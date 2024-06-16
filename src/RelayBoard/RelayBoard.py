@@ -1,6 +1,7 @@
 import smbus2
 import time
 import threading
+import logging
 
 
 class RelayBoard(threading.Thread):
@@ -14,6 +15,9 @@ class RelayBoard(threading.Thread):
         self.pump_duration_calculated = None
         self.flow_rate_ml_per_min = 700  # Durchflussrate der Pumpe in ml/min
         self.relay_state = 0x00
+        self.relay_number_active = None
+        self.pump_operation_mode = "auto" # oder "manuell", Default = "auto"
+
 
     def set_relay_state(self, relay_number, state):
         # relay_number: 1-4
@@ -34,9 +38,99 @@ class RelayBoard(threading.Thread):
 
     def run(self):
         """Overwrite Thread.run(), called when the thread is started"""
-        while self.event.is_set() == False:
-            self.mix_drink()
-            time.sleep(0.5)
+        
+        # Prepariert den Pumpprozess
+        self._getPumpRelayNumber()
+        self._preparePumpOperation()
+        logging.info(f"Pump prozess prepared with mode {self.pump_operation_mode} and pump {self.relay_number_active}")
+
+        # Startet den Pumpprozess
+        self._runPump()
+
+        # Workaround: Wegen dem Manuell-Mode zur Entlüftung, unterscheiden wir zwischen auto und manuell.
+        # Manuell gilt die while-Schlaufe, auto die sleep funktion.
+        # TODO: Umbauen!
+
+        if self.pump_operation_mode == "auto":
+            time.sleep(self.pump_duration_calculated)
+        
+        elif self.pump_operation_mode == "manuell":
+            while self.event.is_set() == False:
+                #self.mix_drink()
+                time.sleep(0.1)
+        
+        # Stoppt die jeweilige Pumpe.
+        self._stopPump()
+
+
+    def setEvent(self):
+        # Funktion zur Unterbrechung der while - Schlaufe. Wird fürs Entlüften gebraucht.
+        self.event.set()
+
+
+    def _preparePumpOperation(self):
+        # Prepariert die Pump-Prozess
+        
+        # calculate pump duration
+        self.pump_duration()
+
+
+    def _getPumpRelayNumber(self):
+        # Helper function use the right bottle/pump
+        
+        if self.ingredient_name == "Cola":
+            self.relay_number_active = 1
+            self.pump_operation_mode = "auto"
+
+        elif self.ingredient_name == "Limettensaft":
+            self.relay_number_active = 2
+            self.pump_operation_mode = "auto"
+        
+        elif self.ingredient_name == "Tonic Water":
+            self.relay_number_active = 3
+            self.pump_operation_mode = "auto"
+        
+        elif self.ingredient_name == "Sodawasser":
+            self.relay_number_active = 4
+            self.pump_operation_mode = "auto"
+        
+        # Diese sind für die Entlüftung da.
+        elif self.ingredient_name == "Pumpe 1":    
+            self.relay_number_active = 1
+            self.pump_operation_mode = "manuell"
+
+        elif self.ingredient_name == "Pumpe 2":
+            self.relay_number_active = 2
+            self.pump_operation_mode = "manuell"
+
+        elif self.ingredient_name == "Pumpe 3":
+            self.relay_number_active = 3
+            self.pump_operation_mode = "manuell"
+        
+        elif self.ingredient_name == "Pumpe 4":
+            self.relay_number_active = 4
+            self.pump_operation_mode = "manuell"
+        
+
+    
+    def _runPump(self):
+        # switches on pump
+        
+        self.set_relay_state(relay_number=self.relay_number_active, state=1)
+        logging.info(f"Running pump {self.relay_number_active}")
+        
+
+
+    def _stopPump(self):
+        # switches off pump
+        
+        self.set_relay_state(relay_number=self.relay_number_active, state=0)
+        logging.info(f"Stopping pump {self.relay_number_active}")
+
+        # Unterbricht den Loop
+        self.event.set()
+
+
 
 
     def mix_drink(self):
@@ -96,8 +190,8 @@ class RelayBoard(threading.Thread):
         pump_time_min = amount_ingredient_ml / self.flow_rate_ml_per_min
 
         # print calculated pump duration
-        print(f"Pumping {self.amount_ingredient} cl (equivalent to {amount_ingredient_ml} ml)")
-        print(f"Pump time: {pump_time_min:.2f} minutes")
+        logging.info(f"Pumping {self.amount_ingredient} cl (equivalent to {amount_ingredient_ml} ml)")
+        logging.info(f"Pump time: {pump_time_min:.2f} minutes")
 
         # calculate pump duration in seconds
         self.pump_duration_calculated = pump_time_min * 60
