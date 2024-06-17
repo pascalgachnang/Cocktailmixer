@@ -22,6 +22,7 @@ from kivy.uix.image import Image
 from kivy.core.image import Image as CoreImage
 from kivy.properties import StringProperty
 from pprint import pprint
+from kivy.factory import Factory
 
 
 
@@ -121,14 +122,30 @@ class MyCocktailmixerApp(App):
                 return
         self.lastclicktime = time.time()
         logging.info("Incoming DrinkOrder")
-        
+
         # search for a recipe
-        self.recipe = drinkprocessor.Recipe(search_string=instance.text)
+        self.recipe = drinkprocessor.Recipe(search_string=self.instance.text)
 
         # add an order to the order queue
         self.drinkprocessor.addOrder(self.recipe)
+        
+        #Factory.P_StartMixing().open()   # Open the popup window to start mixing
 
+    #def startMixing(self):
 
+        # search for a recipe
+        # self.recipe = drinkprocessor.Recipe(search_string=self.instance.text)
+
+        # # add an order to the order queue
+        # self.drinkprocessor.addOrder(self.recipe)
+
+        # del self.instance
+
+        # Clock.schedule_once(self.dismiss_popup, 0.1) # Close the popup window to start mixing
+
+    # def dismiss_popup(self, dt):
+    #     Factory.P_StartMixing().dismiss()
+    #     logging.info("Popup closed")
 
     def calling_reference_run(self):
         # Call the reference run of the stepper motor
