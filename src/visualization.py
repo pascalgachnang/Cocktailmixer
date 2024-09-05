@@ -59,11 +59,8 @@ class MainWindow2(Screen): #Layout for the main window, second page
 class MainWindow3(Screen):
     pass
 
-class MainWindow4(Screen): #Layout for the main window, fourth page (test page) -> comment out if not needed!
+class MainWindow4(Screen): #Layout for the main window, fourth page (test page)
     pass
-
-    # get a reference to the windoww 4
-    #self.ref_to_screen_4 = App.manager.get_screen("page four")
 
 
 class DrinkInProgress(Screen): #Layout for the drink in progress window

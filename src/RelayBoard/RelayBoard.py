@@ -86,7 +86,7 @@ class RelayBoard(threading.Thread):
             self.relay_number_active = 2
             self.pump_operation_mode = "auto"
         
-        elif self.ingredient_name == "Tonic Water":
+        elif self.ingredient_name == "Orangensaft":
             self.relay_number_active = 3
             self.pump_operation_mode = "auto"
         
@@ -156,16 +156,16 @@ class RelayBoard(threading.Thread):
             self.set_relay_state(relay_number=2, state=0)
             print("lemonade mixed")
 
-        elif self.ingredient_name == "Tonic Water":
+        elif self.ingredient_name == "Orangensaft":
             # calculate pump duration
             self.pump_duration()
             # switch on Relais 3
             self.set_relay_state(relay_number=3, state=1)
-            print("mixing tonic water")
+            print("mixing orangensaft")
             time.sleep(self.pump_duration_calculated)
             # switch off Relais 3
             self.set_relay_state(relay_number=3, state=0)
-            print("tonic water mixed")
+            print("orangensaft mixed")
 
         elif self.ingredient_name == "Sodawasser":
             # calculate pump duration
