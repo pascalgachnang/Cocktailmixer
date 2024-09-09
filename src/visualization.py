@@ -4,6 +4,7 @@ import time
 import drinkprocessor
 import os
 import sys
+import config
 from kivy.app import App
 from kivy.uix.widget import Widget  
 from kivy.uix.button import Button  
@@ -46,6 +47,12 @@ class MyLayout(Widget):
     pass
 
 #Layouts for the windows
+
+class P_StartMixing(Popup):
+    def refresh_ingredients_label(self, ingredients_text):
+        # Setzt den Text des Labels auf die übergebenen Zutaten
+        self.ids.ingredients_label.text = ingredients_text
+
 
 class PositioningWindow(Screen): #Layout for the positioning window
     pass
@@ -113,37 +120,66 @@ class MyCocktailmixerApp(App):
         self.current_screen = self.root.current   # We store the current screen to switch back to it after the drink is done
         logging.info(f"Current screen: {self.current_screen}")  
 
+        
+
+    def AddOrder(self):
+        # add an order to the order queue
         if self.lastclicktime is not None:  # Ignore rapid clicks
             if time.time() - self.lastclicktime < 2:
                 logging.info("Ignoring rapid clicks")
                 return
         self.lastclicktime = time.time()
-        logging.info("Incoming DrinkOrder")
-
+        
         # search for a recipe
         self.recipe = drinkprocessor.Recipe(search_string=self.instance.text)
+        logging.info(f"Recipe: {self.recipe}")
 
-        # add an order to the order queue
         self.drinkprocessor.addOrder(self.recipe)
+        logging.info(f"Order added to the queue")
+        logging.info(f"Recipe: {self.recipe}")
         
-        #Factory.P_StartMixing().open()   # Open the popup window to start mixing
+    def show_popup(self):
+        # Popup-Instanz erstellen
+        self.popup = Factory.P_StartMixing()
+        self.popup.open()
+        # Verzögere die Aktualisierung, um sicherzustellen, dass das Popup geöffnet ist
+        Clock.schedule_once(self.update_ingredients_label, 0.1)
 
-    #def startMixing(self):
+    def update_ingredients_label(self, *args):
+        # Hole den Namen des Rezepts von der Instanz
+        if not hasattr(self, 'instance') or not self.instance:
+            logging.error("Instance is not available.")
+            return
 
-        # search for a recipe
-        # self.recipe = drinkprocessor.Recipe(search_string=self.instance.text)
+        recipe_name = self.instance.text
+        logging.info(f"Searching for recipe with name: {recipe_name}")
 
-        # # add an order to the order queue
-        # self.drinkprocessor.addOrder(self.recipe)
+        # Durchsuche die Rezeptliste
+        for recipe in config.recipes:
+            if recipe.get('name') == recipe_name:
+                logging.info(f"Recipe found: {recipe.get('name')}")
 
-        # del self.instance
+                # Hol die Zutaten
+                ingredients = recipe.get('ingredients', [])
+                ingredients_text = "Ingredients:\n"
+                for ingredient in ingredients:
+                    msg = "Ingredient: {0}, Amount: {1}, Unit: {2}".format(
+                        ingredient.get('ingredient'),
+                        ingredient.get('amount'),
+                        ingredient.get('unit')
+                    )
+                    logging.info(msg)
+                    ingredients_text += f"{ingredient.get('ingredient')}: {ingredient.get('amount')} {ingredient.get('unit')}\n"
 
-        # Clock.schedule_once(self.dismiss_popup, 0.1) # Close the popup window to start mixing
+                # Update das Zutaten-Label im Popup, falls Popup existiert
+                if hasattr(self, 'popup') and self.popup:
+                    self.popup.refresh_ingredients_label(ingredients_text)
+                else:
+                    logging.error("Popup not found or not open.")
+                return
 
-    # def dismiss_popup(self, dt):
-    #     Factory.P_StartMixing().dismiss()
-    #     logging.info("Popup closed")
-
+        logging.info(f"Recipe not found for name: {recipe_name}")
+        
     def calling_reference_run(self):
         # Call the reference run of the stepper motor
         logging.info("Calling reference run")

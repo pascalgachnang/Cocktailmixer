@@ -84,19 +84,60 @@ WindowManager:
             root.dismiss()
             app.root.current = "page one" 
             
-<P_StartMixing@Popup>: #Popup Positioning Complete
+<P_StartMixing@Popup>:
     auto_dismiss: False
-    title: "Did you choose the right drink?"
-    font_size: 50
-    
-    Button:
-        text: "start mixing"
-        font_size: 50
-        size_hint: 0.8, 0.2
-        pos_hint:  {"x":0.1, "y":0.1}
-        on_press:
-            app.startMixing()
-            
+    size_hint: 0.8, 0.5
+    title: "Drink ingredients"
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        # Titel und Zutaten oben im Popup
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            height: self.minimum_height
+
+            Label:
+                text: "Did you choose the right drink?"
+                font_size: 30  # Größere Schriftgröße für den Titel
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            Label:
+                text: "Ingredients:"
+                font_size: 20
+                size_hint_y: None
+                height: self.texture_size[1]
+
+        
+        Label:
+            id: ingredients_label  # ID, damit es im Python-Code referenziert werden kann
+            text: "No ingredients selected"  # Standardtext, wird später geändert
+            font_size: 18
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        # Buttons unten im Popup, über die gesamte Breite
+        GridLayout:
+            cols: 2
+            size_hint_y: None
+            height: 200  # Feste Höhe der Buttons
+            spacing: 10  # Abstand zwischen den Buttons
+
+            Button:
+                id: btnYes
+                text: "Yes"
+                font_size: 50
+                on_press: 
+                    #app.AddOrder()
+                    app.update_ingredients_label() 
+                #on_release: root.dismiss()
+
+            Button:
+                text: "No"
+                font_size: 50
+                on_release: root.dismiss()
     
         
 <MainWindow1>:
@@ -117,6 +158,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
                     
                 
             Button:
@@ -124,91 +166,117 @@ WindowManager:
                 font_size: 50
                 background_normal: 'src/ressources/Wodka_Soda.jpg'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Wodka Cola'
                 font_size: 50
                 background_normal: 'src/ressources/Wodka_Cola.jpg'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Kamikaze'
                 font_size: 50
                 background_normal: 'src/ressources/Kamikaze.jpg'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Metropolitan'
                 font_size: 50
                 background_normal: 'src/ressources/Metropolitan.jpg'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Screwdriver'
                 font_size: 50
                 background_normal: 'src/ressources/Screwdriver.JPG'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Tequila Sunrise'
                 font_size: 50
                 background_normal: 'src/ressources/Wodka_Sunrise.JPG'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Wodka Sour'
                 font_size: 50
                 background_normal: 'src/ressources/Wodka_Sour.JPG'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Wodka Ricky'
                 font_size: 50
                 background_normal: 'src/ressources/Wodka_Ricky.jpg'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Cosmopolitan'
                 font_size: 50
                 background_normal: 'src/ressources/Cosmopolitan.JPG'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Vesper'
                 font_size: 50
                 background_normal: 'src/ressources/Vesper.JPG'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Long Island Iced Tea'
                 font_size: 50
                 background_normal: 'src/ressources/Long_Island_Iced_Tea.JPG'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Martini'
                 font_size: 50
                 background_normal: 'src/ressources/Martini.jpg'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Gin Fizz'
                 font_size: 50
                 background_normal: 'src/ressources/Gin_Fizz.jpeg'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
 
             Button:
@@ -216,7 +284,9 @@ WindowManager:
                 font_size: 50
                 background_normal: 'src/ressources/Gin_Martini.jpg'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 markup: True  
@@ -243,84 +313,108 @@ WindowManager:
                 font_size: 50
                 background_normal: 'src/ressources/Perfect_Martini.jpg'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
                     
             Button:
                 text: 'Bronx'
                 font_size: 50
                 background_normal: 'src/ressources/Bronx.jpg'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Orange Blossom'
                 font_size: 50
                 background_normal: 'src/ressources/Orange_Blossom.jpg'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Tom Collins'
                 font_size: 50
                 background_normal: 'src/ressources/Tom_Collins.jpg'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Cucumber Gin Cooler'
                 font_size: 50
                 background_normal: 'src/ressources/Cucumber_Gin_Cooler.jpg'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Raspberry Gin Lemonade'
                 font_size: 42
                 background_normal: 'src/ressources/Raspberry_Gin_Lemonade.jpg'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Gin Basil Smash'
                 font_size: 50
                 background_normal: 'src/ressources/Gin_Basil_Smash.jpg'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Sweet Martini'
                 font_size: 50
                 background_normal: 'src/ressources/Sweet_Martini.jpg'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Daiquiri'
                 font_size: 50
                 background_normal: 'src/ressources/Daiquiri.jpg'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Mojito'
                 font_size: 50
                 background_normal: 'src/ressources/Mojito.jpg'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Rum Cola'
                 font_size: 50
                 background_normal: 'src/ressources/Rum_Cola.jpg'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Cuba Libre'
                 font_size: 50
                 background_normal: 'src/ressources/Cuba_Libre.jpeg'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
 
             Button:
@@ -336,7 +430,9 @@ WindowManager:
                 font_size: 50
                 background_normal: 'src/ressources/Mai_Tai.png'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
 
             Button:
@@ -344,7 +440,9 @@ WindowManager:
                 font_size: 50
                 background_normal: 'src/ressources/Rum_Soda.jpg'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 markup: True  
@@ -371,84 +469,108 @@ WindowManager:
                 font_size: 50
                 background_normal: 'src/ressources/Manhattan.png'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
                     
             Button:
                 text: 'Rob Roy'
                 font_size: 50
                 background_normal: 'src/ressources/RobRoy.png'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Sidecar'
                 font_size: 50
                 background_normal: 'src/ressources/Sidecar.png'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Brandy Sour'
                 font_size: 50
                 background_normal: 'src/ressources/BrandySour.png'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Brandy Daisy'
                 font_size: 50
                 background_normal: 'src/ressources/BrandyDaisy.png'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Wermut Soda'
                 font_size: 50
                 background_normal: 'src/ressources/WermutSoda.png'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Whiskey Cola'
                 font_size: 50
                 background_normal: 'src/ressources/WhiskeyCola.png'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'White Vermouth Spritz'
                 font_size: 42
                 background_normal: 'src/ressources/WhiteVermouthSpritz.png'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Triple Sec Citrus Cooler'
                 font_size: 42
                 background_normal: 'src/ressources/TripleSecCitrusCooler.png'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Bourbon Cola Twist'
                 font_size: 50
                 background_normal: 'src/ressources/BourbonColaTwist.png'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Margarita'
                 font_size: 50
                 background_normal: 'src/ressources/Margarita.png'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 text: 'Old Fashioned'
                 font_size: 50
                 background_normal: 'src/ressources/OldFashioned.png'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press:  
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
                 
 
             Button:
@@ -465,7 +587,9 @@ WindowManager:
                 font_size: 50
                 background_normal: 'src/ressources/MintJulep.png'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
 
             Button:
@@ -473,7 +597,9 @@ WindowManager:
                 font_size: 50
                 background_normal: 'src/ressources/BourbonCola.png'
 
-                on_press: app.IncomingDrinkOrder(self)
+                on_press: 
+                    app.IncomingDrinkOrder(self)
+                    Factory.P_StartMixing().open()
 
             Button:
                 markup: True  
