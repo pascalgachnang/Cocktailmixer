@@ -116,7 +116,7 @@
             {
                 "unit": "cl",
                 "amount": 2.5,
-                "ingredient": "Zitronensaft"
+                "ingredient": "Limettensaft"
             },
             {
                 "unit": "cl",
@@ -380,7 +380,7 @@
             },
             {
                 "unit": "cl",
-                "amount": 2,
+                "amount": 2.5,
                 "ingredient": "Wermut rot"
             }
             
@@ -399,7 +399,7 @@
             },
             {
                 "unit": "cl",
-                "amount": 2,
+                "amount": 2.5,
                 "ingredient": "Wermut rot"
             }
         ],
@@ -418,7 +418,7 @@
             },
             {
                 "unit": "cl",
-                "amount": 2,
+                "amount": 2.5,
                 "ingredient": "Orangenlikör"
             },
             {
@@ -439,11 +439,11 @@
             {
                 "unit": "cl",
                 "amount": 4,
-                "ingredient": "Rum braun"
+                "ingredient": "Bourbon Whiskey"
             },
             {
                 "unit": "cl",
-                "amount": 2,
+                "amount": 2.5,
                 "ingredient": "Rum weiss"
             },
             {
@@ -501,7 +501,7 @@
             },
             {
                 "unit": "cl",
-                "amount": 2,
+                "amount": 2.5,
                 "ingredient": "Orangenlikör"
             },
             {
@@ -900,7 +900,7 @@
             {
                 "unit": "cl",
                 "amount": 2.5,
-                "ingredient": "Zitronensaft"
+                "ingredient": "Limettensaft"
             },
             {
                 "unit": "cl",
@@ -966,7 +966,7 @@
             },
             {
                 "unit": "cl",
-                "amount": 2,
+                "amount": 2.5,
                 "ingredient": "Wermut rot"
             },
             {

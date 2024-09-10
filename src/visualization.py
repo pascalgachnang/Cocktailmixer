@@ -171,15 +171,20 @@ class MyCocktailmixerApp(App):
                 ingredients = recipe.get('ingredients', [])
                 ingredients_text = "Ingredients:\n"
                 for ingredient in ingredients:
-                    msg = "Ingredient: {0}, Amount: {1}, Unit: {2}".format(
-                        ingredient.get('ingredient'),
-                        ingredient.get('amount'),
-                        ingredient.get('unit')
-                    )
+                    ingredient_name = ingredient.get('ingredient')
+                    amount = ingredient.get('amount')
+                    unit = ingredient.get('unit')
+
+                    # Überprüfe, ob die Zutat eine der speziellen ist
+                    if ingredient_name in ['Zuckersirup', 'Grenadinesaft', 'Mandelsirup']:
+                        msg = f"{ingredient_name}: {amount} {unit} (to be added manually)\n"
+                    else:
+                        msg = f"{ingredient_name}: {amount} {unit}\n"
+
                     logging.info(msg)
-                    ingredients_text += f"{ingredient.get('ingredient')}: {ingredient.get('amount')} {ingredient.get('unit')}\n"
-                
-                 # Popup mit Verzögerung anzeigen
+                    ingredients_text += msg
+
+                # Popup mit Verzögerung anzeigen
                 self.show_popup()
                 
                 # Aktualisiere das Label mit den Zutaten

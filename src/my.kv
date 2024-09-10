@@ -87,7 +87,7 @@ WindowManager:
 <P_StartMixing@Popup>:
     auto_dismiss: False
     size_hint: 0.8, 0.5
-    title: "Drink ingredients"
+    title: "Did you choose the right drink?"
 
     BoxLayout:
         orientation: 'vertical'
@@ -97,17 +97,11 @@ WindowManager:
             orientation: 'vertical'
             size_hint_y: None
             height: self.minimum_height
-
-            Label:
-                text: "Did you choose the right drink?"
-                font_size: 30  # Größere Schriftgröße für den Titel
-                size_hint_y: None
-                height: self.texture_size[1]
        
         Label:
             id: ingredients_label  # ID, damit es im Python-Code referenziert werden kann
             text: "No ingredients selected"  # Standardtext, wird später geändert
-            font_size: 18
+            font_size: 25
             size_hint_y: None
             height: self.texture_size[1]
 
@@ -122,14 +116,15 @@ WindowManager:
                 id: btnYes
                 text: "Yes"
                 font_size: 50
+                background_color: 0, 1, 0, 1  # Grün (RGBA)
                 on_press: 
                     app.AddOrder()
-                    
                 on_release: root.dismiss()
 
             Button:
                 text: "No"
                 font_size: 50
+                background_color: 1, 0, 0, 1  # Rot (RGBA)
                 on_press:
                     root.dismiss()
                 on_release: 

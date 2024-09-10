@@ -81,5 +81,10 @@
         "name": "Grenadinesaft",
         "type": "manual",
         "position": 404
+    },
+    {
+        "name": "Mandelsirup",
+        "type": "manual",
+        "position": 404
     }
 ]
