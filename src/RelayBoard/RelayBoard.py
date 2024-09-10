@@ -59,12 +59,12 @@ class RelayBoard(threading.Thread):
                 #self.mix_drink()
                 time.sleep(0.1)
         
-        # Stoppt die jeweilige Pumpe.
+        # Stops the pump
         self._stopPump()
 
 
     def setEvent(self):
-        # Funktion zur Unterbrechung der while - Schlaufe. Wird fürs Entlüften gebraucht.
+        # Is used to stop the pump
         self.event.set()
 
 
@@ -127,10 +127,8 @@ class RelayBoard(threading.Thread):
         self.set_relay_state(relay_number=self.relay_number_active, state=0)
         logging.info(f"Stopping pump {self.relay_number_active}")
 
-        # Unterbricht den Loop
+        # Stops the loop
         self.event.set()
-
-
 
 
     def mix_drink(self):
@@ -178,7 +176,7 @@ class RelayBoard(threading.Thread):
             self.set_relay_state(relay_number=4, state=0)
             print("soda mixed")
 
-        # Unterbricht den Loop
+        # Stops the loop
         self.event.set()
 
             

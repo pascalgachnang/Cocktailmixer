@@ -26,19 +26,12 @@ class StepperMotor():
         self.acceleration_steps = acceleration_steps
 
         
-        
-
-       
- 
-        
-
         # Set the end switch pin
         GPIO.setmode(GPIO.BCM)
         self.Motor1 = DRV8825(dir_pin=13, step_pin=19, enable_pin=12, mode_pins=(16, 17, 20))
         # self.Motor2 = DRV8825(dir_pin=24, step_pin=18, enable_pin=4, mode_pins=(21, 22, 27))
         GPIO.setup(self.end_switch_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         
-
 
     def perform_step(self, stepdelay):
         # Perform the step with the given step delay
@@ -58,8 +51,6 @@ class StepperMotor():
     def move(self, position_ingredient):
         self._momental_position(position_ingredient)
         self._nema17_ramp()
-
-
 
 
     def _nema17_ramp(self):
@@ -83,7 +74,6 @@ class StepperMotor():
 
         self.Motor1.Stop()
         
-
 
         
     def reference_run(self):

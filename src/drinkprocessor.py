@@ -33,16 +33,13 @@ class OrderQueue(threading.Thread):
         #TODO: Command for sync-move and tuple 
 
     def run(self):
-        # Dreht in der Schlaufe und wartet auf Bestellungen.
+        # This method is called when the thread is started
         while True:
             order = self.order_queue.get()
             self.drink_in_progress = True
-            #self.app_instance.custom_dispatcher.do_custom_action(self.drink_in_progress) # Sends status to dispatcher
-            #self.CallLedRing((255, 0, 0)) # Red
             self.processOrder(order)
             self.drink_in_progress = False
-            #self.CallLedRing((0, 255, 0)) # Green
-            #self.app_instance.custom_dispatcher.do_custom_action(self.drink_in_progress) # Sends status to dispatcher
+            
     
         
 
@@ -90,9 +87,6 @@ class OrderQueue(threading.Thread):
 
         print("*"*20)
         
-            #main.CallWeightSensor()
-    
-    
                 
     def CallStepperMotor(self, position_ingredient):
         logging.info("Calling StepperMotor")
@@ -122,9 +116,6 @@ class OrderQueue(threading.Thread):
         logging.info("Calling LedRing")
         self.ledring.set_color(color)
         logging.info("Calling LedRing: {0}".format(self.ledring))
-
-    
-    
 
 
 class Order():
@@ -164,8 +155,6 @@ class Customer():
 
     def getName(self):
         return self.name
-
-
 
 
 class Recipe():
@@ -210,7 +199,6 @@ class Recipe():
                     self.ingredients_details.append(ingredientDetails)
 
 
-
     def getBottle(self, ingredient):
         # Details der Flasche aus der Konfiguration holen, inkl. Position und Typ
         for bottle in config.bottle_inventory:
@@ -218,13 +206,7 @@ class Recipe():
                 msg = "Bottle: {0}, Position: {1}, Type: {2}".format(bottle.get('name'), bottle.get('position'), bottle.get('type'))
                 #print('In getBottle: {0}'.format(msg))
                 #logging.info(msg)
-                return bottle
-
-
-    
-
-        
-            
+                return bottle 
 
 
 class IngredientDetails():

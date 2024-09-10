@@ -36,9 +36,6 @@ class Main:
         self.relayb = None
         self.weights = None
     
-
-    
-
     def CallOrderQueue(self):
         logging.info("Calling CallOrderQueue")
         
@@ -52,7 +49,6 @@ class Main:
               
         # process the order queue
         self.orderqueue.processOrderQueue()
-
 
     def CallReferenceRun(self):
         logging.info("Calling ReferenceRun")

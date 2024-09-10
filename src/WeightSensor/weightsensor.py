@@ -96,8 +96,4 @@ class WeightSensor(threading.Thread):
         self.event.set()
 
 
-# ws = WeightSensor()
-# ws.read_weight()
-
-
 

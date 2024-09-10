@@ -50,7 +50,7 @@ class MyLayout(Widget):
 
 class P_StartMixing(Popup):
     def refresh_ingredients_label(self, ingredients_text):
-        # Setzt den Text des Labels auf die übergebenen Zutaten
+        # Refresh the ingredients label with the new text
         self.ids.ingredients_label.text = ingredients_text
 
 
@@ -94,12 +94,6 @@ class MyCocktailmixerApp(App):
         self.current_screen = None
         self.dynamic_text = StringProperty("Hello, Mixing Jenny!")
         self.popup = None
-        
-
-
-        #logging.debug(f"SELF: {pprint(self.__dir__())}")
-        #logging.debug(f"SELF VARS: {pprint(vars(self))}")
-        #pprint(self.__dir__())
 
     def build(self):
         return kv 
@@ -141,20 +135,20 @@ class MyCocktailmixerApp(App):
         logging.info(f"Recipe: {self.recipe}")
         
     def show_popup(self, dt=None):
-    # Popup-Instanz erstellen
+    # Build the popup
         if self.popup and self.popup._is_open:
             logging.info("Popup is already open.")
             return
 
         self.popup = Factory.P_StartMixing()
 
-        # Popup nach einer Verzögerung öffnen
+        # Open popup with delay
         Clock.schedule_once(lambda dt: self.popup.open(), 0.2)
         
    
 
     def update_ingredients_label(self, *args):
-        # Hole den Namen des Rezepts von der Instanz
+        # Get the ingredients for the recipe
         if not hasattr(self, 'instance') or not self.instance:
             logging.error("Instance is not available.")
             return
@@ -162,12 +156,12 @@ class MyCocktailmixerApp(App):
         recipe_name = self.instance.text
         logging.info(f"Searching for recipe with name: {recipe_name}")
 
-        # Durchsuche die Rezeptliste
+        # Search for the recipe
         for recipe in config.recipes:
             if recipe.get('name') == recipe_name:
                 logging.info(f"Recipe found: {recipe.get('name')}")
 
-                # Hol die Zutaten
+                # Get the ingredients
                 ingredients = recipe.get('ingredients', [])
                 ingredients_text = "Ingredients:\n"
                 for ingredient in ingredients:
@@ -175,19 +169,24 @@ class MyCocktailmixerApp(App):
                     amount = ingredient.get('amount')
                     unit = ingredient.get('unit')
 
-                    # Überprüfe, ob die Zutat eine der speziellen ist
+                    # Are there any special ingredients?
                     if ingredient_name in ['Zuckersirup', 'Grenadinesaft', 'Mandelsirup']:
                         msg = f"{ingredient_name}: {amount} {unit} (to be added manually)\n"
                     else:
                         msg = f"{ingredient_name}: {amount} {unit}\n"
 
+                            # Add special ingredients
+                    special = ingredient.get('special')
+                    if special:
+                        msg = f"Special ingredient: {special}\n"
+
                     logging.info(msg)
                     ingredients_text += msg
 
-                # Popup mit Verzögerung anzeigen
+                # Show the popup
                 self.show_popup()
                 
-                # Aktualisiere das Label mit den Zutaten
+                # Refresh the ingredients label
                 self.popup.refresh_ingredients_label(ingredients_text)
                 return
 
@@ -253,11 +252,7 @@ class MyCocktailmixerApp(App):
         logging.info(f"Self: {self} ID: {self.instance}")
         logging.info(f"Button pressed: {self.dynamic_text}")
         self.dynamic_text = "Bye, Mixing Jenny!"
-        logging.info(f"Button pressed: {self.dynamic_text}")
-
-        #self.ids.output_label.text = self.dynamic_text
-
-        
+        logging.info(f"Button pressed: {self.dynamic_text}")        
 
     def terminateMixingJenny(self, instance, title=None, message=None):
         # Terminate the program
@@ -267,9 +262,6 @@ class MyCocktailmixerApp(App):
         logging.info(f"Jenny is exiting. Bye!")
         os._exit(0)
     
-    
-
-
     def messageBox(self, instance, title=None, message=None):
         layout = GridLayout(cols=1)
         lbl = Label(text=message)
