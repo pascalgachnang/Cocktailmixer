@@ -94,6 +94,8 @@ class MyCocktailmixerApp(App):
         self.current_screen = None
         self.dynamic_text = StringProperty("Hello, Mixing Jenny!")
         self.popup = None
+        
+
 
         #logging.debug(f"SELF: {pprint(self.__dir__())}")
         #logging.debug(f"SELF VARS: {pprint(vars(self))}")
@@ -138,12 +140,18 @@ class MyCocktailmixerApp(App):
         logging.info(f"Order added to the queue")
         logging.info(f"Recipe: {self.recipe}")
         
-    def show_popup(self):
-        # Popup-Instanz erstellen
+    def show_popup(self, dt=None):
+    # Popup-Instanz erstellen
+        if self.popup and self.popup._is_open:
+            logging.info("Popup is already open.")
+            return
+
         self.popup = Factory.P_StartMixing()
-        self.popup.open()
-        # Verzögere die Aktualisierung, um sicherzustellen, dass das Popup geöffnet ist
-        Clock.schedule_once(self.update_ingredients_label, 0.1)
+
+        # Popup nach einer Verzögerung öffnen
+        Clock.schedule_once(lambda dt: self.popup.open(), 0.2)
+        
+   
 
     def update_ingredients_label(self, *args):
         # Hole den Namen des Rezepts von der Instanz
@@ -170,12 +178,12 @@ class MyCocktailmixerApp(App):
                     )
                     logging.info(msg)
                     ingredients_text += f"{ingredient.get('ingredient')}: {ingredient.get('amount')} {ingredient.get('unit')}\n"
-
-                # Update das Zutaten-Label im Popup, falls Popup existiert
-                if hasattr(self, 'popup') and self.popup:
-                    self.popup.refresh_ingredients_label(ingredients_text)
-                else:
-                    logging.error("Popup not found or not open.")
+                
+                 # Popup mit Verzögerung anzeigen
+                self.show_popup()
+                
+                # Aktualisiere das Label mit den Zutaten
+                self.popup.refresh_ingredients_label(ingredients_text)
                 return
 
         logging.info(f"Recipe not found for name: {recipe_name}")

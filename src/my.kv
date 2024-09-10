@@ -103,14 +103,7 @@ WindowManager:
                 font_size: 30  # Größere Schriftgröße für den Titel
                 size_hint_y: None
                 height: self.texture_size[1]
-
-            Label:
-                text: "Ingredients:"
-                font_size: 20
-                size_hint_y: None
-                height: self.texture_size[1]
-
-        
+       
         Label:
             id: ingredients_label  # ID, damit es im Python-Code referenziert werden kann
             text: "No ingredients selected"  # Standardtext, wird später geändert
@@ -130,14 +123,18 @@ WindowManager:
                 text: "Yes"
                 font_size: 50
                 on_press: 
-                    #app.AddOrder()
-                    app.update_ingredients_label() 
-                #on_release: root.dismiss()
+                    app.AddOrder()
+                    
+                on_release: root.dismiss()
 
             Button:
                 text: "No"
                 font_size: 50
-                on_release: root.dismiss()
+                on_press:
+                    root.dismiss()
+                on_release: 
+                    root.dismiss()
+                    
     
         
 <MainWindow1>:
@@ -158,7 +155,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
                     
                 
             Button:
@@ -168,7 +165,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Wodka Cola'
@@ -177,7 +174,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Kamikaze'
@@ -186,7 +183,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Metropolitan'
@@ -195,7 +192,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Screwdriver'
@@ -204,16 +201,16 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Tequila Sunrise'
                 font_size: 50
-                background_normal: 'src/ressources/Wodka_Sunrise.JPG'
+                background_normal: 'src/ressources/Tequila_Sunrise.JPG'
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Wodka Sour'
@@ -222,7 +219,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Wodka Ricky'
@@ -231,7 +228,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Cosmopolitan'
@@ -240,7 +237,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Vesper'
@@ -249,7 +246,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Long Island Iced Tea'
@@ -258,7 +255,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Martini'
@@ -267,7 +264,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Gin Fizz'
@@ -276,17 +273,17 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
 
             Button:
-                text: 'Gin Martini'
+                text: 'Wodka Sunrise'
                 font_size: 50
-                background_normal: 'src/ressources/Gin_Martini.jpg'
+                background_normal: 'src/ressources/Wodka_Sunrise.png'
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 markup: True  
@@ -315,7 +312,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
                     
             Button:
                 text: 'Bronx'
@@ -324,7 +321,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Orange Blossom'
@@ -333,7 +330,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Tom Collins'
@@ -342,7 +339,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Cucumber Gin Cooler'
@@ -351,7 +348,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Raspberry Gin Lemonade'
@@ -360,7 +357,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Gin Basil Smash'
@@ -369,7 +366,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Sweet Martini'
@@ -378,7 +375,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Daiquiri'
@@ -387,7 +384,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Mojito'
@@ -396,7 +393,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Rum Cola'
@@ -405,7 +402,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Cuba Libre'
@@ -414,7 +411,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
 
             Button:
@@ -432,7 +429,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
 
             Button:
@@ -442,7 +439,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 markup: True  
@@ -471,7 +468,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
                     
             Button:
                 text: 'Rob Roy'
@@ -480,7 +477,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Sidecar'
@@ -489,7 +486,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Brandy Sour'
@@ -498,7 +495,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Brandy Daisy'
@@ -507,7 +504,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Wermut Soda'
@@ -516,7 +513,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Whiskey Cola'
@@ -525,7 +522,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'White Vermouth Spritz'
@@ -534,7 +531,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Triple Sec Citrus Cooler'
@@ -543,7 +540,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Bourbon Cola Twist'
@@ -552,7 +549,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Margarita'
@@ -561,7 +558,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 text: 'Old Fashioned'
@@ -570,7 +567,7 @@ WindowManager:
 
                 on_press:  
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
                 
 
             Button:
@@ -589,7 +586,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
 
             Button:
@@ -599,7 +596,7 @@ WindowManager:
 
                 on_press: 
                     app.IncomingDrinkOrder(self)
-                    Factory.P_StartMixing().open()
+                    app.update_ingredients_label() 
 
             Button:
                 markup: True  
