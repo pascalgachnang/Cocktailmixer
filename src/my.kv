@@ -93,17 +93,34 @@ WindowManager:
         orientation: 'vertical'
 
         # Titel und Zutaten oben im Popup
-        BoxLayout:
-            orientation: 'vertical'
-            size_hint_y: None
-            height: self.minimum_height
-       
-        Label:
-            id: ingredients_label  # ID, damit es im Python-Code referenziert werden kann
-            text: "No ingredients selected"  # Standardtext, wird später geändert
-            font_size: 25
-            size_hint_y: None
-            height: self.texture_size[1]
+        
+
+        GridLayout:
+            cols: 2
+            
+            Label:
+                id: ingredients_label  # ID, damit es im Python-Code referenziert werden kann
+                markup: True
+                text: "No ingredients selected"  # Standardtext, wird später geändert
+                font_size: 25
+                size_hint_y: None
+                height: self.texture_size[1]
+                halign: 'left'  # Links ausgerichtet
+                valign: 'top'  # Oben bündig
+                text_size: self.width, None  # Setze nur die Breite, Höhe passt sich an
+                size_hint_y: None
+
+            Label:
+                id: garnish_label  # ID, damit es im Python-Code referenziert werden kann
+                markup: True
+                text: "No garnish selected"  # Standardtext, wird später geändert
+                font_size: 25
+                size_hint_y: None
+                height: self.texture_size[1]
+                halign: 'left'  # Links ausgerichtet
+                valign: 'top'  # Oben bündig
+                text_size: self.width, None  # Setze nur die Breite, Höhe passt sich an
+                size_hint_y: None
 
         # Buttons unten im Popup, über die gesamte Breite
         GridLayout:

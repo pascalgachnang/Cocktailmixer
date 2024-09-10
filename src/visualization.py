@@ -53,6 +53,10 @@ class P_StartMixing(Popup):
         # Refresh the ingredients label with the new text
         self.ids.ingredients_label.text = ingredients_text
 
+    def refresh_garnish_label(self, garnish_text):
+        # Refresh the garnish label with the new text
+        self.ids.garnish_label.text = garnish_text
+
 
 class PositioningWindow(Screen): #Layout for the positioning window
     pass
@@ -163,7 +167,7 @@ class MyCocktailmixerApp(App):
 
                 # Get the ingredients
                 ingredients = recipe.get('ingredients', [])
-                ingredients_text = "Ingredients:\n"
+                ingredients_text = "[b]Ingredients:[/b]\n"
                 for ingredient in ingredients:
                     ingredient_name = ingredient.get('ingredient')
                     amount = ingredient.get('amount')
@@ -178,16 +182,26 @@ class MyCocktailmixerApp(App):
                             # Add special ingredients
                     special = ingredient.get('special')
                     if special:
-                        msg = f"Special ingredient: {special}\n"
+                        msg = f"{special}\n"
 
-                    logging.info(msg)
+                    
                     ingredients_text += msg
+                
+                # Check if there is a garnish
+                garnish = recipe.get('garnish')
+                garnish_text = ""
+                if garnish:
+                    garnish_text += f"[b]Garnish:[/b]\n{garnish}\n"
+
+                logging.info(ingredients_text)
+                logging.info(garnish_text)
 
                 # Show the popup
                 self.show_popup()
                 
                 # Refresh the ingredients label
                 self.popup.refresh_ingredients_label(ingredients_text)
+                self.popup.refresh_garnish_label(garnish_text)
                 return
 
         logging.info(f"Recipe not found for name: {recipe_name}")
