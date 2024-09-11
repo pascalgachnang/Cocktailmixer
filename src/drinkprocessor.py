@@ -192,9 +192,12 @@ class Recipe():
                     ingredientDetails.setName(ingredient.get('ingredient'))
                     ingredientDetails.setAmount(ingredient.get('amount'))
                     ingredientDetails.setUnit(ingredient.get('unit'))
-                    #ingredientDetails.setPosition(self.getBottle(ingredient.get('ingredient', {})).get('position', None))
-                    ingredientDetails.setPosition(self.getBottle(ingredient.get('ingredient')).get('position'))            
-                    ingredientDetails.setType(self.getBottle(ingredient.get('ingredient')).get('type'))
+                    
+                    #Check if the ingredient is in the bottle inventory
+                    bottle = self.getBottle(ingredient.get('ingredient'))
+                    if bottle:
+                        ingredientDetails.setPosition(bottle.get('position'))
+                        ingredientDetails.setType(bottle.get('type'))
 
                     self.ingredients_details.append(ingredientDetails)
 
