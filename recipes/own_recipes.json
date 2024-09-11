@@ -314,15 +314,18 @@
             },
             {
                 "unit": "cl",
+                "amount": 1,
+                "ingredient": "Sodawasser"
+            },
+            {
+                "unit": "cl",
                 "amount": 1.5,
                 "ingredient": "Zuckersirup"
             },
             {
-                "special": "2 dashes Angostura Bitters"
-            },
-            {
-                "special": "1 dash Soda"
+                "special": "2 Spritzer Angostura-Bitter"
             }
+            
         ],
         "garnish": "Orangenscheibe und Cocktailkirsche"
     },
@@ -337,15 +340,12 @@
                 "ingredient": "Bourbon Whiskey"
             },
             {
-                "special": "4 frische Minzeblätter"
-            },
-            {
                 "unit": "cl",
                 "amount": 1.5,
                 "ingredient": "Zuckersirup"
             },
             {
-                "special": "Crushed Ice"
+                "special": "4 frische Minzeblätter"
             }
         ],
         "garnish": "Minzezweig"

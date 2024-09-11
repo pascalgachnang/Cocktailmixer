@@ -91,12 +91,14 @@ WindowManager:
 
     BoxLayout:
         orientation: 'vertical'
+        
 
         # Titel und Zutaten oben im Popup
         
 
         GridLayout:
             cols: 2
+            padding: [80, 40, 40, 40]  # Abstand: [links, oben, rechts, unten]
             
             Label:
                 id: ingredients_label  # ID, damit es im Python-Code referenziert werden kann
@@ -108,7 +110,7 @@ WindowManager:
                 halign: 'left'  # Links ausgerichtet
                 valign: 'top'  # Oben bündig
                 text_size: self.width, None  # Setze nur die Breite, Höhe passt sich an
-                size_hint_y: None
+                size_hint_y: None   
 
             Label:
                 id: garnish_label  # ID, damit es im Python-Code referenziert werden kann
@@ -121,6 +123,8 @@ WindowManager:
                 valign: 'top'  # Oben bündig
                 text_size: self.width, None  # Setze nur die Breite, Höhe passt sich an
                 size_hint_y: None
+            
+            
 
         # Buttons unten im Popup, über die gesamte Breite
         GridLayout:
