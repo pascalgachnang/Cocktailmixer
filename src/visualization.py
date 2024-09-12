@@ -124,7 +124,6 @@ class MyCocktailmixerApp(App):
         self.current_screen = self.root.current   # We store the current screen to switch back to it after the drink is done
         logging.info(f"Current screen: {self.current_screen}")  
 
-        
 
     def AddOrder(self):
         # add an order to the order queue
@@ -141,6 +140,7 @@ class MyCocktailmixerApp(App):
         self.drinkprocessor.addOrder(self.recipe)
         logging.info(f"Order added to the queue")
         logging.info(f"Recipe: {self.recipe}")
+        
         
     def show_popup(self, dt=None):
     # Build the popup

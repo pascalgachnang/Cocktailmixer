@@ -56,8 +56,6 @@ class Main:
         self.stepm.reference_run()
         print(globals.current_position)
 
-        
-
 
 if __name__ == "__main__":
     # Create an instance of the Main class
@@ -70,38 +68,4 @@ if __name__ == "__main__":
         sys.exit()
     
 
-    #main = Main()
-    
-    #main.CallReferenceRun()
-
-    
-
-    """
-    main = Main()
-    main.CallReferenceRun()
-    drinkprocessor = drinkprocessor.OrderQueue()
-    recipe = drinkprocessor.Recipe(search_string="")
-    drinkprocessor.addOrder(recipe)
-    """
-
-    # Call the WeightSensor and run in a thread
-    #main.CallWeightSensor()
-
-
-    # Call the CallDrinkProcessor method
-    #main.IncomingDrinkOrder("Bacardi")
-    #main.IncomingDrinkOrder("Tuxedo")
-
-    
-    
-    # Call the CallStepperMotor method
-    #main.CallStepperMotor()
-
-    # Call the CallServoMotor method
-    #main.CallServoMotor()
-
-    # Call the CallRelayBoard method
-    #main.CallRelayBoard()
-    
-    
-    
+   

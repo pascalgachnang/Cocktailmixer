@@ -7,6 +7,8 @@ from StepperMotor.StepperMotor import StepperMotor
 from ServoMotor.ServoMotor import ServoMotor
 from RelayBoard.RelayBoard import RelayBoard
 from WeightSensor.weightsensor import WeightSensor
+from databaseOrders import DatabaseOrders
+
 #from LedRing.LedRing import LedRing
 
 
@@ -23,6 +25,7 @@ class OrderQueue(threading.Thread):
         self.servm = ServoMotor()
         #self.ledring = LedRing()
         self.drink_in_progress = False
+        
         
         
     
@@ -84,6 +87,8 @@ class OrderQueue(threading.Thread):
             time.sleep(1)
 
         self.stepm.back_to_startposition()
+        
+        logging.info("Order processed")
 
         print("*"*20)
         
@@ -166,6 +171,8 @@ class Recipe():
         self.name = None
         self.ingredients = []
         self.ingredients_details = []
+        self.db = DatabaseOrders()
+
 
         self.findRecipes()
 
@@ -179,10 +186,14 @@ class Recipe():
             if recipe.get('name') == self.search_string:
 
                 msg = "Rezept: {0}, Anzahl: {1}".format(recipe.get('name'), len(config.recipes))
+                order = self.search_string
                 logging.info(msg)
                 self.recipe = recipe
                 self.name = recipe.get('name')
                 self.ingredients = recipe.get('ingredients')
+
+                #Dictionary to store the ingredients
+                ingredients_dict = {}
 
                 for ingredient in recipe.get('ingredients'):
                     msg = "Ingredient: {0}, Menge: {1}, Unit: {2}".format(ingredient.get('ingredient'), ingredient.get('amount'), ingredient.get('unit'))
@@ -192,6 +203,9 @@ class Recipe():
                     ingredientDetails.setName(ingredient.get('ingredient'))
                     ingredientDetails.setAmount(ingredient.get('amount'))
                     ingredientDetails.setUnit(ingredient.get('unit'))
+
+                    #Store the ingredients in a dictionary
+                    ingredients_dict[ingredient.get('ingredient')] = ingredient.get('amount')
                     
                     #Check if the ingredient is in the bottle inventory
                     bottle = self.getBottle(ingredient.get('ingredient'))
@@ -200,6 +214,13 @@ class Recipe():
                         ingredientDetails.setType(bottle.get('type'))
 
                     self.ingredients_details.append(ingredientDetails)
+                    
+                self.db.insert_order(order, ingredients_dict)
+                logging.info(f"Order added to the database")
+                
+                
+
+
 
 
     def getBottle(self, ingredient):
