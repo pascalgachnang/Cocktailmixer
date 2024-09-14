@@ -45,7 +45,7 @@ class ServoMotor():
             
         try:
             self.p.change_duty_cycle(self.POSITION_SPENDER)  # Rotate to 0 degrees
-            time.sleep(2)
+            time.sleep(1.2)
             self.p.change_duty_cycle(self.POSITION_HOME)  # Rotate back to 45 degrees
 
             print("ServoMotor: 50ml")
@@ -78,7 +78,7 @@ class ServoMotor():
             self.p.change_duty_cycle(self.POSITION_HOME)  # Rotate back to 45 degrees
             time.sleep(3)
             self.p.change_duty_cycle(self.POSITION_SPENDER)  # Rotate to 0 degrees
-            time.sleep(2.5)
+            time.sleep(1.3)
             self.p.change_duty_cycle(self.POSITION_HOME)  # Rotate to 45 degrees
 
             print("ServoMotor: 50ml")
@@ -119,7 +119,7 @@ class ServoMotor():
             self.p.change_duty_cycle(self.POSITION_HOME)  # Rotate to 45 degrees
             time.sleep(3)
             self.p.change_duty_cycle(self.POSITION_SPENDER)  # Rotate to 0 degrees
-            time.sleep(1.5)
+            time.sleep(1.1)
             self.p.change_duty_cycle(self.POSITION_HOME)  # Rotate to 45 degrees
 
             print("ServoMotor: 50ml")
