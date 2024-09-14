@@ -48,7 +48,7 @@ class OrderQueue(threading.Thread):
 
     def processOrder(self, order):
         print("Preparing Recipe: {0}".format(order.getRecipe().name))
-
+        time.sleep(0.5)
         # process the order here ...
         print("*"*20)
         for ingredientDetail in order.getRecipe().ingredients_details:

@@ -13,7 +13,7 @@ class RelayBoard(threading.Thread):
         self.amount_ingredient = amount_ingredient
         self.ingredient_name = ingredient_name
         self.pump_duration_calculated = None
-        self.flow_rate_ml_per_min = 700  # Durchflussrate der Pumpe in ml/min
+        self.flow_rate_ml_per_min = 560  # Durchflussrate der Pumpe in ml/min
         self.relay_state = 0x00
         self.relay_number_active = None
         self.pump_operation_mode = "auto" # oder "manuell", Default = "auto"

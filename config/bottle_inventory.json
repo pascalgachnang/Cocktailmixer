@@ -46,28 +46,28 @@
     },
     {
         "name": "Limettensaft",
-        "position": 11000,
+        "position": 10800,
         "type": "pumped",
         "pump number": 1
 
     },
     {
         "name": "Orangensaft",
-        "position": 11000,
+        "position": 10800,
         "type": "pumped",
         "pump number": 2
 
     },
     {
         "name": "Sodawasser",
-        "position": 11000,
+        "position": 10800,
         "type": "pumped",
         "pump number": 3
 
     },
     {
         "name": "Cola",
-        "position": 11000,
+        "position": 10800,
         "type": "pumped",
         "pump number": 4
 
